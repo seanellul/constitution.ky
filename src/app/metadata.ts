@@ -1,43 +1,40 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://constitution.mt'),
+  metadataBase: new URL('https://constitution.ky'),
   title: {
-    default: 'Kostituzzjoni.mt - Interactive Constitution of Malta',
-    template: '%s | Kostituzzjoni.mt - Constitution of Malta'
+    default: 'Constitution.ky - Interactive Constitution of the Cayman Islands',
+    template: '%s | Constitution.ky - Constitution of the Cayman Islands'
   },
-  description: 'Explore the Constitution of Malta through an interactive, user-friendly interface. Access all chapters, articles, and amendments of Malta\'s constitutional law with advanced search and navigation features.',
+  description: 'Explore the Constitution of the Cayman Islands through an interactive, user-friendly interface. Access all parts, sections, and provisions of the Cayman Islands Constitution Order 2009 with advanced search and navigation features.',
   keywords: [
     // Primary keywords
-    'Malta Constitution', 'Maltese Constitution', 'Constitution of Malta', 'Malta constitutional law',
-    'Malta legal framework', 'Malta democracy', 'Malta government structure', 'Malta fundamental rights',
-    'Malta parliament', 'Malta judiciary', 'Malta executive branch',
+    'Cayman Islands Constitution', 'Cayman Constitution', 'Constitution of the Cayman Islands',
+    'Cayman Islands constitutional law', 'Cayman Islands legal framework', 'Cayman Islands democracy',
+    'Cayman Islands government structure', 'Cayman Islands fundamental rights',
+    'Cayman Islands legislature', 'Cayman Islands judiciary',
 
     // Long-tail keywords
-    'Malta Constitution articles', 'Malta Constitution chapters', 'Malta constitutional amendments',
-    'Malta fundamental rights and freedoms', 'Malta parliamentary system', 'Malta judicial system',
-    'Malta citizenship laws', 'Malta local councils', 'Malta constitutional history',
+    'Cayman Islands Constitution sections', 'Cayman Islands Constitution parts',
+    'Cayman Islands Bill of Rights', 'Cayman Islands legislative assembly',
+    'Cayman Islands judicial system', 'Cayman Islands citizenship laws',
+    'Cayman Islands constitutional history', 'Cayman Islands Constitution Order 2009',
 
     // Legal and government terms
-    'Malta civil rights', 'Malta human rights', 'Malta legal system', 'Malta government',
-    'Malta political system', 'Malta democracy principles', 'Malta constitutional reform',
-    'Malta rule of law', 'Malta separation of powers', 'Malta checks and balances',
+    'Cayman Islands civil rights', 'Cayman Islands human rights', 'Cayman Islands legal system',
+    'Cayman Islands government', 'Cayman Islands political system', 'Cayman Islands Governor',
+    'Cayman Islands Premier', 'Cayman Islands Cabinet', 'Grand Court Cayman Islands',
 
     // Interactive and educational
-    'constitutional law education', 'Malta legal education', 'interactive constitution',
-    'constitutional navigation', 'legal document search', 'Malta civics education',
+    'constitutional law education', 'Cayman Islands legal education', 'interactive constitution',
+    'constitutional navigation', 'legal document search', 'Cayman Islands civics education',
 
-    // Maltese language variants and dual domain
-    'Kostituzzjoni ta\' Malta', 'Kostituzzjoni Maltija', 'liġi kostituzzjonali Malta',
-    'constitution.mt', 'kostituzzjoni.mt', 'Malta constitution website',
-
-    // Bilingual search terms
-    'Malta bilingual constitution', 'Maltese English constitution',
-    'constitutional law Malta English', 'constitutional law Malta Maltese'
+    // Domain
+    'constitution.ky', 'Cayman Islands constitution website',
   ],
-  authors: [{ name: 'Kostituzzjoni.mt Team' }],
-  creator: 'Kostituzzjoni.mt Team',
-  publisher: 'Kostituzzjoni.mt',
+  authors: [{ name: 'Constitution.ky Team' }],
+  creator: 'Constitution.ky Team',
+  publisher: 'Constitution.ky',
   robots: {
     index: true,
     follow: true,
@@ -51,27 +48,19 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'en_MT',
-    alternateLocale: ['mt_MT', 'en_US'],
-    url: 'https://constitution.mt',
-    siteName: 'Constitution of Malta',
-    title: 'Interactive Constitution of Malta - Kostituzzjoni.mt',
-    description: 'Explore Malta\'s Constitution through an interactive digital platform. Access all constitutional articles, search legal provisions, and understand Malta\'s democratic framework.',
+    locale: 'en_KY',
+    url: 'https://constitution.ky',
+    siteName: 'Constitution of the Cayman Islands',
+    title: 'Interactive Constitution of the Cayman Islands - Constitution.ky',
+    description: 'Explore the Cayman Islands Constitution through an interactive digital platform. Access all constitutional sections, search legal provisions, and understand the Cayman Islands\' democratic framework.',
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@KostituzzjoniMT',
-    creator: '@KostituzzjoniMT',
-    title: 'Interactive Constitution of Malta',
-    description: 'Explore Malta\'s Constitution through an interactive digital platform with advanced search and navigation.',
+    title: 'Interactive Constitution of the Cayman Islands',
+    description: 'Explore the Cayman Islands Constitution through an interactive digital platform with advanced search and navigation.',
   },
   alternates: {
-    canonical: 'https://constitution.mt',
-    languages: {
-      'en-MT': 'https://constitution.mt',
-      'en-US': 'https://constitution.mt',
-      'mt-MT': 'https://kostituzzjoni.mt',
-    },
+    canonical: 'https://constitution.ky',
   },
   category: 'legal',
   classification: 'Legal Education, Government, Constitutional Law',

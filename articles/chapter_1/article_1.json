@@ -1,58 +1,19 @@
 {
   "number": 1,
-  "title": "The Republic and its Territories",
+  "title": "Guarantee of Rights, Freedoms and Responsibilities",
   "chapterNumber": 1,
-  "chapterTitle": "The Republic of Malta",
+  "chapterTitle": "Bill of Rights, Freedoms and Responsibilities",
   "content": [
     {
       "paragraph": 1,
-      "text": "(1) Malta is a democratic republic founded on work and on respect for the fundamental rights and freedoms of the individual."
+      "text": "This Bill of Rights, Freedoms and Responsibilities is a cornerstone of democracy in the Cayman Islands."
     },
     {
       "paragraph": 2,
-      "text": "(2) The territories of Malta consist of those territories comprised in Malta immediately before the appointed day, including the territorial waters thereof, or of such territories and waters as Parliament may from time to time by law determine."
-    },
-    {
-      "paragraph": 3,
-      "text": "(3) Malta is a neutral state actively pursuing peace, security and social progress among all nations by adhering to a policy of non-alignment and refusing to participate in any military alliance. Such status will, in particular, imply that:"
-    },
-    {
-      "paragraph": 4,
-      "text": "(a) no foreign military base will be permitted on Maltese territory;"
-    },
-    {
-      "paragraph": 5,
-      "text": "(b) no military facilities in Malta will be allowed to be used by any foreign forces except at the request of the Government of Malta, and only in the following cases:"
-    },
-    {
-      "paragraph": 6,
-      "text": "(i) in the exercise of the inherent right of self-defence in the event of any armed violation of the area over which the Republic of Malta has sovereignty, or in pursuance of measures or actions decided by the Security Council of the United Nations; or"
-    },
-    {
-      "paragraph": 7,
-      "text": "(ii) whenever there exists a threat to the sovereignty, independence, neutrality, unity or territorial integrity of the Republic of Malta;"
-    },
-    {
-      "paragraph": 8,
-      "text": "(c) except as aforesaid, no other facilities in Malta will be allowed to be used in such manner or extent as will amount to the presence in Malta of a concentration of foreign forces;"
-    },
-    {
-      "paragraph": 9,
-      "text": "(d) except as aforesaid, no foreign military personnel will be allowed on Maltese territory, other than military personnel performing, or assisting in the performance of, civil works or activities, and other than a reasonable number of military technical personnel assisting in the defence of the Republic of Malta;"
-    },
-    {
-      "paragraph": 10,
-      "text": "(e) the shipyards of the Republic of Malta will be used for civil commercial purposes, but may also be used, within reasonable limits of time and quantity, for the repair of military vessels which have been put in a state of non-combat or for the construction of vessels; and in accordance with the principles of non-alignment the said shipyards will be denied to the military vessels of the two superpowers."
+      "text": "It enshrines the rights and freedoms to which every person in the Cayman Islands is entitled, and imposes responsibilities upon those persons."
     }
   ],
-  "amendmentHistory": {
-    "date": "1987-07-23",
-    "description": "Addition of neutrality provisions (subsection 3)",
-    "legalReference": "Act LVIII of 1974; Act IV of 1987"
-  },
+  "amendmentHistory": {},
   "crossReferences": [],
-  "notes": "This article establishes Malta as a democratic republic and defines its territories and neutral status."
-} 
-
-
-
+  "notes": "Establishes the Bill of Rights as foundational to Cayman Islands democracy."
+}

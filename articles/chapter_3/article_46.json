@@ -1,0 +1,27 @@
+{
+  "number": 46,
+  "title": "Proceedings and Quorum",
+  "chapterNumber": 3,
+  "chapterTitle": "The Executive",
+  "content": [
+    {
+      "paragraph": 1,
+      "text": "The Governor shall, so far as is practicable, preside at meetings of the Cabinet."
+    },
+    {
+      "paragraph": 2,
+      "text": "In the absence of the Governor, the Premier shall preside."
+    },
+    {
+      "paragraph": 3,
+      "text": "The Governor and the Premier shall agree on the agenda for meetings of the Cabinet."
+    },
+    {
+      "paragraph": 4,
+      "text": "A quorum of the Cabinet shall be a majority of the Ministers."
+    }
+  ],
+  "amendmentHistory": {},
+  "crossReferences": [],
+  "notes": "Cabinet proceedings and quorum requirements."
+}

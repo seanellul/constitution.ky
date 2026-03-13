@@ -29,62 +29,59 @@ const structuredData = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://constitution.mt/#website",
-      "url": "https://constitution.mt/",
-      "name": "Kostituzzjoni.mt - Interactive Constitution of Malta",
-      "description": "Interactive digital platform for exploring and understanding the Constitution of Malta with advanced search and navigation features.",
+      "@id": "https://constitution.ky/#website",
+      "url": "https://constitution.ky/",
+      "name": "Constitution.ky - Interactive Constitution of the Cayman Islands",
+      "description": "Interactive digital platform for exploring and understanding the Constitution of the Cayman Islands with advanced search and navigation features.",
       "publisher": {
-        "@id": "https://kostituzzjoni.mt/#organization"
+        "@id": "https://constitution.ky/#organization"
       },
       "potentialAction": [
         {
           "@type": "SearchAction",
           "target": {
             "@type": "EntryPoint",
-            "urlTemplate": "https://constitution.mt/search?q={search_term_string}"
+            "urlTemplate": "https://constitution.ky/search?q={search_term_string}"
           },
           "query-input": "required name=search_term_string"
         }
       ],
-      "inLanguage": ["en-MT", "mt-MT"]
+      "inLanguage": ["en"]
     },
     {
       "@type": "Organization",
-      "@id": "https://constitution.mt/#organization",
-      "name": "Constitution of Malta",
-      "url": "https://constitution.mt/",
+      "@id": "https://constitution.ky/#organization",
+      "name": "Constitution of the Cayman Islands",
+      "url": "https://constitution.ky/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://kostituzzjoni.mt/logo.png",
+        "url": "https://constitution.ky/logo.png",
         "width": 600,
         "height": 200
-      },
-      "sameAs": [
-        "https://twitter.com/KostituzzjoniMT"
-      ]
+      }
     },
     {
       "@type": "GovernmentService",
-      "name": "Constitution of Malta Interactive Reader",
+      "name": "Constitution of the Cayman Islands Interactive Reader",
       "serviceType": "Legal Information Service",
-      "description": "Digital access to Malta's Constitution with interactive navigation and search capabilities",
+      "description": "Digital access to the Cayman Islands Constitution with interactive navigation and search capabilities",
       "provider": {
-        "@id": "https://constitution.mt/#organization"
+        "@id": "https://constitution.ky/#organization"
       },
       "areaServed": {
         "@type": "Country",
-        "name": "Malta"
+        "name": "Cayman Islands"
       },
-      "availableLanguage": ["English", "Maltese"]
+      "availableLanguage": ["English"]
     },
     {
       "@type": "LegalDocument",
-      "name": "Constitution of Malta",
-      "description": "The supreme law of Malta, establishing the framework of government and fundamental rights",
-      "legislationDate": "1964-09-21",
+      "name": "Constitution of the Cayman Islands",
+      "description": "The Cayman Islands Constitution Order 2009, establishing the framework of government and fundamental rights",
+      "legislationDate": "2009-06-10",
       "legislationJurisdiction": {
         "@type": "Country",
-        "name": "Malta"
+        "name": "Cayman Islands"
       },
       "legislationType": "Constitution"
     }
@@ -99,7 +96,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-MT" className={`${inter.variable} ${merriweather.variable}`}>
+    <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
       <head>
         {/* Structured Data JSON-LD */}
         <script
@@ -109,13 +106,13 @@ export default function RootLayout({
 
         {/* PWA Configuration */}
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#BD0F1F" />
-        <meta name="application-name" content="Constitution.mt" />
+        <meta name="theme-color" content="#003DA5" />
+        <meta name="application-name" content="Constitution.ky" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Constitution.mt" />
+        <meta name="apple-mobile-web-app-title" content="Constitution.ky" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="msapplication-TileColor" content="#BD0F1F" />
+        <meta name="msapplication-TileColor" content="#003DA5" />
         <meta name="msapplication-tap-highlight" content="no" />
 
         {/* Icons */}
@@ -131,11 +128,6 @@ export default function RootLayout({
         {/* Performance hints */}
         <meta httpEquiv="X-DNS-Prefetch-Control" content="on" />
         <link rel="dns-prefetch" href="//vercel-analytics.com" />
-
-        {/* Alternate Language Versions */}
-        <link rel="alternate" hrefLang="en-MT" href="https://constitution.mt/" />
-        <link rel="alternate" hrefLang="mt-MT" href="https://kostituzzjoni.mt/" />
-        <link rel="alternate" hrefLang="x-default" href="https://constitution.mt/" />
       </head>
       <body className="bg-secondary-light dark:bg-gray-900 min-h-screen flex flex-col text-gray-900 dark:text-gray-100">
         {/* Skip to main content for accessibility */}
@@ -155,17 +147,17 @@ export default function RootLayout({
           <div className="container mx-auto px-4 sm:px-6">
             <div className="text-center space-y-2">
               <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-                © {currentYear} Kostituzzjoni.mt | An interactive reader for the Constitution of Malta
+                &copy; {currentYear} Constitution.ky | An interactive reader for the Constitution of the Cayman Islands
               </p>
               <p className="text-xs text-gray-500 dark:text-gray-500">
                 Educational use only. For official legal reference, consult the{' '}
                 <a
-                  href="https://legislation.mt/eli/const/eng/pdf"
+                  href="https://www.legislation.gov.uk/uksi/2009/1379/schedule/2/made"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary-DEFAULT hover:underline"
                 >
-                  official Constitution of Malta
+                  official Cayman Islands Constitution Order 2009
                 </a>
               </p>
               <nav className="flex justify-center space-x-4 text-xs">

@@ -92,7 +92,7 @@ export default function PrivacyNotice() {
           
           <div className="mt-4 text-sm">
             <p className="text-gray-600 mb-3">
-              Kostituzzjoni.mt collects anonymized usage data to improve your experience. We track:
+              Constitution.ky collects anonymized usage data to improve your experience. We track:
             </p>
             <ul className="list-disc pl-5 mb-3 text-gray-600 space-y-1">
               <li>Pages you visit (no personal information)</li>

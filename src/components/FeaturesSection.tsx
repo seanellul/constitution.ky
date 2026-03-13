@@ -15,19 +15,19 @@ export default function FeaturesSection() {
   const features: Feature[] = [
     {
       title: "Interactive Navigation",
-      description: "Easily browse through chapters and articles with an intuitive interface.",
+      description: "Easily browse through parts and sections with an intuitive interface.",
       icon: <DocumentTextIcon className="w-8 h-8 text-primary-DEFAULT dark:text-primary-400" />,
-      color: "bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-900/30"
+      color: "bg-blue-50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-900/30"
     },
     {
       title: "Advanced Search",
       description: "Find exactly what you're looking for with our powerful search functionality.",
       icon: <MagnifyingGlassIcon className="w-8 h-8 text-blue-600 dark:text-blue-400" />,
-      color: "bg-blue-50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-900/30"
+      color: "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-100 dark:border-indigo-900/30"
     },
     {
       title: "Legal Cross-References",
-      description: "Understand connections between different articles and legal concepts.",
+      description: "Understand connections between different sections and legal concepts.",
       icon: <BookOpenIcon className="w-8 h-8 text-green-600 dark:text-green-400" />,
       color: "bg-green-50 dark:bg-green-900/20 border-green-100 dark:border-green-900/30"
     },
@@ -42,7 +42,7 @@ export default function FeaturesSection() {
   return (
     <section className="py-12 bg-gray-50 dark:bg-gray-800/50">
       <div className="container mx-auto px-6">
-        <motion.div 
+        <motion.div
           className="text-center max-w-3xl mx-auto mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,11 +53,11 @@ export default function FeaturesSection() {
             Explore the Constitution in New Ways
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            Our platform offers unique tools and features to help you understand and navigate Malta's founding document.
+            Our platform offers unique tools and features to help you understand and navigate the Cayman Islands&apos; founding document.
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -90,7 +90,7 @@ export default function FeaturesSection() {
         </motion.div>
 
         {/* Call to Action */}
-        <motion.div 
+        <motion.div
           className="text-center mt-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -98,18 +98,18 @@ export default function FeaturesSection() {
           viewport={{ once: true }}
         >
           <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Ready to start exploring Malta's Constitution?
+            Ready to start exploring the Cayman Islands Constitution?
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link 
-              href="/constitution" 
+            <Link
+              href="/constitution"
               className="btn-primary flex items-center justify-center gap-2 hover:scale-105 transition-transform"
             >
               <DocumentTextIcon className="w-5 h-5" />
-              <span>Browse All Chapters</span>
+              <span>Browse All Parts</span>
             </Link>
-            <Link 
-              href="/search" 
+            <Link
+              href="/search"
               className="btn-secondary flex items-center justify-center gap-2 hover:scale-105 transition-transform"
             >
               <MagnifyingGlassIcon className="w-5 h-5" />

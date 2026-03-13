@@ -11,7 +11,7 @@ export default function ConstitutionVisualization() {
 
   useEffect(() => {
     setIsMounted(true);
-    
+
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -20,14 +20,13 @@ export default function ConstitutionVisualization() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll-triggered animation for the constitution paper effect
   const parallaxY = isMounted ? -scrollY * 0.2 : 0;
   const rotateValue = isMounted ? scrollY * 0.01 : 0;
 
   return (
     <section className="py-8 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -36,10 +35,10 @@ export default function ConstitutionVisualization() {
         >
           {/* Left side: Interactive Constitution Document */}
           <div className="relative h-[280px] sm:h-[400px]">
-            {/* Chapter 1 Document (Foreground) */}
-            <motion.div 
+            {/* Part I Document (Foreground) */}
+            <motion.div
               className="absolute w-full max-w-[60%] sm:max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-3 sm:p-6 z-40 left-[5%] sm:left-20"
-              style={{ 
+              style={{
                 y: scrollY > 200 ? parallaxY : 0,
                 rotate: scrollY > 200 ? rotateValue : 0,
                 transformPerspective: 1000,
@@ -51,39 +50,39 @@ export default function ConstitutionVisualization() {
               viewport={{ once: true }}
             >
               <div className="border-b border-gray-200 dark:border-gray-700 pb-2 sm:pb-4 mb-2 sm:mb-4">
-                <h3 className="text-base sm:text-xl font-serif font-bold text-primary-DEFAULT dark:text-primary-400">Chapter I</h3>
-                <h4 className="text-sm sm:text-lg text-gray-700 dark:text-gray-300">The Republic of Malta</h4>
+                <h3 className="text-base sm:text-xl font-serif font-bold text-primary-DEFAULT dark:text-primary-400">Part I</h3>
+                <h4 className="text-sm sm:text-lg text-gray-700 dark:text-gray-300">Bill of Rights, Freedoms and Responsibilities</h4>
               </div>
               <div className="space-y-1 sm:space-y-3">
-                <motion.p 
+                <motion.p
                   className="text-xs sm:text-base text-gray-800 dark:text-gray-300 py-1 sm:py-2 border-b border-gray-100 dark:border-gray-700"
                   initial={{ x: -50, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  <span className="font-bold mr-1 sm:mr-2">1.</span> 
-                  Malta is a democratic republic founded on work and on respect for the fundamental rights and freedoms of the individual.
+                  <span className="font-bold mr-1 sm:mr-2">1.</span>
+                  This Bill of Rights, Freedoms and Responsibilities is a cornerstone of democracy in the Cayman Islands.
                 </motion.p>
-                <motion.p 
+                <motion.p
                   className="text-xs sm:text-base text-gray-800 dark:text-gray-300 py-1 sm:py-2 border-b border-gray-100 dark:border-gray-700"
                   initial={{ x: -50, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <span className="font-bold mr-1 sm:mr-2">2.</span> 
-                  The territories of Malta consist of those territories comprised in Malta immediately before the appointed day...
+                  <span className="font-bold mr-1 sm:mr-2">2.</span>
+                  Everyone&apos;s right to life shall be protected by law...
                 </motion.p>
-                <motion.p 
+                <motion.p
                   className="text-xs sm:text-base text-gray-800 dark:text-gray-300 py-1 sm:py-2 border-b border-gray-100 dark:border-gray-700"
                   initial={{ x: -50, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.7 }}
                   viewport={{ once: true }}
                 >
-                  <span className="font-bold mr-1 sm:mr-2">3.</span> 
-                  Malta is a neutral state actively pursuing peace, security and social progress among all nations...
+                  <span className="font-bold mr-1 sm:mr-2">3.</span>
+                  No person shall be subjected to torture or inhuman or degrading treatment or punishment.
                 </motion.p>
               </div>
               <div className="mt-2 sm:mt-4 flex justify-end">
@@ -96,10 +95,10 @@ export default function ConstitutionVisualization() {
               </div>
             </motion.div>
 
-            {/* Chapter III Document - Fundamental Rights */}
-            <motion.div 
+            {/* Part III Document - The Executive */}
+            <motion.div
               className="absolute w-full max-w-[55%] sm:max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 p-3 sm:p-6 rotate-2 top-4 -left-4 sm:-left-8 z-30"
-              style={{ 
+              style={{
                 y: scrollY > 200 ? parallaxY * 0.85 : 0,
                 rotate: scrollY > 200 ? rotateValue * 0.9 + 2 : 2,
                 scale: isMounted && typeof window !== 'undefined' && window.innerWidth < 640 ? 0.6 : 1
@@ -110,25 +109,25 @@ export default function ConstitutionVisualization() {
               viewport={{ once: true }}
             >
               <div className="border-b border-gray-200 dark:border-gray-700 pb-2 sm:pb-3 mb-2 sm:mb-3">
-                <h3 className="text-base sm:text-xl font-serif font-bold text-amber-600 dark:text-amber-400">Chapter III</h3>
-                <h4 className="text-sm sm:text-lg text-gray-700 dark:text-gray-300">Fundamental Rights and Freedoms</h4>
+                <h3 className="text-base sm:text-xl font-serif font-bold text-amber-600 dark:text-amber-400">Part III</h3>
+                <h4 className="text-sm sm:text-lg text-gray-700 dark:text-gray-300">The Executive</h4>
               </div>
               <div className="space-y-1 sm:space-y-2">
                 <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-300 py-1 border-b border-gray-100 dark:border-gray-700">
-                  <span className="font-bold mr-1 sm:mr-2">32.</span> 
-                  Whereas every person in Malta is entitled to the fundamental rights and freedoms...
+                  <span className="font-bold mr-1 sm:mr-2">43.</span>
+                  The executive authority of the Cayman Islands is vested in Her Majesty...
                 </p>
                 <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-300 py-1 border-b border-gray-100 dark:border-gray-700">
-                  <span className="font-bold mr-1 sm:mr-2">33.</span> 
-                  The right to life shall be protected by law...
+                  <span className="font-bold mr-1 sm:mr-2">44.</span>
+                  There shall be a Cabinet for the Cayman Islands which shall consist of the Premier and Ministers...
                 </p>
               </div>
             </motion.div>
 
-            {/* Chapter IV Document (Executive) */}
-            <motion.div 
+            {/* Part IV Document (Legislature) */}
+            <motion.div
               className="absolute w-full max-w-[50%] sm:max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 p-3 sm:p-6 rotate-3 bottom-5 -left-4 sm:-left-10 z-50"
-              style={{ 
+              style={{
                 y: scrollY > 200 ? parallaxY * 0.7 : 0,
                 rotate: scrollY > 200 ? rotateValue * 0.8 + 3 : 3,
                 scale: isMounted && typeof window !== 'undefined' && window.innerWidth < 640 ? 0.6 : 1
@@ -139,25 +138,25 @@ export default function ConstitutionVisualization() {
               viewport={{ once: true }}
             >
               <div className="border-b border-gray-200 dark:border-gray-700 pb-2 sm:pb-3 mb-2 sm:mb-3">
-                <h3 className="text-base sm:text-xl font-serif font-bold text-blue-600 dark:text-blue-400">Chapter IV</h3>
-                <h4 className="text-sm sm:text-lg text-gray-700 dark:text-gray-300">The Executive</h4>
+                <h3 className="text-base sm:text-xl font-serif font-bold text-blue-600 dark:text-blue-400">Part IV</h3>
+                <h4 className="text-sm sm:text-lg text-gray-700 dark:text-gray-300">The Legislature</h4>
               </div>
               <div className="space-y-1 sm:space-y-2">
                 <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-300 py-1 border-b border-gray-100 dark:border-gray-700">
-                  <span className="font-bold mr-1 sm:mr-2">79.</span> 
-                  The executive authority of Malta is vested in the President.
+                  <span className="font-bold mr-1 sm:mr-2">59.</span>
+                  There shall be a Legislature of the Cayman Islands which shall consist of Her Majesty and a Legislative Assembly.
                 </p>
                 <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-300 py-1 border-b border-gray-100 dark:border-gray-700">
-                  <span className="font-bold mr-1 sm:mr-2">80.</span> 
-                  There shall be a Cabinet for Malta which shall consist of the Prime Minister and such number of other Ministers...
+                  <span className="font-bold mr-1 sm:mr-2">60.</span>
+                  The Legislative Assembly shall comprise a Speaker, eighteen elected members...
                 </p>
               </div>
             </motion.div>
 
-            {/* Chapter VI Document - Parliament */}
-            <motion.div 
+            {/* Part V Document - Judicature */}
+            <motion.div
               className="absolute w-full max-w-[45%] sm:max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 p-3 sm:p-6 rotate-5 top-8 sm:top-16 right-1 sm:-right-0 z-20"
-              style={{ 
+              style={{
                 y: scrollY > 200 ? parallaxY * 0.6 : 0,
                 rotate: scrollY > 200 ? rotateValue * -1.7 + 5 : 5,
                 scale: isMounted && typeof window !== 'undefined' && window.innerWidth < 640 ? 0.6 : 1
@@ -168,17 +167,17 @@ export default function ConstitutionVisualization() {
               viewport={{ once: true }}
             >
               <div className="border-b border-gray-200 dark:border-gray-700 pb-2 sm:pb-3 mb-2 sm:mb-3">
-                <h3 className="text-base sm:text-xl font-serif font-bold text-orange-600 dark:text-orange-400">Chapter VI</h3>
-                <h4 className="text-sm sm:text-lg text-gray-700 dark:text-gray-300">Parliament</h4>
+                <h3 className="text-base sm:text-xl font-serif font-bold text-orange-600 dark:text-orange-400">Part V</h3>
+                <h4 className="text-sm sm:text-lg text-gray-700 dark:text-gray-300">The Judicature</h4>
               </div>
               <div className="space-y-1 sm:space-y-2">
                 <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-300 py-1 border-b border-gray-100 dark:border-gray-700">
-                  <span className="font-bold mr-1 sm:mr-2">51.</span> 
-                  There shall be a Parliament of Malta which shall consist of the President and a House of Representatives.
+                  <span className="font-bold mr-1 sm:mr-2">94.</span>
+                  There shall be a Grand Court for the Cayman Islands which shall be a superior Court of Record...
                 </p>
                 <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-300 py-1 border-b border-gray-100 dark:border-gray-700">
-                  <span className="font-bold mr-1 sm:mr-2">52.</span> 
-                  The House of Representatives shall consist of such number of members...
+                  <span className="font-bold mr-1 sm:mr-2">99.</span>
+                  There shall be a Court of Appeal for the Cayman Islands...
                 </p>
               </div>
             </motion.div>
@@ -192,27 +191,27 @@ export default function ConstitutionVisualization() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl font-bold font-serif text-gray-900 dark:text-gray-100 mb-6">
-              Bringing Malta's Constitution <br/>
+              Bringing the Cayman Islands Constitution <br/>
               <span className="text-primary-DEFAULT dark:text-primary-400">to Life</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-              More than just text, our interactive Constitution of Malta transforms legal language into an engaging, accessible experience for all citizens.
+              More than just text, our interactive Constitution transforms legal language into an engaging, accessible experience for all Caymanians.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-              Discover the structure, principles and articles that form the foundation of Malta's democracy through a modern, user-friendly interface.
+              Discover the structure, principles and sections that form the foundation of the Cayman Islands&apos; democracy through a modern, user-friendly interface.
             </p>
-            
+
             {/* Live Analytics Widget */}
             <div className="mb-6">
               <LiveInsightsWidget />
             </div>
-            
-            <Link 
-              href="/about" 
+
+            <Link
+              href="/about"
               className="text-primary-DEFAULT dark:text-primary-400 font-medium hover:underline flex items-center gap-2 group"
             >
               <span>Learn more about this project</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
             </Link>
           </motion.div>
         </motion.div>

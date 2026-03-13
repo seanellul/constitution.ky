@@ -1,0 +1,19 @@
+{
+  "number": 23,
+  "title": "Declaration of Incompatibility",
+  "chapterNumber": 1,
+  "chapterTitle": "Bill of Rights, Freedoms and Responsibilities",
+  "content": [
+    {
+      "paragraph": 1,
+      "text": "If a court is satisfied that a provision of any law is incompatible with any of the rights or freedoms set out in this Part, it may make a declaration of that incompatibility."
+    },
+    {
+      "paragraph": 2,
+      "text": "Where a declaration of incompatibility is made, the law in question continues in force and effect, and is not invalidated, and the Legislature shall reconsider the provision."
+    }
+  ],
+  "amendmentHistory": {},
+  "crossReferences": [],
+  "notes": "Courts may declare legislation incompatible with rights."
+}

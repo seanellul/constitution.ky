@@ -127,7 +127,7 @@ describe('Cache System', () => {
   describe('Constitution structure caching', () => {
     it('should cache and retrieve constitution structure', async () => {
       const structure = {
-        title: 'Constitution of Malta',
+        title: 'Constitution of the Cayman Islands',
         chapters: []
       };
 

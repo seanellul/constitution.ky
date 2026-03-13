@@ -36,19 +36,15 @@ export async function generateMetadata({
   const chapterUrl = `/constitution/chapter/${chapterNum}`;
 
   return {
-    title: `Chapter ${toRomanNumeral(chapterNum)} - ${chapter.title} | Constitution of Malta`,
-    description: `Browse articles in Chapter ${toRomanNumeral(chapterNum)} - ${chapter.title} of the Constitution of Malta`,
+    title: `Part ${toRomanNumeral(chapterNum)} - ${chapter.title} | Constitution of the Cayman Islands`,
+    description: `Browse sections in Part ${toRomanNumeral(chapterNum)} - ${chapter.title} of the Constitution of the Cayman Islands`,
     alternates: {
-      canonical: `https://constitution.mt${chapterUrl}`,
-      languages: {
-        'en-MT': `https://constitution.mt${chapterUrl}`,
-        'mt-MT': `https://kostituzzjoni.mt${chapterUrl}`,
-      },
+      canonical: `https://constitution.ky${chapterUrl}`,
     },
     openGraph: {
-      title: `Chapter ${toRomanNumeral(chapterNum)} - ${chapter.title} | Constitution of Malta`,
-      description: `Browse articles in Chapter ${toRomanNumeral(chapterNum)} - ${chapter.title} of the Constitution of Malta`,
-      url: `https://constitution.mt${chapterUrl}`,
+      title: `Part ${toRomanNumeral(chapterNum)} - ${chapter.title} | Constitution of the Cayman Islands`,
+      description: `Browse sections in Part ${toRomanNumeral(chapterNum)} - ${chapter.title} of the Constitution of the Cayman Islands`,
+      url: `https://constitution.ky${chapterUrl}`,
     },
   };
 }

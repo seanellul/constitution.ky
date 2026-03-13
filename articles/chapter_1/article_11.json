@@ -1,0 +1,19 @@
+{
+  "number": 11,
+  "title": "Expression",
+  "chapterNumber": 1,
+  "chapterTitle": "Bill of Rights, Freedoms and Responsibilities",
+  "content": [
+    {
+      "paragraph": 1,
+      "text": "No person shall be hindered by government in the enjoyment of his or her freedom of expression, which includes freedom to hold opinions and to receive and impart ideas and information without interference, and freedom from interference with his or her correspondence or other means of communication."
+    },
+    {
+      "paragraph": 2,
+      "text": "Nothing in this section shall be held to prevent the Government from making reasonable provision that is required in the interests of defence, public safety, public order, public morality or public health."
+    }
+  ],
+  "amendmentHistory": {},
+  "crossReferences": [],
+  "notes": "Protects freedom of expression with limited exceptions."
+}

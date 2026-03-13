@@ -1,19 +1,15 @@
 {
   "number": 3,
-  "title": "National Flag",
+  "title": "Torture and Inhuman Treatment",
   "chapterNumber": 1,
-  "chapterTitle": "The Republic of Malta",
+  "chapterTitle": "Bill of Rights, Freedoms and Responsibilities",
   "content": [
     {
       "paragraph": 1,
-      "text": "(1) The National Flag of Malta consists of two equal vertical stripes, white in the hoist and red in the fly."
-    },
-    {
-      "paragraph": 2,
-      "text": "(2) A representation of the George Cross awarded to Malta by His Majesty King George the Sixth on the 15th April, 1942 is carried, edged with red, in the canton of the white stripe."
+      "text": "No person shall be subjected to torture or inhuman or degrading treatment or punishment."
     }
   ],
-  "amendmentHistory": null,
+  "amendmentHistory": {},
   "crossReferences": [],
-  "notes": "This article describes the design and elements of the national flag of Malta."
-} 
+  "notes": "Absolute prohibition on torture and inhuman treatment."
+}

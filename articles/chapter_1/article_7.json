@@ -1,0 +1,23 @@
+{
+  "number": 7,
+  "title": "Fair Trial",
+  "chapterNumber": 1,
+  "chapterTitle": "Bill of Rights, Freedoms and Responsibilities",
+  "content": [
+    {
+      "paragraph": 1,
+      "text": "In the determination of his or her civil rights and obligations or of any criminal charge against him or her, every person is entitled to a fair and public hearing within a reasonable time by an independent and impartial court or tribunal established by law."
+    },
+    {
+      "paragraph": 2,
+      "text": "Every person charged with a criminal offence shall be presumed innocent until proved guilty according to law."
+    },
+    {
+      "paragraph": 3,
+      "text": "Every person charged with a criminal offence has the following minimum rights: to be informed promptly of the nature and cause of the accusation against him or her; to have adequate time and facilities for the preparation of his or her defence; to defend himself or herself in person or through legal assistance; to examine or have examined witnesses against him or her; and to have the free assistance of an interpreter if he or she cannot understand or speak the language used in court."
+    }
+  ],
+  "amendmentHistory": {},
+  "crossReferences": [],
+  "notes": "Comprehensive right to fair trial with minimum procedural guarantees."
+}

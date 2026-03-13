@@ -19,7 +19,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         </h3>
         
         <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed flex-grow mb-3">
-          {article.notes || 'Part of the Constitution of Malta'}
+          {article.notes || 'Part of the Constitution of the Cayman Islands'}
         </p>
         
         {article.tags && article.tags.length > 0 && (

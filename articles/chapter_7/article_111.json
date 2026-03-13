@@ -1,0 +1,23 @@
+{
+  "number": 111,
+  "title": "Revenue and Expenditure",
+  "chapterNumber": 7,
+  "chapterTitle": "Finance",
+  "content": [
+    {
+      "paragraph": 1,
+      "text": "The Legislature shall have the authority to levy or change the rates of revenue unless otherwise provided by law."
+    },
+    {
+      "paragraph": 2,
+      "text": "No expenditure of public money, no acquisition of assets and no incurrence of liabilities by government shall be authorised except by the Legislature by appropriation or by any other law."
+    },
+    {
+      "paragraph": 3,
+      "text": "A law enacted by the Legislature shall govern the operation of the Government's financial system and processes."
+    }
+  ],
+  "amendmentHistory": {},
+  "crossReferences": [],
+  "notes": "Legislature authority over revenue and expenditure."
+}

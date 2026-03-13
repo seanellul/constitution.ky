@@ -1,0 +1,19 @@
+{
+  "number": 77,
+  "title": "Introduction of Bills",
+  "chapterNumber": 4,
+  "chapterTitle": "The Legislature",
+  "content": [
+    {
+      "paragraph": 1,
+      "text": "Any member of the Legislative Assembly may introduce a bill, motion or petition in the Assembly, and the same shall be debated and disposed of according to Standing Orders."
+    },
+    {
+      "paragraph": 2,
+      "text": "A bill for an Act imposing or increasing any tax, charge or duty shall not be introduced except on the recommendation of the Minister charged with responsibility for finance."
+    }
+  ],
+  "amendmentHistory": {},
+  "crossReferences": [],
+  "notes": "Bill introduction procedures with finance minister role."
+}

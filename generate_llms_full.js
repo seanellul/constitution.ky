@@ -4,37 +4,19 @@ const path = require('path');
 const BASE = path.join(__dirname, 'articles');
 const OUT = path.join(__dirname, 'public', 'llms-full.txt');
 
-const toc = JSON.parse(fs.readFileSync(path.join(BASE, 'constitution_toc.json'), 'utf8'));
+const partMap = [
+  { number: 1, title: "Bill of Rights, Freedoms and Responsibilities", folder: "chapter_1", sections: [1, 28] },
+  { number: 2, title: "The Governor", folder: "chapter_2", sections: [29, 42] },
+  { number: 3, title: "The Executive", folder: "chapter_3", sections: [43, 58] },
+  { number: 4, title: "The Legislature", folder: "chapter_4", sections: [59, 93] },
+  { number: 5, title: "The Judicature", folder: "chapter_5", sections: [94, 107] },
+  { number: 6, title: "The Public Service", folder: "chapter_6", sections: [108, 110] },
+  { number: 7, title: "Finance", folder: "chapter_7", sections: [111, 115] },
+  { number: 8, title: "Institutions Supporting Democracy", folder: "chapter_8", sections: [116, 122] },
+  { number: 9, title: "Miscellaneous", folder: "chapter_9", sections: [123, 125] },
+];
 
-// Chapter order from TOC
-const chapters = Object.entries(toc["Constitution of Malta"]);
-
-// Map chapter key to folder name and roman numeral
-const chapterFolderMap = {
-  "Chapter I - The Republic of Malta": { folder: "chapter_1", roman: "I" },
-  "Chapter II - Declaration of Principles": { folder: "chapter_2", roman: "II" },
-  "Chapter III - Citizenship": { folder: "chapter_3", roman: "III" },
-  "Chapter IV - Fundamental Rights and Freedoms": { folder: "chapter_4", roman: "IV" },
-  "Chapter V - The President": { folder: "chapter_5", roman: "V" },
-  "Chapter VI - Parliament": { folder: "chapter_6", roman: "VI" },
-  "Chapter VII - The Executive": { folder: "chapter_7", roman: "VII" },
-  "Chapter VIII - The Judiciary": { folder: "chapter_8", roman: "VIII" },
-  "Chapter IX - Finance": { folder: "chapter_9", roman: "IX" },
-  "Chapter X - The Public Service": { folder: "chapter_10", roman: "X" },
-  "Chapter XA - Local Councils": { folder: "chapter_10A", roman: "XA" },
-  "Chapter XI - Miscellaneous": { folder: "chapter_11", roman: "XI" },
-};
-
-function getChapterTitle(key) {
-  // "Chapter I - The Republic of Malta" => "The Republic of Malta"
-  const m = key.match(/^Chapter\s+\S+\s+-\s+(.*)$/);
-  return m ? m[1] : key;
-}
-
-function getRoman(key) {
-  const m = key.match(/^Chapter\s+(\S+)/);
-  return m ? m[1] : "";
-}
+const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 
 function readArticle(folder, artNum) {
   const filePath = path.join(BASE, folder, `article_${artNum}.json`);
@@ -47,11 +29,11 @@ function readArticle(folder, artNum) {
 
 function formatArticle(art) {
   let lines = [];
-  lines.push(`### Article ${art.number} - ${art.title}`);
+  lines.push(`### Section ${art.number} - ${art.title}`);
   lines.push('');
   if (art.content && art.content.length > 0) {
     for (const p of art.content) {
-      lines.push(p.text);
+      lines.push(typeof p === 'string' ? p : p.text);
       lines.push('');
     }
   }
@@ -59,79 +41,36 @@ function formatArticle(art) {
 }
 
 let output = [];
-output.push('# Constitution of Malta - Full Text');
+output.push('# Constitution of the Cayman Islands - Full Text');
 output.push('');
-output.push('> Source: constitution.mt / konstituzzjoni.mt');
-output.push('> This is the complete text of the Constitution of Malta for LLM consumption.');
-output.push('> For official legal reference: https://legislation.mt/eli/const/eng/pdf');
+output.push('> Source: constitution.ky');
+output.push('> This is the complete text of the Cayman Islands Constitution Order 2009 for LLM consumption.');
+output.push('> For official legal reference: https://www.legislation.gov.uk/uksi/2009/1379/schedule/2/made');
 output.push('');
 
-for (const [chapterKey, chapterContent] of chapters) {
-  const info = chapterFolderMap[chapterKey];
-  if (!info) {
-    console.warn(`No folder mapping for: ${chapterKey}`);
-    continue;
-  }
-
-  const roman = info.roman;
-  const title = getChapterTitle(chapterKey);
-
+for (const part of partMap) {
+  const roman = romanNumerals[part.number - 1];
   output.push('---');
   output.push('');
-  output.push(`## Chapter ${roman} - ${title}`);
+  output.push(`## Part ${roman} - ${part.title}`);
   output.push('');
 
-  // chapterContent can be flat { "1": "title", "2": "title" }
-  // or nested with parts { "Part 1 - ...": { "51": "title", ... }, "Part 2 - ...": { ... } }
-
-  function processArticles(articles, partHeading) {
-    if (partHeading) {
-      output.push(`#### ${partHeading}`);
+  for (let secNum = part.sections[0]; secNum <= part.sections[1]; secNum++) {
+    const art = readArticle(part.folder, secNum);
+    if (art) {
+      output.push(formatArticle(art));
+    } else {
+      output.push(`### Section ${secNum}`);
+      output.push('');
+      output.push('[Text not available]');
       output.push('');
     }
-    for (const [artNum, artTitle] of Object.entries(articles)) {
-      const art = readArticle(info.folder, artNum);
-      if (art) {
-        output.push(formatArticle(art));
-      } else {
-        // Still show the article heading even if file missing
-        output.push(`### Article ${artNum} - ${artTitle}`);
-        output.push('');
-        output.push('[Text not available]');
-        output.push('');
-      }
-    }
-  }
-
-  // Check if content has parts (nested objects) or direct articles
-  let hasParts = false;
-  for (const [key, val] of Object.entries(chapterContent)) {
-    if (typeof val === 'object' && val !== null) {
-      hasParts = true;
-      break;
-    }
-  }
-
-  if (hasParts) {
-    for (const [key, val] of Object.entries(chapterContent)) {
-      if (typeof val === 'object' && val !== null) {
-        processArticles(val, key);
-      } else {
-        // Direct article at top level mixed with parts (shouldn't happen but handle)
-        const art = readArticle(info.folder, key);
-        if (art) {
-          output.push(formatArticle(art));
-        }
-      }
-    }
-  } else {
-    processArticles(chapterContent, null);
   }
 }
 
 output.push('---');
 output.push('');
-output.push('End of the Constitution of Malta.');
+output.push('End of the Constitution of the Cayman Islands.');
 
 fs.writeFileSync(OUT, output.join('\n'), 'utf8');
 console.log(`Written to ${OUT}`);

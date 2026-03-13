@@ -1,14 +1,14 @@
 import React from 'react';
-import { 
-  UsersIcon, 
-  AcademicCapIcon, 
+import {
+  UsersIcon,
+  AcademicCapIcon,
   ShieldCheckIcon,
   GlobeAltIcon,
 } from '@heroicons/react/24/outline';
 
 export const metadata = {
-  title: 'About | Constitution of Malta',
-  description: 'Learn about our mission to make Malta\'s Constitution accessible to everyone through modern technology and user-friendly design.',
+  title: 'About | Constitution of the Cayman Islands',
+  description: 'Learn about our mission to make the Cayman Islands Constitution accessible to everyone through modern technology and user-friendly design.',
 };
 
 export default function About() {
@@ -16,7 +16,7 @@ export default function About() {
     {
       icon: <UsersIcon className="h-8 w-8" />,
       title: 'Accessibility',
-      description: 'Making constitutional knowledge available to every citizen, regardless of their legal background.'
+      description: 'Making constitutional knowledge available to every Caymanian, regardless of their legal background.'
     },
     {
       icon: <AcademicCapIcon className="h-8 w-8" />,
@@ -31,22 +31,22 @@ export default function About() {
     {
       icon: <GlobeAltIcon className="h-8 w-8" />,
       title: 'Innovation',
-      description: 'Using modern technology to bring centuries-old documents into the digital age.'
+      description: 'Using modern technology to bring constitutional documents into the digital age.'
     }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-6xl mx-auto px-4 py-16">
-        
+
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            About Constitution.mt
+            About Constitution.ky
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            We&apos;re dedicated to making Malta&apos;s Constitution accessible, searchable, and understandable 
-            for every citizen through innovative digital technology.
+            We&apos;re dedicated to making the Cayman Islands Constitution accessible, searchable, and understandable
+            for every Caymanian through innovative digital technology.
           </p>
         </div>
 
@@ -56,15 +56,15 @@ export default function About() {
             Our Mission
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-            The Constitution of Malta is the supreme law of our nation, establishing the framework for our government 
-            and protecting the fundamental rights of our citizens. However, constitutional documents can be complex 
-            and difficult to navigate for the average person.
+            The Cayman Islands Constitution Order 2009 is the supreme law of the Cayman Islands, establishing the
+            framework for government and protecting the fundamental rights of all people in the territory. However,
+            constitutional documents can be complex and difficult to navigate for the average person.
           </p>
           <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Constitution.mt bridges this gap by providing an intuitive, modern interface that makes constitutional 
-            knowledge accessible to everyone. Whether you&apos;re a student, researcher, legal professional, or simply 
-            a curious citizen, our platform empowers you to explore and understand your constitutional rights and 
-            the structure of Malta&apos;s government.
+            Constitution.ky bridges this gap by providing an intuitive, modern interface that makes constitutional
+            knowledge accessible to everyone. Whether you&apos;re a student, researcher, legal professional, or simply
+            a curious citizen, our platform empowers you to explore and understand your constitutional rights and
+            the structure of the Cayman Islands&apos; government.
           </p>
         </div>
 
@@ -98,7 +98,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <p className="text-lg leading-relaxed mb-4">
-                Constitution.mt is built using cutting-edge web technologies to ensure fast, reliable, 
+                Constitution.ky is built using cutting-edge web technologies to ensure fast, reliable,
                 and accessible performance across all devices.
               </p>
               <ul className="space-y-2">
@@ -147,4 +147,4 @@ export default function About() {
       </div>
     </div>
   );
-} 
+}

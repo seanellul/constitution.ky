@@ -114,7 +114,7 @@ function showCustomInstallBanner(): void {
       bottom: 20px;
       left: 20px;
       right: 20px;
-      background: #BD0F1F;
+      background: #003DA5;
       color: white;
       padding: 16px;
       border-radius: 8px;
@@ -126,7 +126,7 @@ function showCustomInstallBanner(): void {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     ">
       <div>
-        <strong>Install Constitution.mt</strong><br>
+        <strong>Install Constitution.ky</strong><br>
         <small>Get offline access and faster loading</small>
       </div>
       <div>
@@ -179,7 +179,7 @@ function showUpdateAvailableNotification(): void {
     ">
       <div style="margin-bottom: 12px;">
         <strong>Update Available</strong><br>
-        <small>A new version of Constitution.mt is ready</small>
+        <small>A new version of Constitution.ky is ready</small>
       </div>
       <button onclick="window.location.reload()" style="
         background: rgba(255,255,255,0.2);

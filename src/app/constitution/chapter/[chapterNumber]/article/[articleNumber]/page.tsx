@@ -35,27 +35,23 @@ export async function generateMetadata({
 
   if (!article) {
     return {
-      title: 'Article Not Found | Constitution of Malta',
-      description: 'The requested article could not be found in the Constitution of Malta',
+      title: 'Section Not Found | Constitution of the Cayman Islands',
+      description: 'The requested section could not be found in the Constitution of the Cayman Islands',
     };
   }
 
   const articleUrl = `/constitution/chapter/${chapterNum}/article/${articleNum}`;
 
   return {
-    title: `Article ${articleNum} - ${article.title} | Constitution of Malta`,
-    description: `Read Article ${articleNum} from Chapter ${toRomanNumeral(chapterNum)} of the Constitution of Malta`,
+    title: `Section ${articleNum} - ${article.title} | Constitution of the Cayman Islands`,
+    description: `Read Section ${articleNum} from Part ${toRomanNumeral(chapterNum)} of the Constitution of the Cayman Islands`,
     alternates: {
-      canonical: `https://constitution.mt${articleUrl}`,
-      languages: {
-        'en-MT': `https://constitution.mt${articleUrl}`,
-        'mt-MT': `https://kostituzzjoni.mt${articleUrl}`,
-      },
+      canonical: `https://constitution.ky${articleUrl}`,
     },
     openGraph: {
-      title: `Article ${articleNum} - ${article.title} | Constitution of Malta`,
-      description: `Read Article ${articleNum} from Chapter ${toRomanNumeral(chapterNum)} of the Constitution of Malta`,
-      url: `https://constitution.mt${articleUrl}`,
+      title: `Section ${articleNum} - ${article.title} | Constitution of the Cayman Islands`,
+      description: `Read Section ${articleNum} from Part ${toRomanNumeral(chapterNum)} of the Constitution of the Cayman Islands`,
+      url: `https://constitution.ky${articleUrl}`,
       type: 'article',
     },
   };

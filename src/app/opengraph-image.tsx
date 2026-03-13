@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const alt = 'Constitution of Malta - Interactive Edition';
+export const alt = 'Constitution of the Cayman Islands - Interactive Edition';
 export const size = {
   width: 1200,
   height: 630,
@@ -14,7 +14,7 @@ export default async function Image() {
     (
       <div
         style={{
-          background: 'linear-gradient(135deg, #BD0F1F 0%, #8B0000 100%)',
+          background: 'linear-gradient(135deg, #003DA5 0%, #001d52 100%)',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -25,7 +25,7 @@ export default async function Image() {
           position: 'relative',
         }}
       >
-        {/* White stripe accent (Malta flag inspired) */}
+        {/* Accent stripe */}
         <div
           style={{
             position: 'absolute',
@@ -57,7 +57,7 @@ export default async function Image() {
               display: 'flex',
             }}
           >
-            Kostituzzjoni.mt
+            Constitution.ky
           </div>
           <div
             style={{
@@ -70,7 +70,7 @@ export default async function Image() {
               display: 'flex',
             }}
           >
-            Constitution of Malta
+            Constitution of the Cayman Islands
           </div>
           <div
             style={{

@@ -3,8 +3,8 @@ import EnhancedSearch from '@/components/EnhancedSearch';
 import EnhancedSearchResults from '@/components/EnhancedSearchResults';
 
 export const metadata = {
-  title: 'Search the Constitution of Malta',
-  description: 'Search for articles and content within the Constitution of Malta',
+  title: 'Search the Constitution of the Cayman Islands',
+  description: 'Search for sections and content within the Constitution of the Cayman Islands',
 };
 
 interface SearchPageProps {
@@ -60,7 +60,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             Search the Constitution
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Find specific articles, rights, principles, and legal concepts within Malta's Constitution.
+            Find specific sections, rights, principles, and legal concepts within the Cayman Islands Constitution.
           </p>
           
           {/* Enhanced Search Component */}

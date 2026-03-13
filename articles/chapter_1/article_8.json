@@ -1,0 +1,19 @@
+{
+  "number": 8,
+  "title": "No Punishment Without Law",
+  "chapterNumber": 1,
+  "chapterTitle": "Bill of Rights, Freedoms and Responsibilities",
+  "content": [
+    {
+      "paragraph": 1,
+      "text": "No one shall be held guilty of any criminal offence on account of any act or omission which did not constitute a criminal offence under any law at the time when it was committed."
+    },
+    {
+      "paragraph": 2,
+      "text": "No penalty shall be imposed for any criminal offence that is heavier than the maximum penalty that was applicable at the time the criminal offence was committed."
+    }
+  ],
+  "amendmentHistory": {},
+  "crossReferences": [],
+  "notes": "Prohibits retroactive criminal law and penalties."
+}

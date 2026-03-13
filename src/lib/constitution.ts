@@ -20,27 +20,38 @@ export async function getConstitutionStructure(): Promise<Constitution> {
   const schema = JSON.parse(schemaContent);
   
   const constitution: Constitution = {
-    title: "Constitution of Malta",
+    title: "Constitution of the Cayman Islands",
     chapters: []
   };
 
   // Extract chapter information from the schema
-  Object.entries(schema["Constitution of Malta"]).forEach(([chapterTitle, articles]: [string, any], index) => {
-    const chapterNumberMatch = chapterTitle.match(/Chapter ([IVXLCDM]+) - (.+)/);
-    if (chapterNumberMatch) {
-      const romanNumber = chapterNumberMatch[1];
-      const title = chapterNumberMatch[2];
-      
-      // Convert Roman numeral to number
-      const chapterNumber = romanToArabic(romanNumber);
-      
+  // Support both the old format and the new format
+  const parts = schema.parts || schema["Constitution of the Cayman Islands"];
+  if (Array.isArray(parts)) {
+    // New format: parts array
+    for (const part of parts) {
       constitution.chapters.push({
-        number: chapterNumber,
-        title,
+        number: part.number,
+        title: part.title,
         articles: []
       });
     }
-  });
+  } else if (parts && typeof parts === 'object') {
+    // Old format: object with chapter titles as keys
+    Object.entries(parts).forEach(([chapterTitle, articles]: [string, any]) => {
+      const chapterNumberMatch = chapterTitle.match(/(?:Chapter|Part) ([IVXLCDM]+) - (.+)/);
+      if (chapterNumberMatch) {
+        const romanNumber = chapterNumberMatch[1];
+        const title = chapterNumberMatch[2];
+        const chapterNumber = romanToArabic(romanNumber);
+        constitution.chapters.push({
+          number: chapterNumber,
+          title,
+          articles: []
+        });
+      }
+    });
+  }
   
   // Cache the result
   cache.setConstitutionStructure(constitution);

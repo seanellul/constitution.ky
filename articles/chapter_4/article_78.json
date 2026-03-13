@@ -1,0 +1,19 @@
+{
+  "number": 78,
+  "title": "Assent to Bills",
+  "chapterNumber": 4,
+  "chapterTitle": "The Legislature",
+  "content": [
+    {
+      "paragraph": 1,
+      "text": "A bill shall not become law until the Governor has assented to it in Her Majesty's name and has signed it in token of such assent."
+    },
+    {
+      "paragraph": 2,
+      "text": "The Governor may reserve a bill for the signification of Her Majesty's pleasure if it appears to him or her that the bill is in any way repugnant to or inconsistent with any provision of this Constitution."
+    }
+  ],
+  "amendmentHistory": {},
+  "crossReferences": [],
+  "notes": "Governor assent required for bills to become law."
+}

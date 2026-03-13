@@ -18,22 +18,22 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#BD0F1F', // Red from Malta flag
-          '50': '#fef2f3',
-          '100': '#fde6e7',
-          '200': '#fbd0d5',
-          '300': '#f7aab2',
-          '400': '#f27a8a',
-          '500': '#e63f5c',
-          '600': '#d42a46',
-          '700': '#bd0f1f', // Same as DEFAULT
-          '800': '#9b0b19', // Darker red for hover states
-          '900': '#7f0a17',
-          'light': '#CF1126', // Light red from Malta flag
-          'dark': '#9B0B19', // Same as 800
+          DEFAULT: '#003DA5', // Blue from Cayman Islands flag
+          '50': '#eff6ff',
+          '100': '#dbeafe',
+          '200': '#bfdbfe',
+          '300': '#93c5fd',
+          '400': '#60a5fa',
+          '500': '#3b82f6',
+          '600': '#1d4ed8',
+          '700': '#003DA5', // Same as DEFAULT
+          '800': '#002d7a', // Darker blue for hover states
+          '900': '#001d52',
+          'light': '#1a56c4', // Lighter blue
+          'dark': '#002d7a', // Same as 800
         },
         secondary: '#F5F5F5',
-        'secondary-light': '#FFFFFF', // White from Malta flag
+        'secondary-light': '#FFFFFF',
         'secondary-dark': '#E5E5E5',
       },
       fontFamily: {
@@ -46,9 +46,9 @@ module.exports = {
             color: '#1f2937', // text-gray-800
             lineHeight: '1.65', // Slightly increased line height for readability
             a: {
-              color: '#BD0F1F',
+              color: '#003DA5',
               '&:hover': {
-                color: '#9B0B19',
+                color: '#002d7a',
               },
               textDecoration: 'none',
               '&:hover': {
@@ -94,7 +94,7 @@ module.exports = {
             blockquote: {
               fontStyle: 'normal',
               fontWeight: '500',
-              borderLeftColor: '#BD0F1F',
+              borderLeftColor: '#003DA5',
             },
           },
         },

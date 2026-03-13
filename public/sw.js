@@ -1,7 +1,7 @@
-// Constitution.mt Service Worker
+// Constitution.ky Service Worker
 // Provides offline capabilities and performance optimizations
 
-const CACHE_NAME = 'constitution-mt-v1.0.0';
+const CACHE_NAME = 'constitution-ky-v1.0.0';
 const STATIC_CACHE = 'constitution-static-v1';
 const DYNAMIC_CACHE = 'constitution-dynamic-v1';
 
@@ -276,7 +276,7 @@ self.addEventListener('push', (event) => {
   console.log('[SW] Push notification received');
   
   const options = {
-    body: 'New updates to the Constitution of Malta',
+    body: 'New updates to the Constitution of the Cayman Islands',
     icon: '/icon-192x192.png',
     badge: '/badge-72x72.png',
     vibrate: [200, 100, 200],
@@ -286,7 +286,7 @@ self.addEventListener('push', (event) => {
   };
   
   event.waitUntil(
-    self.registration.showNotification('Constitution.mt', options)
+    self.registration.showNotification('Constitution.ky', options)
   );
 });
 

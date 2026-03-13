@@ -1,166 +1,77 @@
 {
-    "Constitution of Malta": {
-      "Chapter I - The Republic of Malta": {
-          "1": "The Republic and its Territories",
-          "2": "Religion",
-          "3": "National Flag",
-          "4": "National Anthem",
-          "5": "Language",
-          "6": "Constitution to be supreme law"
-      },
-      "Chapter II - Declaration of Principles": {
-          "7": "Right to work",
-          "8": "Promotion of culture, etc.",
-          "9": "Safeguarding of landscape and historical and artistic patrimony",
-          "10": "Compulsory and free primary education",
-          "11": "Educational interest",
-          "12": "Protection of work",
-          "13": "Hours of work",
-          "14": "Rights of women workers",
-          "15": "Minimum age for paid labour",
-          "16": "Safeguarding labour of minors",
-          "17": "Social assistance and insurance",
-          "18": "Encouragement of private economic enterprise",
-          "19": "Protection of artisan trades",
-          "20": "Encouragement of co-operatives",
-          "20A": "Participation of Maltese citizens living abroad",
-          "21": "Application of the principles contained in this Chapter"
-      },
-      "Chapter III - Citizenship": {
-          "22": "Persons who become citizens on appointed day",
-          "23": "Persons entitled to be registered as citizens",
-          "24": "Persons naturalized or registered as resident before appointed day",
-          "25": "Acquisition of citizenship by birth or descent (Repealed)",
-          "26": "Marriage to citizen of Malta (Repealed)",
-          "27": "Dual citizenship (Repealed)",
-          "28": "Commonwealth citizens",
-          "29": "Criminal liability of Commonwealth citizens",
-          "30": "Powers of Parliament (Repealed)",
-          "31": "Interpretation (Repealed)"
-      },
-      "Chapter IV - Fundamental Rights and Freedoms": {
-          "32": "Fundamental rights and freedoms",
-          "33": "Protection of right to life",
-          "34": "Protection from arbitrary arrest or detention",
-          "35": "Protection from forced labour",
-          "36": "Protection from inhuman treatment",
-          "37": "Protection from deprivation of property without compensation",
-          "38": "Protection for privacy of home or other property",
-          "39": "Provisions to secure protection of law",
-          "40": "Protection of freedom of conscience and worship",
-          "41": "Protection of freedom of expression",
-          "42": "Protection of freedom of assembly and association",
-          "43": "Prohibition of deportation",
-          "44": "Protection of freedom of movement",
-          "45": "Protection from discrimination",
-          "46": "Enforcement of protective provisions",
-          "47": "Interpretation of Chapter IV"
-      },
-      "Chapter V - The President": {
-          "48": "Establishment of the office of President",
-          "49": "Discharge of President’s functions during vacancy",
-          "50": "Oath to be taken by the President"
-      },
-      "Chapter VI - Parliament": {
-          "Part 1 - Composition of Parliament": {
-              "51": "Establishment of Parliament",
-              "52": "Composition of the House of Representatives",
-              "52A": "Additional seats for under-represented sex",
-              "53": "Qualifications for membership",
-              "54": "Disqualifications for membership",
-              "55": "Tenure of office of members",
-              "56": "Voting at elections",
-              "57": "Qualification of voters",
-              "58": "Disqualification of voters",
-              "59": "Speaker and Deputy Speaker",
-              "60": "Establishment of Electoral Commission",
-              "61": "Electoral divisions",
-              "61A": "Gozo and Maltese islands not to be divided",
-              "62": "Filling of vacancies",
-              "63": "Determination of questions as to membership",
-              "64": "Clerk to House of Representatives",
-              "64A": "Office of Ombudsman"
-          },
-          "Part 2 - Powers and Procedure of Parliament": {
-              "65": "Power to make laws",
-              "66": "Alteration of Constitution",
-              "67": "Regulation of procedure",
-              "68": "Oath for members",
-              "69": "Presiding in House",
-              "70": "Quorum",
-              "71": "Voting",
-              "72": "Mode of exercising legislative powers",
-              "73": "Restrictions on financial measures",
-              "74": "Language of laws"
-          },
-          "Part 3 - Summoning, Prorogation, and Dissolution": {
-              "75": "Sessions of Parliament",
-              "76": "Prorogation and dissolution of Parliament",
-              "77": "General elections"
-          }
-      },
-      "Chapter VII - The Executive": {
-          "78": "Executive authority of Malta",
-          "79": "The Cabinet",
-          "80": "Appointment of Ministers",
-          "81": "Tenure of Ministers",
-          "82": "Allocation of portfolios",
-          "83": "Acting Prime Minister",
-          "84": "Temporary Ministers",
-          "85": "Exercise of functions of President",
-          "86": "Exercise of Prime Minister’s functions",
-          "87": "President informed about government matters",
-          "88": "Parliamentary Secretaries",
-          "89": "Oath of Ministers",
-          "90": "Leader of Opposition",
-          "91": "Attorney General",
-          "91A": "State Advocate",
-          "92": "Permanent Secretaries",
-          "93": "Prerogative of mercy",
-          "94": "Secretary to the Cabinet"
-      },
-      "Chapter VIII - The Judiciary": {
-          "95": "Superior Courts",
-          "96": "Appointment of judges",
-          "96A": "Judicial Appointments Committee",
-          "97": "Tenure of judges",
-          "98": "Acting Chief Justice",
-          "99": "Inferior Courts",
-          "100": "Magistrates",
-          "101": "Oaths for judges/magistrates",
-          "101A": "Commission for the Administration of Justice"
-      },
-      "Chapter IX - Finance": {
-          "102": "Consolidated Fund",
-          "103": "Authorisation of expenditure",
-          "104": "Expenditure before appropriation",
-          "105": "Contingencies Fund",
-          "106": "Public debt",
-          "107": "Remuneration of certain offices",
-          "108": "Auditor General"
-      },
-      "Chapter X - The Public Service": {
-          "109": "Public Service Commission",
-          "110": "Appointment of public officers",
-          "111": "Principal representatives abroad",
-          "112": "Transfer of certain offices",
-          "113": "Protection of pension rights",
-          "114": "Grant of pensions",
-          "115": "Protection of Public Service Commission"
-      },
-      "Chapter XA - Local Councils": {
-          "115A": "Local Councils"
-      },
-      "Chapter XI - Miscellaneous": {
-          "116": "Actions on validity of laws",
-          "117": "Prohibition of associations",
-          "118": "Broadcasting Authority",
-          "119": "Function of the Broadcasting Authority",
-          "120": "Employment Commission",
-          "121": "Powers and procedures of Commissions",
-          "122": "Resignations",
-          "123": "Reappointments",
-          "124": "Interpretation"
-      }
+  "title": "The Cayman Islands Constitution Order 2009",
+  "parts": [
+    {
+      "number": 1,
+      "title": "Bill of Rights, Freedoms and Responsibilities",
+      "sections": [
+        1,
+        28
+      ]
+    },
+    {
+      "number": 2,
+      "title": "The Governor",
+      "sections": [
+        29,
+        42
+      ]
+    },
+    {
+      "number": 3,
+      "title": "The Executive",
+      "sections": [
+        43,
+        58
+      ]
+    },
+    {
+      "number": 4,
+      "title": "The Legislature",
+      "sections": [
+        59,
+        93
+      ]
+    },
+    {
+      "number": 5,
+      "title": "The Judicature",
+      "sections": [
+        94,
+        107
+      ]
+    },
+    {
+      "number": 6,
+      "title": "The Public Service",
+      "sections": [
+        108,
+        110
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Finance",
+      "sections": [
+        111,
+        115
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Institutions Supporting Democracy",
+      "sections": [
+        116,
+        122
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Miscellaneous",
+      "sections": [
+        123,
+        125
+      ]
     }
+  ]
 }

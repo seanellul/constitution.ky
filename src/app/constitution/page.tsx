@@ -6,8 +6,8 @@ import { toRomanNumeral } from '@/lib/utils';
 import ConstitutionContent from './ConstitutionContent';
 
 export const metadata = {
-  title: 'Constitution of Malta - Chapters',
-  description: 'Browse all chapters of the Constitution of Malta',
+  title: 'Constitution of the Cayman Islands - Parts',
+  description: 'Browse all parts of the Constitution of the Cayman Islands',
 };
 
 export default async function ConstitutionPage() {
@@ -26,9 +26,9 @@ export default async function ConstitutionPage() {
       />
 
       <div className="mb-8">
-        <h1 className="text-4xl font-bold font-serif text-primary-DEFAULT mb-2">Constitution of Malta</h1>
+        <h1 className="text-4xl font-bold font-serif text-primary-DEFAULT mb-2">Constitution of the Cayman Islands</h1>
         <p className="text-gray-600 text-lg">
-          Explore the chapters and articles of the Constitution of Malta in an interactive format.
+          Explore the parts and sections of the Cayman Islands Constitution in an interactive format.
         </p>
       </div>
 

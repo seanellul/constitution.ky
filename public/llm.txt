@@ -1,40 +1,37 @@
-# Kostituzzjoni.mt - LLM Context Documentation
+# Constitution.ky - LLM Context Documentation
 
 ## Project Overview
-This is an interactive web application for exploring and understanding the Constitution of Malta, hosted on both constitution.mt and kostituzzjoni.mt domains. Built with Next.js, TypeScript, and Tailwind CSS, it provides a modern, user-friendly interface to access Malta's founding legal document in Malta's bilingual environment.
+This is an interactive web application for exploring and understanding the Constitution of the Cayman Islands, hosted at constitution.ky. Built with Next.js, TypeScript, and Tailwind CSS, it provides a modern, user-friendly interface to access the Cayman Islands' founding legal document.
 
 ## Key Features
-- Interactive Navigation: Browse through constitutional chapters and articles with intuitive interface
+- Interactive Navigation: Browse through constitutional parts and sections with intuitive interface
 - Advanced Search: Full-text search across all constitutional content
-- Legal Cross-References: Understand connections between different articles and legal concepts
+- Legal Cross-References: Understand connections between different sections and legal concepts
 - Visual Data Insights: Interactive charts and graphs for constitutional elements
 - Responsive Design: Optimized for all devices and accessibility standards
 - SEO Optimized: Comprehensive SEO implementation for legal and constitutional terms
 
 ## Constitutional Content Structure
 
-The Constitution of Malta is organized into 11 main chapters:
+The Cayman Islands Constitution Order 2009 is organized into 9 main parts:
 
-1. Chapter I: The Republic of Malta (Articles 1-6)
-2. Chapter II: Declaration of Principles (Articles 7-21)
-3. Chapter III: Citizenship (Articles 22-31)
-4. Chapter IV: Fundamental Rights and Freedoms (Articles 32-47)
-5. Chapter V: The President (Articles 48-50)
-6. Chapter VI: Parliament (Articles 51-77)
-7. Chapter VII: The Executive (Articles 78-94)
-8. Chapter VIII: The Judiciary (Articles 95-101A)
-9. Chapter IX: Finance (Articles 102-108)
-10. Chapter X: The Public Service (Articles 109-115)
-11. Chapter XA: Local Councils (Article 115A)
-12. Chapter XI: Miscellaneous (Articles 116-124)
+1. Part I: Bill of Rights, Freedoms and Responsibilities (Sections 1-28)
+2. Part II: The Governor (Sections 29-42)
+3. Part III: The Executive (Sections 43-58)
+4. Part IV: The Legislature (Sections 59-93)
+5. Part V: The Judicature (Sections 94-107)
+6. Part VI: The Public Service (Sections 108-110)
+7. Part VII: Finance (Sections 111-115)
+8. Part VIII: Institutions Supporting Democracy (Sections 116-122)
+9. Part IX: Miscellaneous (Sections 123-125)
 
 ## URL Structure
-- Homepage: https://constitution.mt/
-- Chapter page: https://constitution.mt/constitution/chapter/{number}
-- Article page: https://constitution.mt/constitution/chapter/{chapter}/article/{article}
-- Search: https://constitution.mt/search?q={query}
-- About: https://constitution.mt/about
-- Analytics: https://constitution.mt/analytics
+- Homepage: https://constitution.ky/
+- Part page: https://constitution.ky/constitution/chapter/{number}
+- Section page: https://constitution.ky/constitution/chapter/{part}/article/{section}
+- Search: https://constitution.ky/search?q={query}
+- About: https://constitution.ky/about
+- Analytics: https://constitution.ky/analytics
 
 ## Additional Context
 - See /llms.txt for a condensed version
@@ -44,4 +41,4 @@ The Constitution of Malta is organized into 11 main chapters:
 - Faithful reproduction of official constitutional text
 - Clear attribution to government sources
 - Educational purpose emphasis
-- For official legal reference, consult: https://legislation.mt/eli/const/eng/pdf
+- For official legal reference, consult: https://www.legislation.gov.uk/uksi/2009/1379/schedule/2/made

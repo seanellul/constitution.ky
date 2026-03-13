@@ -1,14 +1,16 @@
 {
-  "name": "Constitution of Malta - Interactive Edition",
-  "short_name": "Constitution.mt",
-  "description": "Explore Malta's constitution through an intuitive, modern interface that brings legal text to life.",
+  "name": "Constitution of the Cayman Islands - Interactive Edition",
+  "short_name": "Constitution.ky",
+  "description": "Explore the Cayman Islands Constitution through an intuitive, modern interface that brings legal text to life.",
   "lang": "en",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme_color": "#BD0F1F",
+  "theme_color": "#003DA5",
   "background_color": "#FFFFFF",
-  "categories": ["government", "education", "reference"],
+  "scope": "/",
+  "dir": "ltr",
+  "categories": ["government", "education", "reference", "law"],
   "icons": [
     {
       "src": "/icon-72x72.png",
@@ -51,33 +53,12 @@
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "any maskable"
-=======
-  "name": "Constitution of Malta - Interactive Reader",
-  "short_name": "Constitution.mt",
-  "description": "Interactive digital platform for exploring Malta's Constitution with advanced search and navigation features",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#dc2626",
-  "orientation": "portrait-primary",
-  "scope": "/",
-  "lang": "en-MT",
-  "dir": "ltr",
-  "icons": [
-    {
-      "src": "/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
     },
     {
       "src": "/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    }
-  ],
-      "purpose": "maskable any"
     },
     {
       "src": "/apple-touch-icon.png",
@@ -85,28 +66,20 @@
       "type": "image/png"
     }
   ],
-  "categories": [
-    "education",
-    "government",
-    "law",
-    "reference"
-  ],
   "keywords": [
-    "Malta",
+    "Cayman Islands",
     "Constitution",
     "Law",
     "Government",
     "Democracy",
     "Rights",
-    "Kostituzzjoni"
+    "Bill of Rights"
   ],
   "shortcuts": [
     {
       "name": "Search Constitution",
       "short_name": "Search",
-      "description": "Search for articles and content within the Constitution",
-
-      "description": "Search through constitutional articles",
+      "description": "Search through constitutional sections",
       "url": "/search",
       "icons": [
         {
@@ -116,17 +89,22 @@
       ]
     },
     {
-      "name": "Browse Chapters",
-      "short_name": "Chapters",
-      "description": "Browse all chapters of the Constitution",
+      "name": "Browse Parts",
+      "short_name": "Parts",
+      "description": "Browse all parts of the Constitution",
       "url": "/constitution",
       "icons": [
         {
           "src": "/chapters-icon-96x96.png",
-      "name": "Fundamental Rights",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Bill of Rights",
       "short_name": "Rights",
       "description": "View fundamental rights and freedoms",
-      "url": "/constitution/chapter/4",
+      "url": "/constitution/chapter/1",
       "icons": [
         {
           "src": "/rights-icon-96x96.png",
@@ -142,13 +120,6 @@
       "icons": [
         {
           "src": "/analytics-icon-96x96.png",
-      "name": "Government Structure",
-      "short_name": "Government",
-      "description": "Explore Malta's government structure",
-      "url": "/constitution/chapter/6",
-      "icons": [
-        {
-          "src": "/government-icon-96x96.png",
           "sizes": "96x96"
         }
       ]
@@ -160,19 +131,18 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Constitution.mt on desktop"
+      "label": "Constitution.ky on desktop"
     },
     {
       "src": "/screenshot-narrow.png",
       "sizes": "640x1136",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Constitution.mt on mobile"
+      "label": "Constitution.ky on mobile"
     }
   ],
   "prefer_related_applications": false,
   "edge_side_panel": {
     "preferred_width": 400
   }
-  ]
 }

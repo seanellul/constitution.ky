@@ -1,0 +1,23 @@
+{
+  "number": 20,
+  "title": "Education",
+  "chapterNumber": 1,
+  "chapterTitle": "Bill of Rights, Freedoms and Responsibilities",
+  "content": [
+    {
+      "paragraph": 1,
+      "text": "Government shall seek to achieve in the Cayman Islands the provision of primary and secondary education which shall, so far as government is able, be free."
+    },
+    {
+      "paragraph": 2,
+      "text": "No person shall be denied the right to education."
+    },
+    {
+      "paragraph": 3,
+      "text": "Government shall respect the right of parents to ensure education and teaching of their children in conformity with their religious and philosophical convictions."
+    }
+  ],
+  "amendmentHistory": {},
+  "crossReferences": [],
+  "notes": "Right to education with government duty to provide."
+}

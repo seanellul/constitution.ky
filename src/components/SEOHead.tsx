@@ -16,19 +16,19 @@ export function generateConstitutionalSEO({
   ogImage = '/opengraph-image',
 }: Partial<SEOData> & { title: string; description: string }): SEOData {
   const defaultKeywords = [
-    'Malta Constitution',
-    'Maltese Constitution',
-    'Constitution of Malta',
-    'Malta constitutional law',
-    'Malta legal framework',
-    'Malta democracy',
+    'Cayman Islands Constitution',
+    'Cayman Constitution',
+    'Constitution of the Cayman Islands',
+    'Cayman Islands constitutional law',
+    'Cayman Islands legal framework',
+    'Cayman Islands democracy',
   ];
 
   return {
-    title: `${title} | Kostituzzjoni.mt - Constitution of Malta`,
+    title: `${title} | Constitution.ky - Constitution of the Cayman Islands`,
     description,
     keywords: [...defaultKeywords, ...keywords],
-    canonicalUrl: canonicalUrl || 'https://constitution.mt',
+    canonicalUrl: canonicalUrl || 'https://constitution.ky',
     ogImage,
   };
 }
@@ -43,21 +43,21 @@ export function ConstitutionalArticleStructuredData(
   return {
     "@context": "https://schema.org",
     "@type": "LegalDocument",
-    "name": `Article ${articleNumber}: ${title}`,
+    "name": `Section ${articleNumber}: ${title}`,
     "description": content.substring(0, 200) + "...",
-    "legislationType": "Constitutional Article",
+    "legislationType": "Constitutional Section",
     "legislationJurisdiction": {
       "@type": "Country",
-      "name": "Malta"
+      "name": "Cayman Islands"
     },
     "isPartOf": {
       "@type": "LegalDocument",
-      "name": `${chapterName} - Constitution of Malta`,
-      "legislationType": "Constitutional Chapter"
+      "name": `${chapterName} - Constitution of the Cayman Islands`,
+      "legislationType": "Constitutional Part"
     },
-    "legislationDate": "1964-09-21",
-    "inLanguage": "en-MT",
-    "url": `https://constitution.mt/constitution/chapter/${chapterNumber}/article/${articleNumber}`
+    "legislationDate": "2009-06-10",
+    "inLanguage": "en",
+    "url": `https://constitution.ky/constitution/chapter/${chapterNumber}/article/${articleNumber}`
   };
 }
 
@@ -70,26 +70,26 @@ export function ConstitutionalChapterStructuredData(
   return {
     "@context": "https://schema.org",
     "@type": "LegalDocument",
-    "name": `Chapter ${chapterNumber}: ${title}`,
+    "name": `Part ${chapterNumber}: ${title}`,
     "description": description,
-    "legislationType": "Constitutional Chapter",
+    "legislationType": "Constitutional Part",
     "legislationJurisdiction": {
       "@type": "Country",
-      "name": "Malta"
+      "name": "Cayman Islands"
     },
     "isPartOf": {
       "@type": "LegalDocument",
-      "name": "Constitution of Malta",
+      "name": "Constitution of the Cayman Islands",
       "legislationType": "Constitution"
     },
     "hasPart": articles.map(article => ({
       "@type": "LegalDocument",
-      "name": `Article ${article.number}: ${article.title}`,
-      "legislationType": "Constitutional Article",
-      "url": `https://constitution.mt/constitution/chapter/${chapterNumber}/article/${article.number}`
+      "name": `Section ${article.number}: ${article.title}`,
+      "legislationType": "Constitutional Section",
+      "url": `https://constitution.ky/constitution/chapter/${chapterNumber}/article/${article.number}`
     })),
-    "legislationDate": "1964-09-21",
-    "inLanguage": "en-MT",
-    "url": `https://constitution.mt/constitution/chapter/${chapterNumber}`
+    "legislationDate": "2009-06-10",
+    "inLanguage": "en",
+    "url": `https://constitution.ky/constitution/chapter/${chapterNumber}`
   };
 }

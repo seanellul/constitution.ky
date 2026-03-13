@@ -2,8 +2,6 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
 import ActiveUsersCounter from './ActiveUsersCounter';
 import DarkModeToggle from './DarkModeToggle';
 import { useState, useEffect } from 'react';
@@ -35,16 +33,15 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="group flex items-center">
-              {/* You can add a small logo here if available */}
               <span className="text-primary-DEFAULT dark:text-primary-400 font-serif font-bold text-xl group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors duration-200">
-                Kostituzzjoni.mt
+                Constitution.ky
               </span>
             </Link>
           </div>
-          
+
           {/* Mobile menu button */}
           <div className="flex md:hidden">
-            <button 
+            <button
               onClick={toggleMobileMenu}
               className="text-gray-700 dark:text-gray-300 hover:text-primary-DEFAULT dark:hover:text-primary-400 focus:outline-none"
               aria-label="Toggle menu"
@@ -61,7 +58,7 @@ const Navigation = () => {
               )}
             </button>
           </div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center">
             <div className="flex space-x-6 md:space-x-10 mr-6">
@@ -89,12 +86,12 @@ const Navigation = () => {
             </div>
           </div>
         </div>
-        
-        {/* Mobile menu dropdown - CSS transition instead of animation */}
-        <div 
+
+        {/* Mobile menu dropdown */}
+        <div
           className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            mobileMenuOpen 
-              ? 'max-h-96 opacity-100 mt-2' 
+            mobileMenuOpen
+              ? 'max-h-96 opacity-100 mt-2'
               : 'max-h-0 opacity-0 mt-0'
           }`}
         >
@@ -128,4 +125,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation; 
+export default Navigation;

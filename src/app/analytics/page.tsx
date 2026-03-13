@@ -112,7 +112,7 @@ export default function AnalyticsDashboard() {
           Constitution Analytics
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-400">
-          Real-time insights into how the Constitution of Malta is being accessed and used.
+          Real-time insights into how the Constitution of the Cayman Islands is being accessed and used.
         </p>
       </motion.div>
 

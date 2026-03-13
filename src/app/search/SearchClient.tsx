@@ -107,7 +107,7 @@ export default function SearchClient({ query, results }: SearchClientProps) {
           </div>
         ) : (
           <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center">
-            <p className="text-gray-600 dark:text-gray-400 mb-4">Enter a search term to find articles in the Constitution of Malta.</p>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">Enter a search term to find sections in the Constitution of the Cayman Islands.</p>
             <p className="text-gray-500 dark:text-gray-400 mb-6">You can search by article title, content, or keywords.</p>
             <Link href="/constitution" className="btn-primary">
               Browse All Chapters

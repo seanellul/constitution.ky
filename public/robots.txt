@@ -18,9 +18,8 @@ Disallow: /admin/
 Disallow: /_next/
 Disallow: /studio/
 
-# Sitemap locations for both domains
-Sitemap: https://constitution.mt/sitemap.xml
-Sitemap: https://kostituzzjoni.mt/sitemap.xml
+# Sitemap
+Sitemap: https://constitution.ky/sitemap.xml
 
 # Crawl delay
 Crawl-delay: 1
@@ -34,7 +33,7 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# LLM crawlers - context files available at /llm.txt, /llms.txt, /llms-full.txt
+# LLM crawlers
 User-agent: GPTBot
 Allow: /llm.txt
 Allow: /llms.txt

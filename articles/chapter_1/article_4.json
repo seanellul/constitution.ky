@@ -1,15 +1,23 @@
 {
   "number": 4,
-  "title": "National Anthem",
+  "title": "Slavery or Forced Labour",
   "chapterNumber": 1,
-  "chapterTitle": "The Republic of Malta",
+  "chapterTitle": "Bill of Rights, Freedoms and Responsibilities",
   "content": [
     {
       "paragraph": 1,
-      "text": "The National Anthem of Malta is \"L-Innu Malti\" beginning with the words \"Lil din l-Art Ħelwa, l-Omm li tatna isimha\"."
+      "text": "No person shall be held in slavery or servitude."
+    },
+    {
+      "paragraph": 2,
+      "text": "No person shall be required to perform forced or compulsory labour."
+    },
+    {
+      "paragraph": 3,
+      "text": "For the purposes of this section, forced or compulsory labour does not include any labour required in consequence of the sentence or order of a court, any service of a military character, any service required in the event of an emergency or calamity threatening the life or well-being of the community, or any labour or service which forms part of normal civic obligations."
     }
   ],
-  "amendmentHistory": null,
+  "amendmentHistory": {},
   "crossReferences": [],
-  "notes": "This article establishes the national anthem of Malta, known as 'L-Innu Malti'."
-} 
+  "notes": "Prohibits slavery and forced labour with specified exceptions."
+}

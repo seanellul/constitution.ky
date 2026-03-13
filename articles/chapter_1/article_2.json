@@ -1,23 +1,23 @@
 {
   "number": 2,
-  "title": "Religion",
+  "title": "Life",
   "chapterNumber": 1,
-  "chapterTitle": "The Republic of Malta",
+  "chapterTitle": "Bill of Rights, Freedoms and Responsibilities",
   "content": [
     {
       "paragraph": 1,
-      "text": "(1) The religion of Malta is the Roman Catholic Apostolic Religion."
+      "text": "Everyone's right to life shall be protected by law."
     },
     {
       "paragraph": 2,
-      "text": "(2) The authorities of the Roman Catholic Apostolic Church have the duty and the right to teach which principles are right and which are wrong."
+      "text": "No one shall be deprived of his or her life intentionally save in execution of the sentence of a court in respect of a criminal offence of which he or she has been convicted."
     },
     {
       "paragraph": 3,
-      "text": "(3) Religious teaching of the Roman Catholic Apostolic Faith shall be provided in all State schools as part of compulsory education."
+      "text": "Deprivation of life shall not be regarded as inflicted in contravention of this section when it results from the use of force which is no more than absolutely necessary in defence of any person from unlawful violence, in order to effect a lawful arrest, or in action lawfully taken for the purpose of suppressing a riot, insurrection or mutiny."
     }
   ],
-  "amendmentHistory": null,
+  "amendmentHistory": {},
   "crossReferences": [],
-  "notes": "This article establishes the official religion of Malta and its role in education."
-} 
+  "notes": "Protects the right to life with limited exceptions."
+}

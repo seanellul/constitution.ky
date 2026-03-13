@@ -1,35 +1,23 @@
 {
   "number": 5,
-  "title": "Language",
+  "title": "Personal Liberty",
   "chapterNumber": 1,
-  "chapterTitle": "The Republic of Malta",
+  "chapterTitle": "Bill of Rights, Freedoms and Responsibilities",
   "content": [
     {
       "paragraph": 1,
-      "text": "(1) The National language of Malta is the Maltese language."
+      "text": "No person shall be deprived of his or her personal liberty save as may be authorised by law in specified circumstances."
     },
     {
       "paragraph": 2,
-      "text": "(2) The Maltese and the English languages and such other language as may be prescribed by Parliament (by a law passed by not less than two-thirds of all the members of the House of Representatives) shall be the official languages of Malta and the Administration may for all official purposes use any of such languages:"
+      "text": "Any person who is arrested or detained shall be informed promptly of the reasons for his or her arrest or detention and shall be entitled to communicate with a legal practitioner of his or her choice."
     },
     {
       "paragraph": 3,
-      "text": "Provided that any person may address the Administration in any of the official languages and the reply of the Administration thereto shall be in such language."
-    },
-    {
-      "paragraph": 4,
-      "text": "(3) The language of the Courts shall be the Maltese language:"
-    },
-    {
-      "paragraph": 5,
-      "text": "Provided that Parliament may make such provision for the use of the English language in such cases and under such conditions as it may prescribe."
-    },
-    {
-      "paragraph": 6,
-      "text": "(4) The House of Representatives may, in regulating its own procedure, determine the language or languages that shall be used in Parliamentary proceedings and records."
+      "text": "Any person who is arrested or detained and is not tried within a reasonable time shall be released either unconditionally or upon reasonable conditions to ensure that the person appears for trial at a later date."
     }
   ],
-  "amendmentHistory": null,
+  "amendmentHistory": {},
   "crossReferences": [],
-  "notes": "This article establishes the national and official languages of Malta, as well as language usage in courts and Parliament."
-} 
+  "notes": "Protects personal liberty with procedural safeguards for arrest and detention."
+}
