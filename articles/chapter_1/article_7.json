@@ -17,7 +17,18 @@
       "text": "Every person charged with a criminal offence has the following minimum rights: to be informed promptly of the nature and cause of the accusation against him or her; to have adequate time and facilities for the preparation of his or her defence; to defend himself or herself in person or through legal assistance; to examine or have examined witnesses against him or her; and to have the free assistance of an interpreter if he or she cannot understand or speak the language used in court."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 94,
+      "chapterNumber": 5,
+      "description": "Grand Court — fair trial jurisdiction"
+    },
+    {
+      "articleNumber": 99,
+      "chapterNumber": 5,
+      "description": "Court of Appeal"
+    }
+  ],
   "notes": "Comprehensive right to fair trial with minimum procedural guarantees."
 }

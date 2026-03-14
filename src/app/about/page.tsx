@@ -90,6 +90,33 @@ export default function About() {
           </div>
         </div>
 
+        {/* Editorial Note */}
+        <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-8 md:p-12 mb-16">
+          <h2 className="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">
+            A Note on &ldquo;Her Majesty&rdquo;
+          </h2>
+          <p className="text-base text-amber-800 dark:text-amber-200 leading-relaxed mb-4">
+            The Constitution of the Cayman Islands was enacted in 2009 during the reign of Queen Elizabeth II,
+            and the official text refers to &ldquo;Her Majesty&rdquo; throughout. Following the accession of
+            King Charles III in September 2022, these references now apply to &ldquo;His Majesty&rdquo; by
+            operation of the{' '}
+            <a
+              href="https://www.legislation.gov.uk/ukpga/1978/30/section/6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-700 dark:text-amber-300 underline hover:text-amber-900 dark:hover:text-amber-100"
+            >
+              Interpretation Act 1978
+            </a>
+            , which provides that references to the sovereign adapt automatically without requiring a
+            constitutional amendment.
+          </p>
+          <p className="text-base text-amber-800 dark:text-amber-200 leading-relaxed">
+            Constitution.ky presents the original enacted text faithfully. No formal amendment has been
+            made to update the gendered language, but the legal effect is the same.
+          </p>
+        </div>
+
         {/* Technology Section */}
         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 md:p-12 text-white">
           <h2 className="text-3xl font-bold mb-6 text-center">

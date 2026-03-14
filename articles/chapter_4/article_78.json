@@ -13,7 +13,18 @@
       "text": "The Governor may reserve a bill for the signification of Her Majesty's pleasure if it appears to him or her that the bill is in any way repugnant to or inconsistent with any provision of this Constitution."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 35,
+      "chapterNumber": 2,
+      "description": "Governor's assent to laws"
+    },
+    {
+      "articleNumber": 108,
+      "chapterNumber": 6,
+      "description": "Public finance and audit"
+    }
+  ],
   "notes": "Governor assent required for bills to become law."
 }

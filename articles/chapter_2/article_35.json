@@ -13,7 +13,23 @@
       "text": "If the Deputy Governor is also absent or unable to act, the Governor may designate a public officer to perform the functions of the office."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 78,
+      "chapterNumber": 4,
+      "description": "Legislative procedure"
+    },
+    {
+      "articleNumber": 59,
+      "chapterNumber": 4,
+      "description": "Composition of the Legislature"
+    },
+    {
+      "articleNumber": 29,
+      "chapterNumber": 2,
+      "description": "Powers of the Governor"
+    }
+  ],
   "notes": "Deputy Governor acts as Governor during vacancy or absence."
 }

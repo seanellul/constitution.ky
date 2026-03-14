@@ -1,203 +1,287 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import LiveInsightsWidget from '@/components/LiveInsightsWidget';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+
+interface ConstitutionCard {
+  part: string;
+  title: string;
+  color: string;
+  darkColor: string;
+  accentBg: string;
+  darkAccentBg: string;
+  href: string;
+  sections: { num: string; text: string }[];
+}
+
+const cards: ConstitutionCard[] = [
+  {
+    part: 'Part I',
+    title: 'Bill of Rights, Freedoms and Responsibilities',
+    color: 'text-primary-DEFAULT dark:text-primary-400',
+    darkColor: 'text-primary-400',
+    accentBg: 'bg-primary-50 dark:bg-primary-900/20',
+    darkAccentBg: 'dark:bg-primary-900/20',
+    href: '/constitution/chapter/1',
+    sections: [
+      { num: '1', text: 'This Bill of Rights, Freedoms and Responsibilities is a cornerstone of democracy in the Cayman Islands.' },
+      { num: '2', text: "Everyone\u2019s right to life shall be protected by law..." },
+      { num: '3', text: 'No person shall be subjected to torture or inhuman or degrading treatment or punishment.' },
+    ],
+  },
+  {
+    part: 'Part III',
+    title: 'The Executive',
+    color: 'text-amber-600 dark:text-amber-400',
+    darkColor: 'text-amber-400',
+    accentBg: 'bg-amber-50 dark:bg-amber-900/20',
+    darkAccentBg: 'dark:bg-amber-900/20',
+    href: '/constitution/chapter/3',
+    sections: [
+      { num: '43', text: 'The executive authority of the Cayman Islands is vested in Her Majesty...' },
+      { num: '44', text: 'There shall be a Cabinet for the Cayman Islands which shall consist of the Premier and Ministers...' },
+    ],
+  },
+  {
+    part: 'Part IV',
+    title: 'The Legislature',
+    color: 'text-blue-600 dark:text-blue-400',
+    darkColor: 'text-blue-400',
+    accentBg: 'bg-blue-50 dark:bg-blue-900/20',
+    darkAccentBg: 'dark:bg-blue-900/20',
+    href: '/constitution/chapter/4',
+    sections: [
+      { num: '59', text: 'There shall be a Legislature of the Cayman Islands which shall consist of Her Majesty and a Legislative Assembly.' },
+      { num: '60', text: 'The Legislative Assembly shall comprise a Speaker, eighteen elected members...' },
+    ],
+  },
+  {
+    part: 'Part V',
+    title: 'The Judicature',
+    color: 'text-orange-600 dark:text-orange-400',
+    darkColor: 'text-orange-400',
+    accentBg: 'bg-orange-50 dark:bg-orange-900/20',
+    darkAccentBg: 'dark:bg-orange-900/20',
+    href: '/constitution/chapter/5',
+    sections: [
+      { num: '94', text: 'There shall be a Grand Court for the Cayman Islands which shall be a superior Court of Record...' },
+      { num: '99', text: 'There shall be a Court of Appeal for the Cayman Islands...' },
+    ],
+  },
+];
 
 export default function ConstitutionVisualization() {
-  const [scrollY, setScrollY] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
-  useEffect(() => {
-    setIsMounted(true);
+  const navigate = useCallback((newIndex: number) => {
+    setDirection(newIndex > activeIndex ? 1 : -1);
+    setActiveIndex(newIndex);
+  }, [activeIndex]);
 
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+  const next = useCallback(() => {
+    navigate((activeIndex + 1) % cards.length);
+  }, [activeIndex, navigate]);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const prev = useCallback(() => {
+    navigate((activeIndex - 1 + cards.length) % cards.length);
+  }, [activeIndex, navigate]);
 
-  const parallaxY = isMounted ? -scrollY * 0.2 : 0;
-  const rotateValue = isMounted ? scrollY * 0.01 : 0;
+  // Swipe handling for mobile
+  const touchStart = useRef<number | null>(null);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStart.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart.current === null) return;
+    const diff = touchStart.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? next() : prev();
+    }
+    touchStart.current = null;
+  };
+
+  // Keyboard navigation
+  const containerRef = useRef<HTMLDivElement>(null);
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+  }, [prev, next]);
+
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.92,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir < 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.92,
+    }),
+  };
+
+  const activeCard = cards[activeIndex];
 
   return (
-    <section className="py-8 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-10 sm:py-14 relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          {/* Left side: Interactive Constitution Document */}
-          <div className="relative h-[280px] sm:h-[400px]">
-            {/* Part I Document (Foreground) */}
-            <motion.div
-              className="absolute w-full max-w-[60%] sm:max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-3 sm:p-6 z-40 left-[5%] sm:left-20"
-              style={{
-                y: scrollY > 200 ? parallaxY : 0,
-                rotate: scrollY > 200 ? rotateValue : 0,
-                transformPerspective: 1000,
-                scale: isMounted && typeof window !== 'undefined' && window.innerWidth < 640 ? 0.6 : 1
-              }}
-              initial={{ y: 100, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true }}
+          {/* Left side: Interactive Card Carousel */}
+          <div className="relative">
+            {/* Card container */}
+            <div
+              ref={containerRef}
+              className="relative overflow-hidden rounded-xl outline-none"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              onKeyDown={handleKeyDown}
+              tabIndex={0}
+              role="region"
+              aria-label="Constitution parts carousel"
+              aria-roledescription="carousel"
             >
-              <div className="border-b border-gray-200 dark:border-gray-700 pb-2 sm:pb-4 mb-2 sm:mb-4">
-                <h3 className="text-base sm:text-xl font-serif font-bold text-primary-DEFAULT dark:text-primary-400">Part I</h3>
-                <h4 className="text-sm sm:text-lg text-gray-700 dark:text-gray-300">Bill of Rights, Freedoms and Responsibilities</h4>
+              {/* Background stack effect - decorative cards behind */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-2 left-2 right-2 bottom-0 bg-gray-100 dark:bg-gray-700/50 rounded-xl border border-gray-200/60 dark:border-gray-600/40 transform rotate-[1.5deg]" />
+                <div className="absolute top-1 left-1 right-1 bottom-0 bg-gray-50 dark:bg-gray-750 rounded-xl border border-gray-200/40 dark:border-gray-600/30 transform -rotate-[0.8deg]" />
               </div>
-              <div className="space-y-1 sm:space-y-3">
-                <motion.p
-                  className="text-xs sm:text-base text-gray-800 dark:text-gray-300 py-1 sm:py-2 border-b border-gray-100 dark:border-gray-700"
-                  initial={{ x: -50, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  <span className="font-bold mr-1 sm:mr-2">1.</span>
-                  This Bill of Rights, Freedoms and Responsibilities is a cornerstone of democracy in the Cayman Islands.
-                </motion.p>
-                <motion.p
-                  className="text-xs sm:text-base text-gray-800 dark:text-gray-300 py-1 sm:py-2 border-b border-gray-100 dark:border-gray-700"
-                  initial={{ x: -50, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <span className="font-bold mr-1 sm:mr-2">2.</span>
-                  Everyone&apos;s right to life shall be protected by law...
-                </motion.p>
-                <motion.p
-                  className="text-xs sm:text-base text-gray-800 dark:text-gray-300 py-1 sm:py-2 border-b border-gray-100 dark:border-gray-700"
-                  initial={{ x: -50, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                  viewport={{ once: true }}
-                >
-                  <span className="font-bold mr-1 sm:mr-2">3.</span>
-                  No person shall be subjected to torture or inhuman or degrading treatment or punishment.
-                </motion.p>
-              </div>
-              <div className="mt-2 sm:mt-4 flex justify-end">
-                <Link href="/constitution/chapter/1" className="text-xs sm:text-base text-primary-DEFAULT dark:text-primary-400 hover:underline flex items-center gap-1">
-                  <span>Continue reading</span>
-                  <svg width="12" height="12" className="sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </Link>
-              </div>
-            </motion.div>
 
-            {/* Part III Document - The Executive */}
-            <motion.div
-              className="absolute w-full max-w-[55%] sm:max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 p-3 sm:p-6 rotate-2 top-4 -left-4 sm:-left-8 z-30"
-              style={{
-                y: scrollY > 200 ? parallaxY * 0.85 : 0,
-                rotate: scrollY > 200 ? rotateValue * 0.9 + 2 : 2,
-                scale: isMounted && typeof window !== 'undefined' && window.innerWidth < 640 ? 0.6 : 1
-              }}
-              initial={{ rotate: 2, opacity: 0 }}
-              whileInView={{ opacity: 0.95 }}
-              transition={{ delay: 0.15, duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <div className="border-b border-gray-200 dark:border-gray-700 pb-2 sm:pb-3 mb-2 sm:mb-3">
-                <h3 className="text-base sm:text-xl font-serif font-bold text-amber-600 dark:text-amber-400">Part III</h3>
-                <h4 className="text-sm sm:text-lg text-gray-700 dark:text-gray-300">The Executive</h4>
-              </div>
-              <div className="space-y-1 sm:space-y-2">
-                <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-300 py-1 border-b border-gray-100 dark:border-gray-700">
-                  <span className="font-bold mr-1 sm:mr-2">43.</span>
-                  The executive authority of the Cayman Islands is vested in Her Majesty...
-                </p>
-                <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-300 py-1 border-b border-gray-100 dark:border-gray-700">
-                  <span className="font-bold mr-1 sm:mr-2">44.</span>
-                  There shall be a Cabinet for the Cayman Islands which shall consist of the Premier and Ministers...
-                </p>
-              </div>
-            </motion.div>
+              {/* Active card */}
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: 'spring', stiffness: 350, damping: 35 },
+                    opacity: { duration: 0.2 },
+                    scale: { duration: 0.25 },
+                  }}
+                  className="relative"
+                >
+                  <Link
+                    href={activeCard.href}
+                    className="block bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-5 sm:p-7 hover:shadow-xl transition-shadow duration-300 group"
+                  >
+                    {/* Card header */}
+                    <div className="border-b border-gray-150 dark:border-gray-700 pb-3 sm:pb-4 mb-4">
+                      <div className="flex items-center justify-between mb-1">
+                        <h3 className={`text-lg sm:text-xl font-serif font-bold ${activeCard.color}`}>
+                          {activeCard.part}
+                        </h3>
+                        <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${activeCard.accentBg} ${activeCard.color}`}>
+                          {activeCard.sections.length} sections
+                        </span>
+                      </div>
+                      <h4 className="text-sm sm:text-base text-gray-600 dark:text-gray-300 font-medium">
+                        {activeCard.title}
+                      </h4>
+                    </div>
 
-            {/* Part IV Document (Legislature) */}
-            <motion.div
-              className="absolute w-full max-w-[50%] sm:max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 p-3 sm:p-6 rotate-3 bottom-5 -left-4 sm:-left-10 z-50"
-              style={{
-                y: scrollY > 200 ? parallaxY * 0.7 : 0,
-                rotate: scrollY > 200 ? rotateValue * 0.8 + 3 : 3,
-                scale: isMounted && typeof window !== 'undefined' && window.innerWidth < 640 ? 0.6 : 1
-              }}
-              initial={{ rotate: 3, opacity: 0 }}
-              whileInView={{ opacity: 0.9 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <div className="border-b border-gray-200 dark:border-gray-700 pb-2 sm:pb-3 mb-2 sm:mb-3">
-                <h3 className="text-base sm:text-xl font-serif font-bold text-blue-600 dark:text-blue-400">Part IV</h3>
-                <h4 className="text-sm sm:text-lg text-gray-700 dark:text-gray-300">The Legislature</h4>
-              </div>
-              <div className="space-y-1 sm:space-y-2">
-                <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-300 py-1 border-b border-gray-100 dark:border-gray-700">
-                  <span className="font-bold mr-1 sm:mr-2">59.</span>
-                  There shall be a Legislature of the Cayman Islands which shall consist of Her Majesty and a Legislative Assembly.
-                </p>
-                <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-300 py-1 border-b border-gray-100 dark:border-gray-700">
-                  <span className="font-bold mr-1 sm:mr-2">60.</span>
-                  The Legislative Assembly shall comprise a Speaker, eighteen elected members...
-                </p>
-              </div>
-            </motion.div>
+                    {/* Sections */}
+                    <div className="space-y-3">
+                      {activeCard.sections.map((section, i) => (
+                        <motion.p
+                          key={section.num}
+                          className="text-sm sm:text-base text-gray-700 dark:text-gray-300 py-2 border-b border-gray-100 dark:border-gray-700/50 last:border-0"
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.1 + i * 0.08, duration: 0.3 }}
+                        >
+                          <span className="font-bold text-gray-900 dark:text-gray-100 mr-2 tabular-nums">
+                            {section.num}.
+                          </span>
+                          {section.text}
+                        </motion.p>
+                      ))}
+                    </div>
 
-            {/* Part V Document - Judicature */}
-            <motion.div
-              className="absolute w-full max-w-[45%] sm:max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 p-3 sm:p-6 rotate-5 top-8 sm:top-16 right-1 sm:-right-0 z-20"
-              style={{
-                y: scrollY > 200 ? parallaxY * 0.6 : 0,
-                rotate: scrollY > 200 ? rotateValue * -1.7 + 5 : 5,
-                scale: isMounted && typeof window !== 'undefined' && window.innerWidth < 640 ? 0.6 : 1
-              }}
-              initial={{ rotate: 5, opacity: 0 }}
-              whileInView={{ opacity: 0.85 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <div className="border-b border-gray-200 dark:border-gray-700 pb-2 sm:pb-3 mb-2 sm:mb-3">
-                <h3 className="text-base sm:text-xl font-serif font-bold text-orange-600 dark:text-orange-400">Part V</h3>
-                <h4 className="text-sm sm:text-lg text-gray-700 dark:text-gray-300">The Judicature</h4>
+                    {/* Read more footer */}
+                    <div className="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700/50 flex items-center justify-end">
+                      <span className={`text-sm font-medium ${activeCard.color} flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-200`}>
+                        Continue reading
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="transition-transform duration-200 group-hover:translate-x-0.5">
+                          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </Link>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Navigation controls */}
+            <div className="flex items-center justify-between mt-4 sm:mt-5">
+              {/* Arrow buttons */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={prev}
+                  className="p-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 active:scale-95"
+                  aria-label="Previous part"
+                >
+                  <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" />
+                </button>
+                <button
+                  onClick={next}
+                  className="p-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 active:scale-95"
+                  aria-label="Next part"
+                >
+                  <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" />
+                </button>
               </div>
-              <div className="space-y-1 sm:space-y-2">
-                <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-300 py-1 border-b border-gray-100 dark:border-gray-700">
-                  <span className="font-bold mr-1 sm:mr-2">94.</span>
-                  There shall be a Grand Court for the Cayman Islands which shall be a superior Court of Record...
-                </p>
-                <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-300 py-1 border-b border-gray-100 dark:border-gray-700">
-                  <span className="font-bold mr-1 sm:mr-2">99.</span>
-                  There shall be a Court of Appeal for the Cayman Islands...
-                </p>
+
+              {/* Dot indicators */}
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                {cards.map((card, i) => (
+                  <button
+                    key={card.part}
+                    onClick={() => navigate(i)}
+                    className={`rounded-full transition-all duration-300 ${
+                      i === activeIndex
+                        ? 'w-6 sm:w-8 h-2 sm:h-2.5 bg-primary-DEFAULT dark:bg-primary-400'
+                        : 'w-2 sm:w-2.5 h-2 sm:h-2.5 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                    }`}
+                    aria-label={`Go to ${card.part}`}
+                    aria-current={i === activeIndex ? 'true' : undefined}
+                  />
+                ))}
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right side: Text */}
           <motion.div
-            initial={{ x: 100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold font-serif text-gray-900 dark:text-gray-100 mb-6">
-              Bringing the Cayman Islands Constitution <br/>
+            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900 dark:text-gray-100 mb-5 sm:mb-6">
+              Bringing the Cayman Islands Constitution{' '}
               <span className="text-primary-DEFAULT dark:text-primary-400">to Life</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 leading-relaxed">
               More than just text, our interactive Constitution transforms legal language into an engaging, accessible experience for all Caymanians.
             </p>
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 leading-relaxed">
               Discover the structure, principles and sections that form the foundation of the Cayman Islands&apos; democracy through a modern, user-friendly interface.
             </p>
 

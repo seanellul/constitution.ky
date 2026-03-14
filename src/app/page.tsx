@@ -6,9 +6,7 @@ import FeaturesSection from '@/components/FeaturesSection';
 import ConstitutionVisualization from '@/components/ConstitutionVisualization';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { DocumentTextIcon, MagnifyingGlassIcon, BookOpenIcon, ChartBarIcon } from '@heroicons/react/24/outline';
-import LiveInsightsWidget from '@/components/LiveInsightsWidget';
+import { BookOpenIcon } from '@heroicons/react/24/outline';
 
 function HeroSectionSkeleton() {
   return (
@@ -57,26 +55,6 @@ function VisualizationSkeleton() {
 }
 
 export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const parallaxY = isMounted && !prefersReducedMotion && window.innerWidth >= 768 ? -scrollY * 0.2 : 0;
-  const rotateValue = isMounted && !prefersReducedMotion && window.innerWidth >= 768 ? scrollY * 0.01 : 0;
-
   return (
     <div className="overflow-x-hidden">
       <Suspense fallback={<HeroSectionSkeleton />}>

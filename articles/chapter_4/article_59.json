@@ -13,7 +13,18 @@
       "text": "The Legislature shall have power to make laws for the peace, order and good government of the Cayman Islands."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 35,
+      "chapterNumber": 2,
+      "description": "Governor's assent to laws"
+    },
+    {
+      "articleNumber": 60,
+      "chapterNumber": 4,
+      "description": "Composition of the Legislative Assembly"
+    }
+  ],
   "notes": "Establishes the Legislature and its law-making power."
 }

@@ -9,7 +9,18 @@
       "text": "There shall be a Court of Appeal for the Cayman Islands which shall be a superior Court of Record and shall have jurisdiction and powers to hear and determine such appeals from the Grand Court as may be prescribed by this Constitution or any other law."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 94,
+      "chapterNumber": 5,
+      "description": "Grand Court"
+    },
+    {
+      "articleNumber": 101,
+      "chapterNumber": 5,
+      "description": "Judicial Committee of the Privy Council"
+    }
+  ],
   "notes": "Establishes the Court of Appeal as superior court of record."
 }

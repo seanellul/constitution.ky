@@ -9,7 +9,18 @@
       "text": "The Legislature shall make provision for the right of access to official documents held by public authorities, subject to such conditions and exceptions as are necessary in a democratic society."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 11,
+      "chapterNumber": 1,
+      "description": "Freedom of expression"
+    },
+    {
+      "articleNumber": 117,
+      "chapterNumber": 8,
+      "description": "Commission for Standards in Public Life"
+    }
+  ],
   "notes": "Legislature to provide freedom of information access."
 }

@@ -13,7 +13,11 @@
       "text": "There shall be established a Finance Committee which shall examine the proposals of the Government for the expenditure of public monies."
     }
   ],
-  "amendmentHistory": {},
+  "amendmentHistory": {
+    "date": "2020-11-18",
+    "description": "Amended by the Cayman Islands Constitution (Amendment) Order 2020 to remove the requirement for Governor approval of Standing Orders",
+    "legalReference": "SI 2020/1283"
+  },
   "crossReferences": [],
   "notes": "Assembly Standing Orders and Finance Committee."
 }

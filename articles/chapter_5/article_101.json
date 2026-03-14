@@ -13,7 +13,18 @@
       "text": "A judge may be removed from office only for inability to discharge the functions of his or her office or for misbehaviour."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 99,
+      "chapterNumber": 5,
+      "description": "Court of Appeal"
+    },
+    {
+      "articleNumber": 94,
+      "chapterNumber": 5,
+      "description": "Grand Court"
+    }
+  ],
   "notes": "Court of Appeal judges serve specified terms."
 }

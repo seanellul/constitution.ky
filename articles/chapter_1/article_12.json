@@ -9,7 +9,18 @@
       "text": "No person shall be hindered by government in the enjoyment of his or her freedom of peaceful assembly and association, that is to say, his or her right peaceably to assemble freely and to associate with other persons and in particular to form or belong to political parties, trade unions or other associations for the protection of his or her interests."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 11,
+      "chapterNumber": 1,
+      "description": "Freedom of expression"
+    },
+    {
+      "articleNumber": 13,
+      "chapterNumber": 1,
+      "description": "Freedom of movement"
+    }
+  ],
   "notes": "Protects freedom of peaceful assembly and association."
 }

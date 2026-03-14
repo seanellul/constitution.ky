@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { Article } from '@/types/constitution';
-import { 
-  ChevronRightIcon, 
-  TagIcon, 
+import {
+  ChevronRightIcon,
+  TagIcon,
   DocumentTextIcon,
   FunnelIcon,
   StarIcon
@@ -264,11 +265,18 @@ export default function EnhancedSearchResults({
               </Link>
             </div>
           ) : (
-            <div className="space-y-4">
-              {filteredResults.map((result) => (
-                <article
+            <div className="space-y-4" role="list" aria-label="Search results">
+              <AnimatePresence mode="popLayout">
+              {filteredResults.map((result, index) => (
+                <motion.article
                   key={`${result.chapterNumber}-${result.number}`}
+                  layout
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2, delay: index * 0.03 }}
                   className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 hover:shadow-md transition-shadow"
+                  role="listitem"
                 >
                   {/* Article Header */}
                   <div className="flex items-start justify-between mb-3">
@@ -348,8 +356,9 @@ export default function EnhancedSearchResults({
                       Relevance: {Math.round(result.relevanceScore)}%
                     </div>
                   </div>
-                </article>
+                </motion.article>
               ))}
+              </AnimatePresence>
             </div>
           )}
         </div>

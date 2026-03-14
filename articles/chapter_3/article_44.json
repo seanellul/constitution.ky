@@ -13,7 +13,22 @@
       "text": "The Cabinet shall be the principal instrument of policy and shall be charged with the general direction and control of the government of the Cayman Islands and shall be collectively responsible to the Legislative Assembly for any advice given to the Governor."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": {
+    "date": "2020-11-18",
+    "description": "Amended by the Cayman Islands Constitution (Amendment) Order 2020 to increase Cabinet size from six to seven Ministers and declare Cabinet's autonomous and exclusive capacity in domestic affairs",
+    "legalReference": "SI 2020/1283"
+  },
+  "crossReferences": [
+    {
+      "articleNumber": 43,
+      "chapterNumber": 3,
+      "description": "Executive authority"
+    },
+    {
+      "articleNumber": 45,
+      "chapterNumber": 3,
+      "description": "The Premier"
+    }
+  ],
   "notes": "Establishes Cabinet composition and collective responsibility."
 }

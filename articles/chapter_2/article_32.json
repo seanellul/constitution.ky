@@ -13,7 +13,11 @@
       "text": "The Governor shall not be obliged to act in accordance with the advice of the Cabinet in the exercise of any function which, by this Constitution or any other law, is expressed to be exercisable by the Governor in his or her discretion or in accordance with the instructions of a Secretary of State."
     }
   ],
-  "amendmentHistory": {},
+  "amendmentHistory": {
+    "date": "2020-11-18",
+    "description": "Amended by the Cayman Islands Constitution (Amendment) Order 2020 to expand cross-references and require Cabinet consultation for Governor's functions, with exceptions for public interest, trivial matters, and urgency",
+    "legalReference": "SI 2020/1283"
+  },
   "crossReferences": [],
   "notes": "Governor consults Cabinet but retains discretion in specified matters."
 }

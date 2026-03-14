@@ -17,7 +17,18 @@
       "text": "A law enacted by the Legislature shall govern the operation of the Government's financial system and processes."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 78,
+      "chapterNumber": 4,
+      "description": "Legislative approval of appropriation"
+    },
+    {
+      "articleNumber": 114,
+      "chapterNumber": 8,
+      "description": "Auditor General"
+    }
+  ],
   "notes": "Legislature authority over revenue and expenditure."
 }

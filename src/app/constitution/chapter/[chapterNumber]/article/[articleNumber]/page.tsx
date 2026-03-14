@@ -57,6 +57,12 @@ export async function generateMetadata({
   };
 }
 
+export interface ArticleNavLink {
+  chapterNumber: number;
+  articleNumber: number;
+  title: string;
+}
+
 export default async function ArticlePage({ params }: { params: Promise<{ chapterNumber: string; articleNumber: string }> }) {
   const resolvedParams = await params;
   const chapterNum = parseInt(resolvedParams.chapterNumber, 10);
@@ -67,7 +73,62 @@ export default async function ArticlePage({ params }: { params: Promise<{ chapte
     notFound();
   }
 
+  // Compute prev/next article navigation
+  const chapters = await getChapters();
+  const currentChapterArticles = await getChapterArticles(chapterNum);
+  const currentIndex = currentChapterArticles.findIndex(a => a.number === articleNum);
+
+  let prevArticle: ArticleNavLink | null = null;
+  let nextArticle: ArticleNavLink | null = null;
+
+  if (currentIndex > 0) {
+    // Previous article is in the same chapter
+    const prev = currentChapterArticles[currentIndex - 1];
+    prevArticle = { chapterNumber: chapterNum, articleNumber: prev.number, title: prev.title };
+  } else {
+    // Previous article is the last article of the previous chapter
+    const prevChapterNum = chapterNum - 1;
+    if (prevChapterNum >= 1) {
+      const prevChapterArticles = await getChapterArticles(prevChapterNum);
+      if (prevChapterArticles.length > 0) {
+        const prev = prevChapterArticles[prevChapterArticles.length - 1];
+        prevArticle = { chapterNumber: prevChapterNum, articleNumber: prev.number, title: prev.title };
+      }
+    }
+  }
+
+  if (currentIndex < currentChapterArticles.length - 1) {
+    // Next article is in the same chapter
+    const next = currentChapterArticles[currentIndex + 1];
+    nextArticle = { chapterNumber: chapterNum, articleNumber: next.number, title: next.title };
+  } else {
+    // Next article is the first article of the next chapter
+    const nextChapterNum = chapterNum + 1;
+    const maxChapter = Math.max(...chapters.map(c => c.number));
+    if (nextChapterNum <= maxChapter) {
+      const nextChapterArticles = await getChapterArticles(nextChapterNum);
+      if (nextChapterArticles.length > 0) {
+        const next = nextChapterArticles[0];
+        nextArticle = { chapterNumber: nextChapterNum, articleNumber: next.number, title: next.title };
+      }
+    }
+  }
+
+  // Build chapter article list for sidebar
+  const chapterArticleList = currentChapterArticles.map((a) => ({
+    number: a.number,
+    title: a.title,
+  }));
+
   return (
-    <ArticleContent article={article} chapterNum={chapterNum} articleNum={articleNum} />
+    <ArticleContent
+      article={article}
+      chapterNum={chapterNum}
+      articleNum={articleNum}
+      prevArticle={prevArticle}
+      nextArticle={nextArticle}
+      chapterArticles={chapterArticleList}
+      chapterTitle={article.chapterTitle}
+    />
   );
 }

@@ -13,7 +13,18 @@
       "text": "The Cabinet Secretary shall summon meetings of the Cabinet."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 44,
+      "chapterNumber": 3,
+      "description": "The Cabinet"
+    },
+    {
+      "articleNumber": 59,
+      "chapterNumber": 4,
+      "description": "The Legislature"
+    }
+  ],
   "notes": "Cabinet meeting procedures."
 }

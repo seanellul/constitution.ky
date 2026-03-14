@@ -13,7 +13,22 @@
       "text": "The number of elected members may be increased from time to time in accordance with the recommendations of an Electoral Boundary Commission."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": {
+    "date": "2020-11-18",
+    "description": "Amended by the Cayman Islands Constitution (Amendment) Order 2020; \"Legislative Assembly\" renamed to \"Parliament\" throughout the Constitution",
+    "legalReference": "SI 2020/1283"
+  },
+  "crossReferences": [
+    {
+      "articleNumber": 59,
+      "chapterNumber": 4,
+      "description": "Establishment of the Legislature"
+    },
+    {
+      "articleNumber": 61,
+      "chapterNumber": 4,
+      "description": "Qualifications for membership"
+    }
+  ],
   "notes": "Composition of the Legislative Assembly."
 }

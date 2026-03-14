@@ -3,25 +3,75 @@
 import { motion } from 'framer-motion';
 import { AmendmentHistory, CrossReference, Paragraph, Section, Article } from '@/types/constitution';
 import { toRomanNumeral } from '@/lib/utils';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { trackArticleView } from '@/lib/analytics';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ArticleNavLink } from './page';
+import { markAsRead, isArticleRead } from '@/lib/readingProgress';
+import ShareCiteButton from '@/components/ShareCiteButton';
+import TextSizeControls, { useTextSize } from '@/components/TextSizeControls';
+import ChapterSidebar from '@/components/ChapterSidebar';
+
+interface ChapterArticleInfo {
+  number: number;
+  title: string;
+}
 
 interface ArticleContentProps {
   article: Article;
   chapterNum: number;
   articleNum: number;
+  prevArticle: ArticleNavLink | null;
+  nextArticle: ArticleNavLink | null;
+  chapterArticles: ChapterArticleInfo[];
+  chapterTitle: string;
 }
 
-export default function ArticleContent({ article, chapterNum, articleNum }: ArticleContentProps) {
+export default function ArticleContent({ article, chapterNum, articleNum, prevArticle, nextArticle, chapterArticles, chapterTitle }: ArticleContentProps) {
   const [hoveredParagraph, setHoveredParagraph] = useState<number | null>(null);
-  
+  const [readStatuses, setReadStatuses] = useState<Record<number, boolean>>({});
+  const router = useRouter();
+  const { sizeIndex, setSize, sizeClass } = useTextSize();
+
+  // Mark article as read and load read statuses for sidebar
   useEffect(() => {
-    // Track article view when the component mounts
     if (chapterNum && articleNum) {
+      markAsRead(chapterNum, articleNum);
       trackArticleView(chapterNum, articleNum);
     }
-  }, [chapterNum, articleNum]);
+    // Load read statuses for all articles in this chapter
+    const statuses: Record<number, boolean> = {};
+    for (const a of chapterArticles) {
+      statuses[a.number] = isArticleRead(chapterNum, a.number);
+    }
+    setReadStatuses(statuses);
+  }, [chapterNum, articleNum, chapterArticles]);
+
+  // Smooth scroll to top when article changes
+  useEffect(() => {
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+      mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [articleNum]);
+
+  // Keyboard navigation: left/right arrows for prev/next
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    // Don't intercept if user is typing in an input
+    if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+    if (e.key === 'ArrowLeft' && prevArticle) {
+      router.push(`/constitution/chapter/${prevArticle.chapterNumber}/article/${prevArticle.articleNumber}`);
+    } else if (e.key === 'ArrowRight' && nextArticle) {
+      router.push(`/constitution/chapter/${nextArticle.chapterNumber}/article/${nextArticle.articleNumber}`);
+    }
+  }, [prevArticle, nextArticle, router]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
 
   // Animation variants
   const containerVariants = {
@@ -133,7 +183,7 @@ export default function ArticleContent({ article, chapterNum, articleNum }: Arti
   };
 
   const renderAmendmentHistory = (amendmentHistory: AmendmentHistory) => {
-    if (!amendmentHistory) return null;
+    if (!amendmentHistory || !amendmentHistory.date) return null;
 
     return (
       <motion.div 
@@ -163,7 +213,7 @@ export default function ArticleContent({ article, chapterNum, articleNum }: Arti
         <ul className="space-y-2">
           {references.map((ref, index) => (
             <li key={index} className="hover:translate-x-1 transition-transform">
-              <a 
+              <Link
                 href={`/constitution/chapter/${ref.chapterNumber}/article/${ref.articleNumber}`}
                 className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
               >
@@ -171,7 +221,7 @@ export default function ArticleContent({ article, chapterNum, articleNum }: Arti
                   <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
                 </svg>
                 <span>Article {ref.articleNumber} (Chapter {ref.chapterNumber})</span>
-              </a>
+              </Link>
               <p className="text-sm text-gray-600 dark:text-gray-400 ml-5">{ref.description}</p>
             </li>
           ))}
@@ -180,31 +230,61 @@ export default function ArticleContent({ article, chapterNum, articleNum }: Arti
     );
   };
 
+  const sidebarArticles = chapterArticles.map((a) => ({
+    ...a,
+    isRead: readStatuses[a.number] ?? false,
+  }));
+
   return (
     <>
-      <Breadcrumbs 
+      <ChapterSidebar
+        chapterNumber={chapterNum}
+        chapterTitle={chapterTitle}
+        articles={sidebarArticles}
+        currentArticleNumber={articleNum}
+      />
+
+      <Breadcrumbs
         items={[
           { label: 'Home', href: '/' },
           { label: 'Constitution', href: '/constitution' },
           { label: `Chapter ${toRomanNumeral(chapterNum)}`, href: `/constitution/chapter/${chapterNum}` },
           { label: `Article ${articleNum}`, href: `/constitution/chapter/${chapterNum}/article/${articleNum}` }
-        ]} 
+        ]}
       />
-      
-      <motion.article 
+
+      <motion.article
         className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-sm"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        <motion.h1 
+        {/* Article toolbar */}
+        <motion.div
+          className="flex items-center justify-between mb-4 pb-3 border-b border-gray-100 dark:border-gray-700"
+          variants={itemVariants}
+        >
+          <TextSizeControls sizeIndex={sizeIndex} setSize={setSize} />
+          <div className="flex items-center gap-2">
+            <ShareCiteButton
+              articleNumber={articleNum}
+              chapterNumber={chapterNum}
+              title={article.title}
+            />
+            <span className="text-xs text-gray-400 dark:text-gray-500 hidden sm:inline" title="Use arrow keys to navigate">
+              ← → navigate
+            </span>
+          </div>
+        </motion.div>
+
+        <motion.h1
           className="text-2xl sm:text-3xl font-bold font-serif mb-2 text-gray-900 dark:text-gray-100"
           variants={itemVariants}
         >
           Article {article.number}{article.title && `: ${article.title}`}
         </motion.h1>
 
-        <motion.div 
+        <motion.div
           className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-4 sm:mb-8"
           variants={itemVariants}
         >
@@ -292,7 +372,7 @@ export default function ArticleContent({ article, chapterNum, articleNum }: Arti
                       </motion.div>
                     )}
                     <div className="content flex-1 break-words">
-                      <span className="text-base sm:text-lg leading-relaxed">{content}</span>
+                      <span className={`${sizeClass} leading-relaxed`}>{content}</span>
                     </div>
                   </div>
                 </motion.div>
@@ -303,9 +383,34 @@ export default function ArticleContent({ article, chapterNum, articleNum }: Arti
 
         {article.amendmentHistory && renderAmendmentHistory(article.amendmentHistory)}
         {article.crossReferences && renderCrossReferences(article.crossReferences)}
+
+        {/* Her Majesty note — shown when article text references the sovereign */}
+        {article.content && Array.isArray(article.content) &&
+          article.content.some((p) => {
+            const text = typeof p === 'string' ? p : p.text;
+            return text.toLowerCase().includes('her majesty');
+          }) && (
+          <motion.div
+            className="mt-6 sm:mt-8 p-3 sm:p-4 bg-amber-50/70 dark:bg-amber-900/20 rounded-lg border border-amber-100 dark:border-amber-800 text-sm text-amber-800 dark:text-amber-300"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.55 }}
+          >
+            <strong>Note:</strong> References to &ldquo;Her Majesty&rdquo; in this section now apply to His Majesty King Charles III by operation of the{' '}
+            <a
+              href="https://www.legislation.gov.uk/ukpga/1978/30/section/6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-amber-900 dark:hover:text-amber-100"
+            >
+              Interpretation Act 1978
+            </a>. The original enacted text is preserved.{' '}
+            <Link href="/about" className="underline hover:text-amber-900 dark:hover:text-amber-100">Learn more</Link>
+          </motion.div>
+        )}
         
         {article.notes && (
-          <motion.div 
+          <motion.div
             className="mt-6 sm:mt-8 p-3 sm:p-4 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg border border-yellow-100 dark:border-yellow-800 hover:shadow-md transition-shadow duration-300 hover:bg-yellow-100 dark:hover:bg-yellow-900/40"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -314,6 +419,48 @@ export default function ArticleContent({ article, chapterNum, articleNum }: Arti
             <h3 className="font-bold text-base sm:text-lg mb-2 sm:mb-3 text-yellow-800 dark:text-yellow-400">Notes</h3>
             <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200">{article.notes}</p>
           </motion.div>
+        )}
+
+        {/* Prev/Next Article Navigation */}
+        {(prevArticle || nextArticle) && (
+          <motion.nav
+            className="mt-8 sm:mt-10 pt-6 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            aria-label="Article navigation"
+          >
+            {prevArticle ? (
+              <Link
+                href={`/constitution/chapter/${prevArticle.chapterNumber}/article/${prevArticle.articleNumber}`}
+                className="group flex flex-col items-start max-w-[45%] text-left"
+              >
+                <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary-400 transition-colors">
+                  &larr; Previous
+                </span>
+                <span className="text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary dark:group-hover:text-primary-400 transition-colors line-clamp-1">
+                  Section {prevArticle.articleNumber}
+                </span>
+              </Link>
+            ) : (
+              <div />
+            )}
+            {nextArticle ? (
+              <Link
+                href={`/constitution/chapter/${nextArticle.chapterNumber}/article/${nextArticle.articleNumber}`}
+                className="group flex flex-col items-end max-w-[45%] text-right"
+              >
+                <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary-400 transition-colors">
+                  Next &rarr;
+                </span>
+                <span className="text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary dark:group-hover:text-primary-400 transition-colors line-clamp-1">
+                  Section {nextArticle.articleNumber}
+                </span>
+              </Link>
+            ) : (
+              <div />
+            )}
+          </motion.nav>
         )}
       </motion.article>
     </>

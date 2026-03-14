@@ -21,7 +21,23 @@
       "text": "The Commission shall not be subject to the direction or control of any other person or authority."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 1,
+      "chapterNumber": 1,
+      "description": "Guarantee of rights and freedoms"
+    },
+    {
+      "articleNumber": 16,
+      "chapterNumber": 1,
+      "description": "Protection from discrimination"
+    },
+    {
+      "articleNumber": 19,
+      "chapterNumber": 1,
+      "description": "Enforcement of rights"
+    }
+  ],
   "notes": "Independent Human Rights Commission."
 }

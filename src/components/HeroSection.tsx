@@ -1,24 +1,11 @@
 'use client';
 
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 import { DocumentTextIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
-export default function HeroSection() {
-  const [scrollY, setScrollY] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+function HeroSection() {
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -65,14 +52,15 @@ export default function HeroSection() {
           animate={{ opacity: 0.2, scale: 1 }}
           transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
         >
-          <div className="absolute w-[600px] h-[600px] rounded-full bg-primary-100 dark:bg-primary-900/30 blur-3xl opacity-20 -top-64 -right-64"></div>
-          <div className="absolute w-[500px] h-[500px] rounded-full bg-blue-100 dark:bg-blue-900/30 blur-3xl opacity-20 top-1/2 -left-64"></div>
-          <div className="absolute w-[700px] h-[700px] rounded-full bg-secondary-200 dark:bg-gray-800 blur-3xl opacity-10 -bottom-96 right-1/3"></div>
+          <div className="absolute w-[600px] h-[600px] rounded-full bg-primary-100 dark:bg-primary-900/30 blur-3xl opacity-20 -top-64 -right-64" style={{ willChange: 'transform' }}></div>
+          <div className="absolute w-[500px] h-[500px] rounded-full bg-blue-100 dark:bg-blue-900/30 blur-3xl opacity-20 top-1/2 -left-64" style={{ willChange: 'transform' }}></div>
+          <div className="absolute w-[700px] h-[700px] rounded-full bg-secondary-200 dark:bg-gray-800 blur-3xl opacity-10 -bottom-96 right-1/3" style={{ willChange: 'transform' }}></div>
         </motion.div>
       </div>
 
-      {/* Flying paper elements */}
+      {/* Flying paper elements — decorative */}
       <motion.div
+        aria-hidden="true"
         className="absolute w-40 h-60 bg-white dark:bg-gray-800 rounded shadow-md opacity-10 z-10"
         initial={{ x: -100, y: -200, rotate: 10 }}
         animate={{
@@ -84,6 +72,7 @@ export default function HeroSection() {
       />
 
       <motion.div
+        aria-hidden="true"
         className="absolute w-32 h-48 bg-white dark:bg-gray-800 rounded shadow-md opacity-10 z-10 right-20 top-40"
         initial={{ x: 100, y: 0, rotate: -5 }}
         animate={{
@@ -95,6 +84,7 @@ export default function HeroSection() {
       />
 
       <motion.div
+        aria-hidden="true"
         className="absolute w-28 h-40 bg-white dark:bg-gray-800 rounded shadow-md opacity-10 z-10 left-20 bottom-40"
         initial={{ x: -50, y: 50, rotate: 8 }}
         animate={{
@@ -114,12 +104,12 @@ export default function HeroSection() {
           variants={containerVariants}
         >
           <motion.h1
-            className="text-5xl md:text-6xl font-bold font-serif text-gray-900 dark:text-gray-100 mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-gray-900 dark:text-gray-100 mb-6"
             variants={heroTextVariants}
           >
             The <span className="text-primary-DEFAULT dark:text-primary-400">Constitution</span> of the Cayman Islands
             <br />
-            <span className="text-3xl md:text-4xl">Interactive Edition</span>
+            <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">Interactive Edition</span>
           </motion.h1>
 
           <motion.p
@@ -188,6 +178,7 @@ export default function HeroSection() {
       {/* Scroll indicator */}
       <motion.div
         className="mx-auto mt-0 mb-1"
+        aria-hidden="true"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: [0, 1, 0], y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
@@ -202,3 +193,5 @@ export default function HeroSection() {
     </section>
   );
 }
+
+export default memo(HeroSection);

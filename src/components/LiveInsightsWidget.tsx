@@ -1,9 +1,7 @@
-import { useState, useEffect, memo, useMemo } from 'react';
+import { useState, useEffect, memo } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChartBarIcon, MagnifyingGlassIcon, UserGroupIcon } from '@heroicons/react/24/outline';
-import { useActiveUsersStore } from '@/lib/activeUsersStore';
-import { isBrowser, getBaseUrl } from '@/lib/utils';
 
 interface TopArticle {
   chapter: number;
@@ -17,71 +15,43 @@ interface TopSearch {
   count: number;
 }
 
+interface InsightsData {
+  topArticle: TopArticle | null;
+  topSearch: TopSearch | null;
+  activeUsers: number;
+}
+
 const LiveInsightsWidget = memo(function LiveInsightsWidget({ className = '' }: { className?: string }) {
-  const [topArticle, setTopArticle] = useState<TopArticle | null>(null);
-  const [topSearch, setTopSearch] = useState<TopSearch | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [mounted, setMounted] = useState<boolean>(false);
-  
-  // Use the shared store for active users count instead of fetching separately
-  const { count: activeUsers } = useActiveUsersStore();
+  const [data, setData] = useState<InsightsData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Track if component is mounted
     setMounted(true);
-    
-    // Skip on server-side
-    if (!isBrowser()) return;
-    
+
     const fetchInsights = async () => {
       try {
         setLoading(true);
-        
-        console.log('Fetching insights for LiveInsightsWidget...');
-        
-        const baseUrl = getBaseUrl();
-        
-        // Fetch top article
-        const articlesRes = await fetch(`${baseUrl}/api/analytics/top-articles?timeframe=day&limit=1`);
-        if (!articlesRes.ok) {
-          console.error(`Error fetching top articles: ${articlesRes.status} ${articlesRes.statusText}`);
-          throw new Error('Failed to fetch top articles');
+        const res = await fetch('/api/analytics/insights');
+        if (res.ok) {
+          const json = await res.json();
+          setData(json);
         }
-        const articles = await articlesRes.json();
-        console.log('Top articles response:', articles);
-        
-        // Fetch top search
-        const searchesRes = await fetch(`${baseUrl}/api/analytics/top-searches?timeframe=day&limit=1`);
-        if (!searchesRes.ok) {
-          console.error(`Error fetching top searches: ${searchesRes.status} ${searchesRes.statusText}`);
-          throw new Error('Failed to fetch top searches');
-        }
-        const searches = await searchesRes.json();
-        console.log('Top searches response:', searches);
-        
-        // No need to fetch active users here anymore since we're using the shared store
-        
-        if (articles && articles.length > 0) setTopArticle(articles[0]);
-        if (searches && searches.length > 0) setTopSearch(searches[0]);
       } catch (error) {
         console.error('Error fetching insights:', error);
       } finally {
         setLoading(false);
       }
     };
-    
+
     fetchInsights();
-    
-    // Reduce refresh frequency from 60s to 120s (2 minutes)
     const interval = setInterval(fetchInsights, 120 * 1000);
     return () => clearInterval(interval);
   }, []);
-  
-  // Don't render anything until after hydration to avoid layout shift
+
   if (!mounted) return null;
-  
-  // If there's no data and still loading, show a placeholder
-  if (loading && !topArticle && !topSearch && activeUsers === 0) {
+
+  if (loading && !data) {
     return (
       <div className={`bg-gray-50/80 dark:bg-gray-800/50 rounded-lg p-4 sm:p-5 border border-gray-200 dark:border-gray-700 shadow-sm ${className}`}>
         <h3 className="text-base sm:text-lg font-serif font-bold text-gray-800 dark:text-gray-200 mb-3 flex items-center">
@@ -96,9 +66,13 @@ const LiveInsightsWidget = memo(function LiveInsightsWidget({ className = '' }: 
       </div>
     );
   }
-  
+
+  const topArticle = data?.topArticle;
+  const topSearch = data?.topSearch;
+  const activeUsers = data?.activeUsers ?? 0;
+
   return (
-    <motion.div 
+    <motion.div
       className={`bg-gray-50/80 dark:bg-gray-800/50 rounded-lg p-4 sm:p-5 border border-gray-200 dark:border-gray-700 shadow-sm ${className}`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -108,10 +82,10 @@ const LiveInsightsWidget = memo(function LiveInsightsWidget({ className = '' }: 
         <ChartBarIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-primary-DEFAULT dark:text-primary-400" />
         Live Insights
       </h3>
-      
+
       <div className="space-y-3">
         {topArticle && (
-          <motion.div 
+          <motion.div
             className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 border-b border-gray-100 dark:border-gray-700 gap-2 sm:gap-0"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -122,11 +96,11 @@ const LiveInsightsWidget = memo(function LiveInsightsWidget({ className = '' }: 
               Most Read Today:
             </span>
             <div className="flex flex-col sm:items-end">
-              <Link 
+              <Link
                 href={`/constitution/chapter/${topArticle.chapter}/article/${topArticle.article}`}
                 className="text-sm font-medium text-primary-DEFAULT dark:text-primary-400 hover:underline"
               >
-                Article {topArticle.article}
+                Section {topArticle.article}
               </Link>
               <div className="text-xs text-gray-500 dark:text-gray-400 sm:max-w-[200px] md:max-w-[250px] truncate" title={topArticle.title || ''}>
                 {topArticle.title || ''} <span>({topArticle.views} views)</span>
@@ -134,9 +108,9 @@ const LiveInsightsWidget = memo(function LiveInsightsWidget({ className = '' }: 
             </div>
           </motion.div>
         )}
-        
+
         {topSearch && (
-          <motion.div 
+          <motion.div
             className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 border-b border-gray-100 dark:border-gray-700 gap-2 sm:gap-0"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -147,19 +121,19 @@ const LiveInsightsWidget = memo(function LiveInsightsWidget({ className = '' }: 
               Top Search:
             </span>
             <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
-              <Link 
+              <Link
                 href={`/search?q=${encodeURIComponent(topSearch.term)}`}
                 className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline truncate max-w-[200px] sm:max-w-none"
                 title={`"${topSearch.term}"`}
               >
-                "{topSearch.term}"
+                &quot;{topSearch.term}&quot;
               </Link>
               <span className="text-xs text-gray-500 dark:text-gray-400">({topSearch.count} searches)</span>
             </div>
           </motion.div>
         )}
-        
-        <motion.div 
+
+        <motion.div
           className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 gap-2 sm:gap-0"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -167,32 +141,16 @@ const LiveInsightsWidget = memo(function LiveInsightsWidget({ className = '' }: 
         >
           <span className="text-sm text-gray-600 dark:text-gray-400 flex items-center flex-shrink-0">
             <UserGroupIcon className="w-4 h-4 mr-2 text-green-500/70 dark:text-green-400/70" />
-            Reading Right Now:
+            Status:
           </span>
           <span className="text-sm font-medium text-green-600 dark:text-green-400 flex items-center">
-            {activeUsers} {activeUsers === 1 ? 'person' : 'people'}
+            <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+            Online
           </span>
         </motion.div>
       </div>
-      
-      <motion.div 
-        className="mt-4 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4 }}
-      >
-        <Link 
-          href="/analytics" 
-          className="text-sm text-primary-DEFAULT dark:text-primary-400 hover:underline inline-flex items-center"
-        >
-          <span>View Full Analytics</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="ml-1">
-            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </Link>
-      </motion.div>
     </motion.div>
   );
 });
 
-export default LiveInsightsWidget; 
+export default LiveInsightsWidget;

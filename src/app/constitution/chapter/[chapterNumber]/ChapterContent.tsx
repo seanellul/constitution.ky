@@ -1,12 +1,14 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { trackChapterView } from '@/lib/analytics';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Link from 'next/link';
 import { toRomanNumeral } from '@/lib/utils';
 import { Paragraph } from '@/types/constitution';
 import { motion } from 'framer-motion';
+import { isArticleRead, getReadCountForChapter } from '@/lib/readingProgress';
+import { CheckCircleIcon } from '@heroicons/react/24/solid';
 
 interface ArticlePreview {
   number: number;
@@ -27,12 +29,21 @@ interface ChapterContentProps {
 }
 
 export default function ChapterContent({ chapter, articles, chapterNum }: ChapterContentProps) {
+  const [readStatuses, setReadStatuses] = useState<Record<number, boolean>>({});
+  const [readCount, setReadCount] = useState(0);
+
   useEffect(() => {
-    // Track chapter view when the component mounts
     if (chapterNum) {
       trackChapterView(chapterNum);
     }
-  }, [chapterNum]);
+    // Load reading progress
+    const statuses: Record<number, boolean> = {};
+    for (const a of articles) {
+      statuses[a.number] = isArticleRead(chapterNum, a.number);
+    }
+    setReadStatuses(statuses);
+    setReadCount(getReadCountForChapter(chapterNum));
+  }, [chapterNum, articles]);
 
   // Animation variants
   const containerVariants = {
@@ -91,7 +102,7 @@ export default function ChapterContent({ chapter, articles, chapterNum }: Chapte
         animate="visible"
         variants={containerVariants}
       >
-        <motion.h1 
+        <motion.h1
           className="text-3xl font-bold font-serif mt-6 mb-2 text-primary-DEFAULT"
           variants={itemVariants}
         >
@@ -99,13 +110,29 @@ export default function ChapterContent({ chapter, articles, chapterNum }: Chapte
         </motion.h1>
 
         {chapter.subtitle && (
-          <motion.p 
-            className="text-xl text-gray-600 mb-8"
+          <motion.p
+            className="text-xl text-gray-600 mb-4"
             variants={itemVariants}
           >
             {chapter.subtitle}
           </motion.p>
         )}
+
+        {/* Reading progress */}
+        <motion.div
+          className="flex items-center gap-3 mb-8"
+          variants={itemVariants}
+        >
+          <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden max-w-xs">
+            <div
+              className="h-full bg-green-500 rounded-full transition-all duration-500"
+              style={{ width: `${articles.length > 0 ? (readCount / articles.length) * 100 : 0}%` }}
+            />
+          </div>
+          <span className="text-sm text-gray-500 dark:text-gray-400">
+            {readCount}/{articles.length} read
+          </span>
+        </motion.div>
 
         <motion.div 
           className="mt-10 grid grid-cols-1 gap-4"
@@ -127,9 +154,14 @@ export default function ChapterContent({ chapter, articles, chapterNum }: Chapte
                 href={`/constitution/chapter/${chapterNum}/article/${article.number}`}
                 className="article-card group block"
               >
-                <h2 className="text-xl font-semibold font-serif mb-2 group-hover:text-primary-DEFAULT transition-colors">
-                  Article {article.number}{" "}
-                  {article.title && <span>- {article.title}</span>}
+                <h2 className="text-xl font-semibold font-serif mb-2 group-hover:text-primary-DEFAULT transition-colors flex items-center gap-2">
+                  {readStatuses[article.number] && (
+                    <CheckCircleIcon className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  )}
+                  <span>
+                    Article {article.number}{" "}
+                    {article.title && <span>- {article.title}</span>}
+                  </span>
                 </h2>
                 <p className="text-gray-600">
                   {getContentPreview(article.content)}

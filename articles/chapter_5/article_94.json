@@ -13,7 +13,23 @@
       "text": "The Court shall have an official seal bearing its name and a device approved by the Chief Justice."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 19,
+      "chapterNumber": 1,
+      "description": "Enforcement of fundamental rights"
+    },
+    {
+      "articleNumber": 99,
+      "chapterNumber": 5,
+      "description": "Court of Appeal"
+    },
+    {
+      "articleNumber": 7,
+      "chapterNumber": 1,
+      "description": "Right to a fair hearing"
+    }
+  ],
   "notes": "Establishes the Grand Court as superior court of record."
 }

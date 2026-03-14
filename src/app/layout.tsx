@@ -1,6 +1,7 @@
 import './globals.css';
 import { Inter, Merriweather } from 'next/font/google';
 import React from 'react';
+import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import LayoutClient from './LayoutClient';
 import { Analytics } from '@vercel/analytics/react';
@@ -159,10 +160,10 @@ export default function RootLayout({
                 </a>
               </p>
               <nav className="flex justify-center space-x-4 text-xs">
-                <a href="/about" className="text-gray-500 hover:text-primary-DEFAULT">About</a>
-                <a href="/privacy" className="text-gray-500 hover:text-primary-DEFAULT">Privacy</a>
-                <a href="/terms" className="text-gray-500 hover:text-primary-DEFAULT">Terms</a>
-                <a href="/contact" className="text-gray-500 hover:text-primary-DEFAULT">Contact</a>
+                <Link href="/about" className="text-gray-500 hover:text-primary-DEFAULT">About</Link>
+                <Link href="/constitution" className="text-gray-500 hover:text-primary-DEFAULT">Constitution</Link>
+                <Link href="/search" className="text-gray-500 hover:text-primary-DEFAULT">Search</Link>
+                <a href="https://github.com/seanellul/constitution.ky" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-primary-DEFAULT">GitHub</a>
               </nav>
             </div>
           </div>

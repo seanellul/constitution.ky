@@ -1,26 +1,47 @@
 /**
- * Analytics Utilities (no-op stubs)
+ * Analytics Utilities — powered by PostHog
  *
- * Database analytics are disabled. These functions are kept as no-ops
- * so existing component imports continue to work.
+ * Uses dynamic import to avoid pulling posthog-js into server bundles.
  */
 
-export function isAnalyticsEnabled(): boolean {
-  return false;
+async function getPostHog() {
+  if (typeof window === 'undefined') return null;
+  const { default: posthog } = await import('posthog-js');
+  return posthog.__loaded ? posthog : null;
 }
 
-export function setAnalyticsOptOut(_optOut: boolean): void {}
+export function isAnalyticsEnabled(): boolean {
+  return typeof window !== 'undefined' && !!process.env.NEXT_PUBLIC_POSTHOG_KEY;
+}
 
-export function trackPageView(_path: string) {}
+export function setAnalyticsOptOut(optOut: boolean): void {
+  getPostHog().then((ph) => {
+    if (!ph) return;
+    if (optOut) ph.opt_out_capturing();
+    else ph.opt_in_capturing();
+  });
+}
 
-export function trackArticleView(_chapter: number, _article: number) {}
+export function trackPageView(path: string) {
+  getPostHog().then((ph) => ph?.capture('$pageview', { path }));
+}
 
-export function trackChapterView(_chapter: number) {}
+export function trackArticleView(chapter: number, article: number) {
+  getPostHog().then((ph) => ph?.capture('article_view', { chapter, article }));
+}
 
-export function trackSearch(_term: string) {}
+export function trackChapterView(chapter: number) {
+  getPostHog().then((ph) => ph?.capture('chapter_view', { chapter }));
+}
+
+export function trackSearch(term: string) {
+  getPostHog().then((ph) => ph?.capture('search', { term }));
+}
 
 export function getOrCreateSessionId(): string {
   return '';
 }
 
-export function trackActiveUser() {}
+export function trackActiveUser() {
+  // PostHog handles active user tracking natively
+}

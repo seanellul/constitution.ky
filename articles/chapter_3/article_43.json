@@ -13,7 +13,18 @@
       "text": "Subject to the provisions of this Constitution, the executive authority of the Cayman Islands shall be exercised on behalf of Her Majesty by the Government of the Cayman Islands, which shall consist of the Governor acting on the advice of the Cabinet."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 29,
+      "chapterNumber": 2,
+      "description": "Powers of the Governor"
+    },
+    {
+      "articleNumber": 44,
+      "chapterNumber": 3,
+      "description": "The Cabinet"
+    }
+  ],
   "notes": "Executive authority vests in the Crown, exercised by Governor and Cabinet."
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronRightIcon, HomeIcon } from '@heroicons/react/24/outline';
@@ -21,14 +22,14 @@ const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
       className="py-2 sm:py-3 px-1 overflow-x-auto scrollbar-hide max-w-full"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3, duration: 0.2 }}
+      transition={{ delay: 0.1, duration: 0.15 }}
     >
       <ol className="flex flex-wrap items-center text-xs sm:text-sm">
         <motion.li 
           className="flex items-center flex-shrink-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.15 }}
         >
           <Link 
             href="/" 
@@ -46,7 +47,7 @@ const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
             className="flex items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 + (index * 0.1) }}
+            transition={{ delay: 0.15 + (index * 0.03) }}
           >
             {index !== items.length - 1 ? (
               <>
@@ -79,4 +80,4 @@ const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
   );
 };
 
-export default Breadcrumbs; 
+export default memo(Breadcrumbs);

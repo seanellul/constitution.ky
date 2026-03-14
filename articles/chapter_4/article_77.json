@@ -13,7 +13,11 @@
       "text": "A bill for an Act imposing or increasing any tax, charge or duty shall not be introduced except on the recommendation of the Minister charged with responsibility for finance."
     }
   ],
-  "amendmentHistory": {},
+  "amendmentHistory": {
+    "date": "2020-11-18",
+    "description": "Amended by the Cayman Islands Constitution (Amendment) Order 2020 to add a 28-day publication requirement for Bills (unless the Premier certifies urgency) and require Governor consent for bills affecting Governor's responsibilities",
+    "legalReference": "SI 2020/1283"
+  },
   "crossReferences": [],
   "notes": "Bill introduction procedures with finance minister role."
 }

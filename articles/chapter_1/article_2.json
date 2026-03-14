@@ -17,7 +17,18 @@
       "text": "Deprivation of life shall not be regarded as inflicted in contravention of this section when it results from the use of force which is no more than absolutely necessary in defence of any person from unlawful violence, in order to effect a lawful arrest, or in action lawfully taken for the purpose of suppressing a riot, insurrection or mutiny."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 19,
+      "chapterNumber": 1,
+      "description": "Enforcement of the right to life"
+    },
+    {
+      "articleNumber": 7,
+      "chapterNumber": 1,
+      "description": "Right to a fair hearing"
+    }
+  ],
   "notes": "Protects the right to life with limited exceptions."
 }

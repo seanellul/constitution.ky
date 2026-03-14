@@ -13,7 +13,18 @@
       "text": "Nothing in this section shall be held to prevent the Government from making reasonable provision that is required in the interests of defence, public safety, public order, public morality or public health."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 12,
+      "chapterNumber": 1,
+      "description": "Freedom of assembly and association"
+    },
+    {
+      "articleNumber": 19,
+      "chapterNumber": 1,
+      "description": "Enforcement of freedom of expression"
+    }
+  ],
   "notes": "Protects freedom of expression with limited exceptions."
 }

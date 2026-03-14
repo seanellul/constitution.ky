@@ -13,7 +13,11 @@
       "text": "The National Security Council shall be responsible for advising the Governor on matters relating to internal security, but not on operational matters."
     }
   ],
-  "amendmentHistory": {},
+  "amendmentHistory": {
+    "date": "2020-11-18",
+    "description": "Amended by the Cayman Islands Constitution (Amendment) Order 2020 to change National Security Council provisions so that the Governor acts on Secretary of State instructions rather than personal discretion",
+    "legalReference": "SI 2020/1283"
+  },
   "crossReferences": [],
   "notes": "Establishes the National Security Council."
 }

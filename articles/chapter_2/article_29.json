@@ -9,7 +9,23 @@
       "text": "There shall be a Governor of the Cayman Islands who shall be appointed by Her Majesty by Commission under Her Sign Manual and Signet and shall hold office during Her Majesty's pleasure."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 43,
+      "chapterNumber": 3,
+      "description": "Executive authority"
+    },
+    {
+      "articleNumber": 44,
+      "chapterNumber": 3,
+      "description": "The Cabinet"
+    },
+    {
+      "articleNumber": 35,
+      "chapterNumber": 2,
+      "description": "Governor's assent to laws"
+    }
+  ],
   "notes": "Establishes the office of Governor appointed by the Crown."
 }

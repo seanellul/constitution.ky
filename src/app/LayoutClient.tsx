@@ -3,9 +3,25 @@
 import { useEffect } from 'react';
 import { performanceMonitor } from '@/lib/performance';
 import { initServiceWorker } from '@/lib/sw-registration';
+import ScrollToTop from '@/components/ScrollToTop';
+import SearchShortcut from '@/components/SearchShortcut';
 
 export default function LayoutClient() {
   useEffect(() => {
+    // Initialize PostHog
+    if (process.env.NEXT_PUBLIC_POSTHOG_KEY) {
+      import('posthog-js').then(({ default: posthog }) => {
+        if (!posthog.__loaded) {
+          posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+            api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
+            person_profiles: 'identified_only',
+            capture_pageview: true,
+            capture_pageleave: true,
+          });
+        }
+      });
+    }
+
     console.log('[Layout] Performance monitoring active:', performanceMonitor.getSessionId());
     initServiceWorker();
 
@@ -34,5 +50,10 @@ export default function LayoutClient() {
     };
   }, []);
 
-  return null;
+  return (
+    <>
+      <ScrollToTop />
+      <SearchShortcut />
+    </>
+  );
 }

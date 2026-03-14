@@ -13,7 +13,11 @@
       "text": "A judge may be removed from office only for inability to discharge the functions of his or her office or for misbehaviour."
     }
   ],
-  "amendmentHistory": {},
+  "amendmentHistory": {
+    "date": "2016-07-20",
+    "description": "Amended by the Cayman Islands Constitution (Amendment) Order 2016 to extend judicial retirement age from 65 to 70",
+    "legalReference": "SI 2016/780"
+  },
   "crossReferences": [],
   "notes": "Judges retire at 65 with possible extension; removal for inability or misbehaviour."
 }

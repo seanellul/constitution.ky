@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { DocumentTextIcon, MagnifyingGlassIcon, BookOpenIcon, ChartBarIcon } from '@heroicons/react/24/outline';
@@ -11,7 +12,7 @@ interface Feature {
   color: string;
 }
 
-export default function FeaturesSection() {
+function FeaturesSection() {
   const features: Feature[] = [
     {
       title: "Interactive Navigation",
@@ -121,3 +122,5 @@ export default function FeaturesSection() {
     </section>
   );
 }
+
+export default memo(FeaturesSection);

@@ -13,7 +13,23 @@
       "text": "Every person whose interests have been adversely affected by such a decision or act has the right to be furnished with reasons for that decision or act."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 94,
+      "chapterNumber": 5,
+      "description": "Grand Court jurisdiction"
+    },
+    {
+      "articleNumber": 1,
+      "chapterNumber": 1,
+      "description": "Guarantee of rights and freedoms"
+    },
+    {
+      "articleNumber": 16,
+      "chapterNumber": 1,
+      "description": "Protection from discrimination"
+    }
+  ],
   "notes": "Requires lawful and fair administrative action."
 }

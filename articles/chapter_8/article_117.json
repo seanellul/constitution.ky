@@ -13,7 +13,18 @@
       "text": "The functions of the Commission shall include setting standards of integrity and ethical conduct for public officials, monitoring and investigating compliance, supervising registers of interests, and reporting to the Legislative Assembly."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 44,
+      "chapterNumber": 3,
+      "description": "The Cabinet"
+    },
+    {
+      "articleNumber": 116,
+      "chapterNumber": 8,
+      "description": "Human Rights Commission"
+    }
+  ],
   "notes": "Commission for Standards in Public Life."
 }

@@ -13,7 +13,18 @@
       "text": "In this section, discriminatory means affording different treatment to different persons attributable wholly or mainly to their respective descriptions by sex, race, colour, language, religion, political or other opinion, national or social origin, association with a national minority, property, birth or other status."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 19,
+      "chapterNumber": 1,
+      "description": "Enforcement of non-discrimination rights"
+    },
+    {
+      "articleNumber": 116,
+      "chapterNumber": 8,
+      "description": "Human Rights Commission"
+    }
+  ],
   "notes": "Prohibits discrimination on specified grounds."
 }

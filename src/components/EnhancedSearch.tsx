@@ -38,6 +38,7 @@ export default function EnhancedSearch({
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedSuggestion, setSelectedSuggestion] = useState(-1);
   const [isLoading, setIsLoading] = useState(false);
+  const [isFetchingSuggestions, setIsFetchingSuggestions] = useState(false);
   const [showFiltersPanel, setShowFiltersPanel] = useState(false);
   const [filters, setFilters] = useState<SearchFilters>({});
   
@@ -56,32 +57,44 @@ export default function EnhancedSearch({
       timeoutRef.current = setTimeout(async () => {
         if (searchQuery.length < 2) {
           setSuggestions([]);
+          setIsFetchingSuggestions(false);
           return;
         }
-        
+
         if (isInappropriateSearchTerm(searchQuery)) {
           setSuggestions([]);
+          setIsFetchingSuggestions(false);
           return;
         }
-        
+
+        setIsFetchingSuggestions(true);
         try {
           const response = await fetch(`/api/search/suggestions?q=${encodeURIComponent(searchQuery)}&limit=8`);
           const data = await response.json();
-          
+
           const formattedSuggestions: Suggestion[] = data.suggestions.map((suggestion: string) => ({
             text: suggestion,
             type: 'term' as const
           }));
-          
+
           setSuggestions(formattedSuggestions);
           setShowSuggestions(true);
         } catch (error) {
           console.error('Failed to fetch suggestions:', error);
           setSuggestions([]);
+        } finally {
+          setIsFetchingSuggestions(false);
         }
-      }, 300);
+      }, 150);
     };
   }, []);
+
+  // Auto-focus on mount when no initial query
+  useEffect(() => {
+    if (!initialQuery) {
+      inputRef.current?.focus();
+    }
+  }, [initialQuery]);
 
   useEffect(() => {
     if (query) {
@@ -223,7 +236,7 @@ export default function EnhancedSearch({
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
               onFocus={() => query.length >= 2 && setShowSuggestions(true)}
-              placeholder="Search articles, rights, principles..."
+              placeholder="Search articles, rights, principles...  ⌘K"
               className="w-full pl-10 pr-10 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-DEFAULT focus:border-transparent transition-all duration-200"
               aria-label="Search the Constitution"
               autoComplete="off"
@@ -263,27 +276,41 @@ export default function EnhancedSearch({
         </div>
 
         {/* Suggestions Dropdown */}
-        {showSuggestions && suggestions.length > 0 && (
+        {showSuggestions && (suggestions.length > 0 || isFetchingSuggestions) && (
           <div
             ref={suggestionsRef}
             className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 max-h-64 overflow-y-auto"
+            role="listbox"
+            aria-label="Search suggestions"
           >
-            {suggestions.map((suggestion, index) => (
-              <button
-                key={index}
-                onClick={() => selectSuggestion(suggestion.text)}
-                className={`w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
-                  index === selectedSuggestion 
-                    ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-DEFAULT' 
-                    : 'text-gray-900 dark:text-gray-100'
-                }`}
-              >
-                <div className="flex items-center gap-2">
-                  <MagnifyingGlassIcon className="w-4 h-4 text-gray-400" />
-                  <span className="truncate">{suggestion.text}</span>
-                </div>
-              </button>
-            ))}
+            {isFetchingSuggestions && suggestions.length === 0 ? (
+              <div className="flex items-center gap-2 px-4 py-3 text-gray-500 dark:text-gray-400">
+                <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                <span className="text-sm">Finding suggestions...</span>
+              </div>
+            ) : (
+              suggestions.map((suggestion, index) => (
+                <button
+                  key={index}
+                  onClick={() => selectSuggestion(suggestion.text)}
+                  role="option"
+                  aria-selected={index === selectedSuggestion}
+                  className={`w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
+                    index === selectedSuggestion
+                      ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-DEFAULT'
+                      : 'text-gray-900 dark:text-gray-100'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <MagnifyingGlassIcon className="w-4 h-4 text-gray-400" />
+                    <span className="truncate">{suggestion.text}</span>
+                  </div>
+                </button>
+              ))
+            )}
           </div>
         )}
       </div>

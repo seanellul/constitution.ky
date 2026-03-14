@@ -9,7 +9,11 @@
       "text": "Any law to which the Governor has given his or her assent may be disallowed by Her Majesty through a Secretary of State. When such disallowance is notified to the Governor and published in the Gazette, the law shall thereupon cease to have effect."
     }
   ],
-  "amendmentHistory": {},
+  "amendmentHistory": {
+    "date": "2020-11-18",
+    "description": "Revoked entirely by the Cayman Islands Constitution (Amendment) Order 2020, abolishing the UK power of disallowance of laws",
+    "legalReference": "SI 2020/1283"
+  },
   "crossReferences": [],
   "notes": "Crown power to disallow laws."
 }

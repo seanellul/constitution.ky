@@ -317,48 +317,22 @@ class PerformanceMonitor {
 
   private scheduleFlush() {
     if (this.batchTimeout) return;
-    
+
     this.batchTimeout = setTimeout(() => {
       this.flush();
       this.batchTimeout = null;
-    }, 5000); // Flush every 5 seconds
+    }, 10000);
   }
 
-  private async flush() {
-    if (!isBrowser()) return;
-    
-    const batch = {
-      metrics: [...this.metrics],
-      errors: [...this.errors],
-      engagementMetrics: [...this.engagementMetrics],
-      timestamp: Date.now(),
-      sessionId: this.sessionId
-    };
-
-    // Clear local arrays
+  private flush() {
+    // Metrics are tracked via PostHog — just clear the arrays to free memory
+    const count = this.metrics.length + this.errors.length + this.engagementMetrics.length;
     this.metrics = [];
     this.errors = [];
     this.engagementMetrics = [];
 
-    if (batch.metrics.length === 0 && batch.errors.length === 0 && batch.engagementMetrics.length === 0) {
-      return;
-    }
-
-    try {
-      await fetch('/api/analytics/performance', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-session-id': this.sessionId
-        },
-        body: JSON.stringify(batch)
-      });
-    } catch (error) {
-      console.error('[PerformanceMonitor] Failed to send metrics:', error);
-      // Re-add metrics for retry
-      this.metrics.push(...batch.metrics);
-      this.errors.push(...batch.errors);
-      this.engagementMetrics.push(...batch.engagementMetrics);
+    if (count > 0 && process.env.NODE_ENV === 'development') {
+      console.debug(`[PerformanceMonitor] Flushed ${count} entries`);
     }
   }
 

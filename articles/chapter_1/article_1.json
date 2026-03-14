@@ -13,7 +13,18 @@
       "text": "It enshrines the rights and freedoms to which every person in the Cayman Islands is entitled, and imposes responsibilities upon those persons."
     }
   ],
-  "amendmentHistory": {},
-  "crossReferences": [],
+  "amendmentHistory": null,
+  "crossReferences": [
+    {
+      "articleNumber": 19,
+      "chapterNumber": 1,
+      "description": "Enforcement of Bill of Rights"
+    },
+    {
+      "articleNumber": 94,
+      "chapterNumber": 5,
+      "description": "Grand Court jurisdiction over rights enforcement"
+    }
+  ],
   "notes": "Establishes the Bill of Rights as foundational to Cayman Islands democracy."
 }

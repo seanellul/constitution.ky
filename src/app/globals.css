@@ -13,11 +13,14 @@
   --background-rgb: 17, 24, 39;
 }
 
-/* Add smooth transitions for all color changes */
-* {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+/* Targeted transitions — only on interactive elements, not every DOM node */
+a, button, input, textarea, select,
+.btn-primary, .btn-secondary,
+.chapter-card, .article-card,
+.nav-link {
+  transition-property: color, background-color, border-color, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
+  transition-duration: 200ms;
 }
 
 /* Respect user's preference for reduced motion */
