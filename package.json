@@ -18,13 +18,13 @@
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.5.0",
     "@vercel/analytics": "^1.5.0",
-    "axios": "latest",
-    "framer-motion": "latest",
-    "next": "latest",
-    "next-auth": "latest",
-    "next-seo": "latest",
-    "react": "latest",
-    "react-dom": "latest",
+    "axios": "^1.8.2",
+    "framer-motion": "^12.5.0",
+    "next": "^15.2.2",
+    "next-auth": "^4.24.11",
+    "next-seo": "^6.6.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "tailwindcss": "^3.3.0",
     "web-vitals": "^5.1.0",
     "zustand": "^5.0.3"
@@ -39,12 +39,12 @@
     "@types/react-dom": "^19.0.4",
     "autoprefixer": "^10.4.14",
     "cross-env": "^7.0.3",
-    "eslint": "latest",
-    "eslint-config-next": "latest",
+    "eslint": "^9.22.0",
+    "eslint-config-next": "^15.2.2",
     "jest": "^29.7.0",
     "postcss": "^8.4.24",
     "prisma": "^6.5.0",
     "rimraf": "^5.0.10",
-    "typescript": "latest"
+    "typescript": "^5.8.2"
   }
 }

@@ -5,7 +5,12 @@ const nextConfig = {
   poweredByHeader: false,
   
   images: {
-    domains: ['images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
     formats: ['image/webp', 'image/avif'],
     dangerouslyAllowSVG: true,
     minimumCacheTTL: 60,
