@@ -1,9 +1,9 @@
 // Constitution.ky Service Worker
 // Provides offline capabilities and performance optimizations
 
-const CACHE_NAME = 'constitution-ky-v1.0.0';
-const STATIC_CACHE = 'constitution-static-v1';
-const DYNAMIC_CACHE = 'constitution-dynamic-v1';
+const CACHE_NAME = 'constitution-ky-v2.0.0';
+const STATIC_CACHE = 'constitution-static-v2';
+const DYNAMIC_CACHE = 'constitution-dynamic-v2';
 
 // Resources to cache on install
 const STATIC_ASSETS = [

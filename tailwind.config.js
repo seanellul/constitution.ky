@@ -100,11 +100,11 @@ module.exports = {
         },
         dark: {
           css: {
-            color: '#d1d5db', // text-gray-300
+            color: '#e5e7eb', // text-gray-200 — brighter for readability
             a: {
-              color: '#f27a8a', // primary-400
+              color: '#60a5fa', // primary-400 (blue)
               '&:hover': {
-                color: '#f7aab2', // primary-300
+                color: '#93c5fd', // primary-300
               },
             },
             h1: {
@@ -120,8 +120,8 @@ module.exports = {
               color: '#e5e7eb', // text-gray-200
             },
             blockquote: {
-              borderLeftColor: '#f27a8a', // primary-400
-              color: '#9ca3af', // text-gray-400
+              borderLeftColor: '#60a5fa', // primary-400
+              color: '#d1d5db', // text-gray-300
             },
             strong: {
               color: '#f3f4f6', // text-gray-100

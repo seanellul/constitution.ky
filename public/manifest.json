@@ -11,61 +11,7 @@
   "scope": "/",
   "dir": "ltr",
   "categories": ["government", "education", "reference", "law"],
-  "icons": [
-    {
-      "src": "/icon-72x72.png",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-128x128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-152x152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-384x384.png",
-      "sizes": "384x384",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    }
-  ],
+  "icons": [],
   "keywords": [
     "Cayman Islands",
     "Constitution",
@@ -80,69 +26,26 @@
       "name": "Search Constitution",
       "short_name": "Search",
       "description": "Search through constitutional sections",
-      "url": "/search",
-      "icons": [
-        {
-          "src": "/search-icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
+      "url": "/search"
     },
     {
       "name": "Browse Parts",
       "short_name": "Parts",
       "description": "Browse all parts of the Constitution",
-      "url": "/constitution",
-      "icons": [
-        {
-          "src": "/chapters-icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
+      "url": "/constitution"
     },
     {
       "name": "Bill of Rights",
       "short_name": "Rights",
       "description": "View fundamental rights and freedoms",
-      "url": "/constitution/chapter/1",
-      "icons": [
-        {
-          "src": "/rights-icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
+      "url": "/constitution/chapter/1"
     },
     {
       "name": "Analytics Dashboard",
       "short_name": "Analytics",
       "description": "View Constitution usage analytics",
-      "url": "/analytics",
-      "icons": [
-        {
-          "src": "/analytics-icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
+      "url": "/analytics"
     }
   ],
-  "screenshots": [
-    {
-      "src": "/screenshot-wide.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Constitution.ky on desktop"
-    },
-    {
-      "src": "/screenshot-narrow.png",
-      "sizes": "640x1136",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Constitution.ky on mobile"
-    }
-  ],
-  "prefer_related_applications": false,
-  "edge_side_panel": {
-    "preferred_width": 400
-  }
+  "prefer_related_applications": false
 }

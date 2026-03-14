@@ -27,12 +27,28 @@ function formatDate(dateStr: string) {
   });
 }
 
-export default function BlogIndexPage() {
-  const posts = getAllPosts();
+export default async function BlogIndexPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tag?: string }>;
+}) {
+  const { tag } = await searchParams;
+  const allPosts = getAllPosts();
+
+  const posts = tag
+    ? allPosts.filter((p) =>
+        p.tags.some((t) => t.toLowerCase() === tag.toLowerCase())
+      )
+    : allPosts;
+
+  // Collect all unique tags for the filter bar
+  const allTags = Array.from(
+    new Set(allPosts.flatMap((p) => p.tags))
+  ).sort();
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
-      <header className="mb-12">
+      <header className="mb-8">
         <h1 className="font-serif text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
           Blog
         </h1>
@@ -42,21 +58,72 @@ export default function BlogIndexPage() {
         </p>
       </header>
 
+      {/* Tag filter bar */}
+      {allTags.length > 0 && (
+        <div className="flex flex-wrap gap-2 mb-8">
+          <Link
+            href="/blog"
+            className={`text-xs font-medium px-3 py-1 rounded-full transition-colors ${
+              !tag
+                ? 'bg-primary-DEFAULT text-white'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+            }`}
+          >
+            All
+          </Link>
+          {allTags.map((t) => (
+            <Link
+              key={t}
+              href={`/blog?tag=${encodeURIComponent(t)}`}
+              className={`text-xs font-medium px-3 py-1 rounded-full transition-colors ${
+                tag?.toLowerCase() === t.toLowerCase()
+                  ? 'bg-primary-DEFAULT text-white'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+              }`}
+            >
+              {t}
+            </Link>
+          ))}
+        </div>
+      )}
+
+      {/* Active filter indicator */}
+      {tag && (
+        <div className="flex items-center gap-2 mb-6 text-sm text-gray-600 dark:text-gray-400">
+          <span>
+            Showing {posts.length} {posts.length === 1 ? 'article' : 'articles'} tagged &ldquo;{tag}&rdquo;
+          </span>
+          <Link
+            href="/blog"
+            className="text-primary-DEFAULT dark:text-primary-400 hover:underline"
+          >
+            Clear filter
+          </Link>
+        </div>
+      )}
+
       {posts.length === 0 ? (
-        <p className="text-gray-500 dark:text-gray-400">No articles published yet.</p>
+        <p className="text-gray-500 dark:text-gray-400">
+          {tag ? `No articles found with tag "${tag}".` : 'No articles published yet.'}
+        </p>
       ) : (
         <ul className="space-y-10">
           {posts.map((post) => (
             <li key={post.slug} className="border-b border-gray-200 dark:border-gray-700 pb-10 last:border-0">
               <article>
                 <div className="flex flex-wrap gap-2 mb-3">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 px-2 py-0.5 rounded-full"
+                  {post.tags.map((t) => (
+                    <Link
+                      key={t}
+                      href={`/blog?tag=${encodeURIComponent(t)}`}
+                      className={`text-xs font-medium px-2 py-0.5 rounded-full transition-colors ${
+                        tag?.toLowerCase() === t.toLowerCase()
+                          ? 'bg-primary-DEFAULT text-white'
+                          : 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-800/50'
+                      }`}
                     >
-                      {tag}
-                    </span>
+                      {t}
+                    </Link>
                   ))}
                 </div>
                 <h2 className="font-serif text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">
@@ -72,7 +139,7 @@ export default function BlogIndexPage() {
                 </p>
                 <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-500">
                   <span>{post.author}</span>
-                  <span aria-hidden="true">·</span>
+                  <span aria-hidden="true">&middot;</span>
                   <time dateTime={post.date}>{formatDate(post.date)}</time>
                 </div>
               </article>

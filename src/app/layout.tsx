@@ -114,11 +114,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#003DA5" />
         <meta name="msapplication-tap-highlight" content="no" />
 
-        {/* Icons */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" href="/icon-192x192.png" />
+        {/* Icons — add files to public/ when available */}
 
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
