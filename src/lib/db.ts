@@ -20,13 +20,4 @@ if (process.env.NODE_ENV !== 'production') {
   global.prisma = prisma;
 }
 
-// Handle connection errors
-prisma.$connect()
-  .then(() => {
-    console.log('Database connection established');
-  })
-  .catch((e) => {
-    console.error('Failed to connect to database:', e);
-  });
-
 export default prisma; 
