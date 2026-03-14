@@ -159,9 +159,11 @@ export default function RootLayout({
                   official Cayman Islands Constitution Order 2009
                 </a>
               </p>
-              <nav className="flex justify-center space-x-4 text-xs">
+              <nav className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs">
                 <Link href="/about" className="text-gray-500 hover:text-primary-DEFAULT">About</Link>
                 <Link href="/constitution" className="text-gray-500 hover:text-primary-DEFAULT">Constitution</Link>
+                <Link href="/topics" className="text-gray-500 hover:text-primary-DEFAULT">Topics</Link>
+                <Link href="/glossary" className="text-gray-500 hover:text-primary-DEFAULT">Glossary</Link>
                 <Link href="/search" className="text-gray-500 hover:text-primary-DEFAULT">Search</Link>
                 <a href="https://github.com/seanellul/constitution.ky" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-primary-DEFAULT">GitHub</a>
               </nav>

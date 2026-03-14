@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getChapters } from '@/lib/constitution';
+import { topics } from '@/data/topics';
+import { glossary } from '@/data/glossary';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const chapters = await getChapters();
@@ -14,7 +16,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/about', changeFrequency: 'monthly' as const, priority: 0.8 },
     { path: '/search', changeFrequency: 'weekly' as const, priority: 0.9 },
     { path: '/constitution', changeFrequency: 'monthly' as const, priority: 0.9 },
-    { path: '/analytics', changeFrequency: 'daily' as const, priority: 0.5 },
+    { path: '/open-data', changeFrequency: 'daily' as const, priority: 0.6 },
+    { path: '/topics', changeFrequency: 'monthly' as const, priority: 0.8 },
+    { path: '/glossary', changeFrequency: 'monthly' as const, priority: 0.8 },
   ];
 
   for (const page of staticPages) {
@@ -45,6 +49,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         });
       }
     }
+  }
+
+  // Topic pages
+  for (const topic of topics) {
+    entries.push({
+      url: `${domain}/topics/${topic.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    });
+  }
+
+  // Glossary pages
+  for (const term of glossary) {
+    entries.push({
+      url: `${domain}/glossary/${term.slug}`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    });
   }
 
   return entries;

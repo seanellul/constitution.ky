@@ -13,9 +13,15 @@ import { markAsRead, isArticleRead } from '@/lib/readingProgress';
 import ShareCiteButton from '@/components/ShareCiteButton';
 import TextSizeControls, { useTextSize } from '@/components/TextSizeControls';
 import ChapterSidebar from '@/components/ChapterSidebar';
+import RelatedTopics from '@/components/RelatedTopics';
 
 interface ChapterArticleInfo {
   number: number;
+  title: string;
+}
+
+interface RelatedTopic {
+  slug: string;
   title: string;
 }
 
@@ -27,9 +33,10 @@ interface ArticleContentProps {
   nextArticle: ArticleNavLink | null;
   chapterArticles: ChapterArticleInfo[];
   chapterTitle: string;
+  relatedTopics: RelatedTopic[];
 }
 
-export default function ArticleContent({ article, chapterNum, articleNum, prevArticle, nextArticle, chapterArticles, chapterTitle }: ArticleContentProps) {
+export default function ArticleContent({ article, chapterNum, articleNum, prevArticle, nextArticle, chapterArticles, chapterTitle, relatedTopics }: ArticleContentProps) {
   const [hoveredParagraph, setHoveredParagraph] = useState<number | null>(null);
   const [readStatuses, setReadStatuses] = useState<Record<number, boolean>>({});
   const router = useRouter();
@@ -420,6 +427,8 @@ export default function ArticleContent({ article, chapterNum, articleNum, prevAr
             <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200">{article.notes}</p>
           </motion.div>
         )}
+
+        <RelatedTopics topics={relatedTopics} />
 
         {/* Prev/Next Article Navigation */}
         {(prevArticle || nextArticle) && (

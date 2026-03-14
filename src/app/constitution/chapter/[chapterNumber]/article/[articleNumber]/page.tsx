@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import ArticleContent from './ArticleContent';
 import { toRomanNumeral } from '@/lib/utils';
 import { Article } from '@/types/constitution';
+import { topics } from '@/data/topics';
 
 export async function generateStaticParams() {
   const chapters = await getChapters();
@@ -42,17 +43,35 @@ export async function generateMetadata({
 
   const articleUrl = `/constitution/chapter/${chapterNum}/article/${articleNum}`;
 
+  // Build a rich description from article content
+  let contentPreview = '';
+  if (article.content && Array.isArray(article.content) && article.content.length > 0) {
+    const firstParagraph = article.content[0];
+    const text = typeof firstParagraph === 'string' ? firstParagraph : firstParagraph.text;
+    contentPreview = text.substring(0, 155).replace(/\s+/g, ' ').trim();
+    if (text.length > 155) contentPreview += '...';
+  }
+
+  const description = contentPreview
+    ? `Section ${articleNum} of the Cayman Islands Constitution: ${contentPreview}`
+    : `Read Section ${articleNum} - ${article.title} from Part ${toRomanNumeral(chapterNum)} (${article.chapterTitle}) of the Constitution of the Cayman Islands Order 2009.`;
+
   return {
-    title: `Section ${articleNum} - ${article.title} | Constitution of the Cayman Islands`,
-    description: `Read Section ${articleNum} from Part ${toRomanNumeral(chapterNum)} of the Constitution of the Cayman Islands`,
+    title: `Section ${articleNum} - ${article.title} | Cayman Islands Constitution`,
+    description,
     alternates: {
       canonical: `https://constitution.ky${articleUrl}`,
     },
     openGraph: {
-      title: `Section ${articleNum} - ${article.title} | Constitution of the Cayman Islands`,
-      description: `Read Section ${articleNum} from Part ${toRomanNumeral(chapterNum)} of the Constitution of the Cayman Islands`,
+      title: `Section ${articleNum}: ${article.title} — Cayman Islands Constitution`,
+      description,
       url: `https://constitution.ky${articleUrl}`,
       type: 'article',
+    },
+    twitter: {
+      card: 'summary',
+      title: `Section ${articleNum}: ${article.title}`,
+      description,
     },
   };
 }
@@ -120,15 +139,103 @@ export default async function ArticlePage({ params }: { params: Promise<{ chapte
     title: a.title,
   }));
 
+  // Find related topics for this article
+  const relatedTopics = topics
+    .filter((t) =>
+      t.articles.some(
+        (a) => a.chapterNumber === chapterNum && a.articleNumber === articleNum
+      )
+    )
+    .map((t) => ({ slug: t.slug, title: t.title }));
+
+  // Structured data: Legislation + BreadcrumbList
+  const articleUrl = `https://constitution.ky/constitution/chapter/${chapterNum}/article/${articleNum}`;
+  let articleText = '';
+  if (article.content && Array.isArray(article.content)) {
+    articleText = article.content
+      .map((p) => (typeof p === 'string' ? p : p.text))
+      .join(' ')
+      .substring(0, 500);
+  }
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Legislation',
+        '@id': articleUrl,
+        name: `Section ${articleNum} - ${article.title}`,
+        description: articleText,
+        legislationIdentifier: `Section ${articleNum}`,
+        legislationType: 'Constitution',
+        inLanguage: 'en',
+        isPartOf: {
+          '@type': 'Legislation',
+          name: 'Constitution of the Cayman Islands Order 2009',
+          legislationDate: '2009-06-10',
+          legislationJurisdiction: {
+            '@type': 'Country',
+            name: 'Cayman Islands',
+          },
+        },
+        url: articleUrl,
+        ...(article.amendmentHistory?.date && {
+          legislationChanges: {
+            '@type': 'Legislation',
+            name: article.amendmentHistory.description,
+            legislationDate: article.amendmentHistory.date,
+            legislationIdentifier: article.amendmentHistory.legalReference,
+          },
+        }),
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://constitution.ky',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Constitution',
+            item: 'https://constitution.ky/constitution',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: `Part ${toRomanNumeral(chapterNum)} - ${article.chapterTitle}`,
+            item: `https://constitution.ky/constitution/chapter/${chapterNum}`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 4,
+            name: `Section ${articleNum} - ${article.title}`,
+            item: articleUrl,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
-    <ArticleContent
-      article={article}
-      chapterNum={chapterNum}
-      articleNum={articleNum}
-      prevArticle={prevArticle}
-      nextArticle={nextArticle}
-      chapterArticles={chapterArticleList}
-      chapterTitle={article.chapterTitle}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <ArticleContent
+        article={article}
+        chapterNum={chapterNum}
+        articleNum={articleNum}
+        prevArticle={prevArticle}
+        nextArticle={nextArticle}
+        chapterArticles={chapterArticleList}
+        chapterTitle={article.chapterTitle}
+        relatedTopics={relatedTopics}
+      />
+    </>
   );
 }

@@ -1,0 +1,472 @@
+[
+  {
+    "slug": "bill-of-rights",
+    "term": "Bill of Rights, Freedoms and Responsibilities",
+    "definition": "The foundational chapter of the Cayman Islands Constitution (Chapter 1, Sections 1-28) that enshrines the rights and freedoms to which every person in the Cayman Islands is entitled. It is described as a cornerstone of democracy in the Cayman Islands and imposes corresponding responsibilities upon those who enjoy its protections.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 1 },
+      { "chapterNumber": 1, "articleNumber": 19 },
+      { "chapterNumber": 1, "articleNumber": 24 }
+    ]
+  },
+  {
+    "slug": "governor",
+    "term": "Governor",
+    "definition": "The representative of the British Crown in the Cayman Islands, appointed by Her Majesty by Commission under the Royal Sign Manual and Signet. The Governor holds office during Her Majesty's pleasure and is responsible for defence, external affairs, internal security (including the police), and the appointment and discipline of public officers. The Governor presides at Cabinet meetings and must assent to bills before they become law.",
+    "articleRefs": [
+      { "chapterNumber": 2, "articleNumber": 29 },
+      { "chapterNumber": 2, "articleNumber": 35 },
+      { "chapterNumber": 3, "articleNumber": 55 },
+      { "chapterNumber": 4, "articleNumber": 78 }
+    ]
+  },
+  {
+    "slug": "deputy-governor",
+    "term": "Deputy Governor",
+    "definition": "A senior constitutional officer who performs the functions of the Governor whenever the office is vacant or the Governor is absent from the Cayman Islands or otherwise unable to act. The Deputy Governor serves as an ex officio member of both the Cabinet and the Legislative Assembly, and sits on the National Security Council.",
+    "articleRefs": [
+      { "chapterNumber": 2, "articleNumber": 35 },
+      { "chapterNumber": 3, "articleNumber": 44 },
+      { "chapterNumber": 3, "articleNumber": 58 }
+    ]
+  },
+  {
+    "slug": "premier",
+    "term": "Premier",
+    "definition": "The head of government of the Cayman Islands, appointed by the Governor as the elected member of the Legislative Assembly who is best able to command the confidence of a majority of elected members. The Premier directs Cabinet meetings in the Governor's absence, advises on the appointment of Ministers, and may be removed by a two-thirds no-confidence vote of the elected members.",
+    "articleRefs": [
+      { "chapterNumber": 3, "articleNumber": 45 },
+      { "chapterNumber": 3, "articleNumber": 49 },
+      { "chapterNumber": 3, "articleNumber": 50 },
+      { "chapterNumber": 3, "articleNumber": 51 }
+    ]
+  },
+  {
+    "slug": "cabinet",
+    "term": "Cabinet",
+    "definition": "The principal instrument of policy in the Cayman Islands, consisting of the Premier, not fewer than six other Ministers (one designated Deputy Premier), and the Deputy Governor and Attorney General as ex officio members. The Cabinet is charged with the general direction and control of government and is collectively responsible to the Legislative Assembly for its advice to the Governor.",
+    "articleRefs": [
+      { "chapterNumber": 3, "articleNumber": 44 },
+      { "chapterNumber": 3, "articleNumber": 45 },
+      { "chapterNumber": 3, "articleNumber": 46 }
+    ]
+  },
+  {
+    "slug": "minister",
+    "term": "Minister",
+    "definition": "A member of the Cabinet appointed by the Governor on the advice of the Premier from among the elected members of the Legislative Assembly. Ministers are charged with responsibility for specific areas of government business and are collectively responsible for all measures approved by the Cabinet. A Minister vacates office if he or she ceases to be a member of the Assembly or if the Premier resigns or is removed.",
+    "articleRefs": [
+      { "chapterNumber": 3, "articleNumber": 49 },
+      { "chapterNumber": 3, "articleNumber": 52 },
+      { "chapterNumber": 3, "articleNumber": 54 }
+    ]
+  },
+  {
+    "slug": "deputy-premier",
+    "term": "Deputy Premier",
+    "definition": "One of the Ministers in the Cabinet who is designated as the Deputy Premier. The Deputy Premier is appointed from among the elected members of the Legislative Assembly and serves as second-in-command to the Premier within the executive branch.",
+    "articleRefs": [
+      { "chapterNumber": 3, "articleNumber": 44 }
+    ]
+  },
+  {
+    "slug": "attorney-general",
+    "term": "Attorney General",
+    "definition": "The principal legal adviser to the Government of the Cayman Islands and to the Legislative Assembly. The Attorney General holds a public office, is appointed in accordance with the advice of the Judicial and Legal Services Commission, and serves as an ex officio member of both the Cabinet and the Legislative Assembly.",
+    "articleRefs": [
+      { "chapterNumber": 3, "articleNumber": 56 },
+      { "chapterNumber": 3, "articleNumber": 44 },
+      { "chapterNumber": 5, "articleNumber": 106 }
+    ]
+  },
+  {
+    "slug": "director-of-public-prosecutions",
+    "term": "Director of Public Prosecutions",
+    "definition": "An independent public officer with the power to institute, undertake, take over, continue, or discontinue criminal proceedings before any court in the Cayman Islands. The Director of Public Prosecutions is not subject to the direction or control of any other person or authority in the exercise of prosecutorial functions.",
+    "articleRefs": [
+      { "chapterNumber": 3, "articleNumber": 57 },
+      { "chapterNumber": 5, "articleNumber": 106 }
+    ]
+  },
+  {
+    "slug": "cabinet-secretary",
+    "term": "Cabinet Secretary",
+    "definition": "The head of the Cabinet Office, who must be a Caymanian and is appointed by the Governor after consultation with the Premier. The Cabinet Secretary is responsible for arranging Cabinet business, keeping minutes of Cabinet meetings, and conveying the Cabinet's conclusions to the appropriate person or authority.",
+    "articleRefs": [
+      { "chapterNumber": 3, "articleNumber": 48 },
+      { "chapterNumber": 3, "articleNumber": 45 }
+    ]
+  },
+  {
+    "slug": "executive-authority",
+    "term": "Executive Authority",
+    "definition": "The executive power of the Cayman Islands, which is vested in Her Majesty and exercised on her behalf by the Government of the Cayman Islands. In practice, this means the Governor acting on the advice of the Cabinet, subject to the provisions of the Constitution.",
+    "articleRefs": [
+      { "chapterNumber": 3, "articleNumber": 43 },
+      { "chapterNumber": 2, "articleNumber": 29 },
+      { "chapterNumber": 3, "articleNumber": 44 }
+    ]
+  },
+  {
+    "slug": "legislature",
+    "term": "Legislature",
+    "definition": "The law-making body of the Cayman Islands, consisting of Her Majesty and the Legislative Assembly. The Legislature has the power to make laws for the peace, order, and good government of the Cayman Islands, and controls revenue, expenditure, and appropriation of public funds.",
+    "articleRefs": [
+      { "chapterNumber": 4, "articleNumber": 59 },
+      { "chapterNumber": 7, "articleNumber": 111 }
+    ]
+  },
+  {
+    "slug": "legislative-assembly",
+    "term": "Legislative Assembly",
+    "definition": "The elected legislative body of the Cayman Islands, comprising a Speaker, eighteen elected members representing electoral districts, and the Deputy Governor and Attorney General as ex officio members. The Legislative Assembly debates and passes laws, holds the Cabinet collectively responsible, and controls public finance through appropriation. It was renamed \"Parliament\" by the 2020 constitutional amendment.",
+    "articleRefs": [
+      { "chapterNumber": 4, "articleNumber": 60 },
+      { "chapterNumber": 4, "articleNumber": 59 },
+      { "chapterNumber": 4, "articleNumber": 61 }
+    ]
+  },
+  {
+    "slug": "speaker",
+    "term": "Speaker",
+    "definition": "The presiding officer of the Legislative Assembly, elected by the elected members from among themselves or from persons qualified for election who are not members of the Assembly. The Speaker may not simultaneously serve as a Minister and is responsible for maintaining order and regulating debate in the Assembly.",
+    "articleRefs": [
+      { "chapterNumber": 4, "articleNumber": 65 },
+      { "chapterNumber": 4, "articleNumber": 60 }
+    ]
+  },
+  {
+    "slug": "leader-of-the-opposition",
+    "term": "Leader of the Opposition",
+    "definition": "The leader of the members of the Legislative Assembly who are not part of the governing majority. The Leader of the Opposition is consulted by the Governor on key appointments including members of the Human Rights Commission, the Commission for Standards in Public Life, and the National Security Council.",
+    "articleRefs": [
+      { "chapterNumber": 8, "articleNumber": 116 },
+      { "chapterNumber": 8, "articleNumber": 117 },
+      { "chapterNumber": 3, "articleNumber": 58 }
+    ]
+  },
+  {
+    "slug": "grand-court",
+    "term": "Grand Court",
+    "definition": "The superior Court of Record of the Cayman Islands, with broad jurisdiction conferred by the Constitution and other laws. The Grand Court consists of the Chief Justice and other judges appointed by the Governor on the advice of the Judicial and Legal Services Commission. It serves as the primary court for enforcing fundamental rights under the Bill of Rights.",
+    "articleRefs": [
+      { "chapterNumber": 5, "articleNumber": 94 },
+      { "chapterNumber": 5, "articleNumber": 95 },
+      { "chapterNumber": 1, "articleNumber": 7 }
+    ]
+  },
+  {
+    "slug": "court-of-appeal",
+    "term": "Court of Appeal",
+    "definition": "A superior Court of Record in the Cayman Islands with jurisdiction to hear and determine appeals from the Grand Court as prescribed by the Constitution or other law. Judges of the Court of Appeal hold office for specified terms and may only be removed for inability to discharge their functions or for misbehaviour.",
+    "articleRefs": [
+      { "chapterNumber": 5, "articleNumber": 99 },
+      { "chapterNumber": 5, "articleNumber": 101 },
+      { "chapterNumber": 5, "articleNumber": 94 }
+    ]
+  },
+  {
+    "slug": "chief-justice",
+    "term": "Chief Justice",
+    "definition": "The head of the Grand Court and the senior judicial officer of the Cayman Islands. The Chief Justice is appointed by the Governor on the advice of the Judicial and Legal Services Commission and may administer oaths to the Governor. The Chief Justice's emoluments are charged upon the revenues of the Cayman Islands and cannot be reduced without consent.",
+    "articleRefs": [
+      { "chapterNumber": 5, "articleNumber": 95 },
+      { "chapterNumber": 5, "articleNumber": 106 },
+      { "chapterNumber": 2, "articleNumber": 30 }
+    ]
+  },
+  {
+    "slug": "judicial-and-legal-services-commission",
+    "term": "Judicial and Legal Services Commission",
+    "definition": "An independent commission that advises the Governor on appointments to judicial and legal offices, including the Chief Justice, Grand Court judges, Court of Appeal judges, the Attorney General, the Director of Public Prosecutions, and Magistrates. The 2016 amendment transferred disciplinary authority over judges from the Governor to the Chief Justice and President of the Court of Appeal.",
+    "articleRefs": [
+      { "chapterNumber": 5, "articleNumber": 106 },
+      { "chapterNumber": 5, "articleNumber": 95 }
+    ]
+  },
+  {
+    "slug": "national-security-council",
+    "term": "National Security Council",
+    "definition": "An advisory body responsible for advising the Governor on matters relating to internal security, but not on operational matters. It is chaired by the Governor and includes the Premier, two Ministers nominated by the Premier, a nominee of the Leader of the Opposition, two civil society appointees, and the Deputy Governor, Attorney General, and Commissioner of Police as ex officio members.",
+    "articleRefs": [
+      { "chapterNumber": 3, "articleNumber": 58 }
+    ]
+  },
+  {
+    "slug": "human-rights-commission",
+    "term": "Human Rights Commission",
+    "definition": "An independent commission whose primary responsibility is the promotion of understanding and observance of human rights in the Cayman Islands. It consists of a Chairman and four other members appointed by the Governor after consulting the Premier and the Leader of the Opposition, and has the power to receive and investigate complaints, provide advice, mediate disputes, and issue reports.",
+    "articleRefs": [
+      { "chapterNumber": 8, "articleNumber": 116 },
+      { "chapterNumber": 1, "articleNumber": 1 },
+      { "chapterNumber": 1, "articleNumber": 16 }
+    ]
+  },
+  {
+    "slug": "commission-for-standards-in-public-life",
+    "term": "Commission for Standards in Public Life",
+    "definition": "An independent commission that sets standards of integrity and ethical conduct for public officials, monitors and investigates compliance, supervises registers of interests, and reports to the Legislative Assembly. It consists of a Chairman and between two and four other members appointed by the Governor after consulting the Premier and the Leader of the Opposition.",
+    "articleRefs": [
+      { "chapterNumber": 8, "articleNumber": 117 },
+      { "chapterNumber": 8, "articleNumber": 121 }
+    ]
+  },
+  {
+    "slug": "constitutional-commission",
+    "term": "Constitutional Commission",
+    "definition": "An independent body comprising a Chairman and two other members (at least one an experienced lawyer) that advises the Government on constitutional matters, publishes reports and discussion papers, and promotes constitutional awareness. The Commission is not subject to the direction or control of any other person or authority.",
+    "articleRefs": [
+      { "chapterNumber": 8, "articleNumber": 118 }
+    ]
+  },
+  {
+    "slug": "electoral-boundary-commission",
+    "term": "Electoral Boundary Commission",
+    "definition": "A commission appointed by the Governor consisting of a Chairman and up to four other members, tasked with reviewing and recommending changes to the boundaries of electoral districts. The Commission must ensure, so far as is reasonably practicable, that the ratio of elected members to qualified electors is the same in each district.",
+    "articleRefs": [
+      { "chapterNumber": 4, "articleNumber": 88 },
+      { "chapterNumber": 4, "articleNumber": 89 },
+      { "chapterNumber": 4, "articleNumber": 60 }
+    ]
+  },
+  {
+    "slug": "complaints-commissioner",
+    "term": "Complaints Commissioner",
+    "definition": "An ombudsman-style office that the Legislature may establish to investigate complaints of maladministration by public authorities. The Complaints Commissioner operates independently and is not subject to the direction or control of any other person or authority.",
+    "articleRefs": [
+      { "chapterNumber": 8, "articleNumber": 120 }
+    ]
+  },
+  {
+    "slug": "auditor-general",
+    "term": "Auditor General",
+    "definition": "An independent officer appointed by the Governor who audits and reports on the public accounts of the Cayman Islands and undertakes value-for-money investigations. The Auditor General is not subject to the direction or control of any other person or authority, but is answerable to the Public Accounts Committee of the Legislative Assembly.",
+    "articleRefs": [
+      { "chapterNumber": 7, "articleNumber": 114 },
+      { "chapterNumber": 7, "articleNumber": 111 }
+    ]
+  },
+  {
+    "slug": "right-to-life",
+    "term": "Right to Life",
+    "definition": "A fundamental right protected under the Bill of Rights providing that everyone's right to life shall be protected by law. No one may be intentionally deprived of life except in execution of a court sentence for a criminal offence. Limited exceptions exist for the use of force that is absolutely necessary in defence against unlawful violence, to effect a lawful arrest, or to suppress a riot.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 2 }
+    ]
+  },
+  {
+    "slug": "prohibition-of-torture",
+    "term": "Prohibition of Torture and Inhuman Treatment",
+    "definition": "An absolute right under the Bill of Rights providing that no person shall be subjected to torture or inhuman or degrading treatment or punishment. Unlike most other rights in the Constitution, this prohibition admits no exceptions or limitations.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 3 }
+    ]
+  },
+  {
+    "slug": "personal-liberty",
+    "term": "Personal Liberty",
+    "definition": "A fundamental right protecting individuals from deprivation of liberty except as authorised by law in specified circumstances. Persons who are arrested or detained must be informed promptly of the reasons, have the right to communicate with a legal practitioner, and must be released if not tried within a reasonable time.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 5 }
+    ]
+  },
+  {
+    "slug": "fair-trial",
+    "term": "Right to a Fair Trial",
+    "definition": "A constitutional guarantee that every person is entitled to a fair and public hearing within a reasonable time by an independent and impartial court. It includes the presumption of innocence, the right to be informed of charges, adequate time to prepare a defence, the right to legal assistance, the right to examine witnesses, and the right to an interpreter.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 7 },
+      { "chapterNumber": 5, "articleNumber": 94 },
+      { "chapterNumber": 5, "articleNumber": 99 }
+    ]
+  },
+  {
+    "slug": "no-punishment-without-law",
+    "term": "No Punishment Without Law",
+    "definition": "A constitutional principle prohibiting retroactive criminal law. No person may be held guilty of an offence for conduct that was not criminal when committed, and no penalty heavier than the maximum applicable at the time of the offence may be imposed.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 8 }
+    ]
+  },
+  {
+    "slug": "right-to-privacy",
+    "term": "Right to Private and Family Life",
+    "definition": "A constitutional right requiring the government to respect every person's right to private and family life, home, and correspondence. Government interference is permitted only where it is in accordance with law and necessary in a democratic society for reasons including national security, public safety, crime prevention, or the protection of others' rights.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 9 }
+    ]
+  },
+  {
+    "slug": "freedom-of-conscience-and-religion",
+    "term": "Freedom of Conscience and Religion",
+    "definition": "A right protecting every person from government interference in the enjoyment of freedom of conscience. This includes freedom of thought and religion, the freedom to change one's religion or belief, and the freedom to manifest and propagate religion or belief in worship, teaching, practice, and observance, whether alone or in community and in public or private.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 10 }
+    ]
+  },
+  {
+    "slug": "freedom-of-expression",
+    "term": "Freedom of Expression",
+    "definition": "A constitutional right protecting individuals from government interference in their freedom to hold opinions and to receive and impart ideas and information, including freedom from interference with correspondence. Reasonable government restrictions may be imposed in the interests of defence, public safety, public order, public morality, or public health.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 11 },
+      { "chapterNumber": 8, "articleNumber": 122 }
+    ]
+  },
+  {
+    "slug": "freedom-of-assembly-and-association",
+    "term": "Freedom of Assembly and Association",
+    "definition": "A right protecting individuals from government interference in their freedom to assemble peacefully and to associate with others. This expressly includes the right to form or belong to political parties, trade unions, or other associations for the protection of one's interests.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 12 }
+    ]
+  },
+  {
+    "slug": "freedom-of-movement",
+    "term": "Freedom of Movement",
+    "definition": "A constitutional right protecting the freedom to move freely throughout the Cayman Islands, to reside in any part of the territory, to enter and leave the Cayman Islands, and immunity from expulsion. This right may not be denied by the government.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 13 }
+    ]
+  },
+  {
+    "slug": "right-to-property",
+    "term": "Right to Property",
+    "definition": "A fundamental right preventing the government from depriving any person of property except where the taking is in accordance with law and necessary for a public interest purpose. Where property is taken, the government must promptly pay full and fair compensation.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 15 }
+    ]
+  },
+  {
+    "slug": "non-discrimination",
+    "term": "Non-discrimination",
+    "definition": "A constitutional principle prohibiting the government from treating any person in a discriminatory manner with respect to rights under the Bill of Rights. Discrimination is defined as affording different treatment attributable to sex, race, colour, language, religion, political or other opinion, national or social origin, association with a national minority, property, birth, or other status.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 16 },
+      { "chapterNumber": 8, "articleNumber": 116 }
+    ]
+  },
+  {
+    "slug": "protection-of-children",
+    "term": "Protection of Children",
+    "definition": "A constitutional provision guaranteeing every child the right to protective measures appropriate to their status as a minor, from their family, government, and society. The government must take measures to ensure children have access to food, clothing, shelter, health care, and education, and are protected from abuse, neglect, violence, and exploitation.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 17 }
+    ]
+  },
+  {
+    "slug": "protection-of-the-environment",
+    "term": "Protection of the Environment",
+    "definition": "A constitutional directive requiring the government to have due regard in all decisions to the health, safety, and environmental well-being of the people. The government must foster an environment not harmful to present or future generations and establish agencies to monitor and regulate activities affecting the environment.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 18 }
+    ]
+  },
+  {
+    "slug": "lawful-administrative-action",
+    "term": "Lawful Administrative Action",
+    "definition": "A constitutional requirement that all decisions and acts of public officials must be lawful, rational, proportionate, and procedurally fair. Any person whose interests have been adversely affected by a public official's decision or act has the right to be furnished with reasons for that decision or act.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 19 },
+      { "chapterNumber": 5, "articleNumber": 94 }
+    ]
+  },
+  {
+    "slug": "right-to-education",
+    "term": "Right to Education",
+    "definition": "A constitutional right providing that no person shall be denied education. The government must seek to provide primary and secondary education that is, so far as possible, free. Parents' rights to ensure education in conformity with their religious and philosophical convictions are also respected.",
+    "articleRefs": [
+      { "chapterNumber": 1, "articleNumber": 20 }
+    ]
+  },
+  {
+    "slug": "freedom-of-information",
+    "term": "Freedom of Information",
+    "definition": "A constitutional mandate requiring the Legislature to make provision for the right of access to official documents held by public authorities. This right is subject to such conditions and exceptions as are necessary in a democratic society, reflecting a commitment to transparency in government.",
+    "articleRefs": [
+      { "chapterNumber": 8, "articleNumber": 122 },
+      { "chapterNumber": 1, "articleNumber": 11 }
+    ]
+  },
+  {
+    "slug": "register-of-interests",
+    "term": "Register of Interests",
+    "definition": "A register maintained by the Commission for Standards in Public Life in which every member of the Legislative Assembly and every person holding prescribed public office must declare their interests, assets, income, and liabilities upon taking office and at regular intervals. This system promotes transparency and accountability in public life.",
+    "articleRefs": [
+      { "chapterNumber": 8, "articleNumber": 121 },
+      { "chapterNumber": 8, "articleNumber": 117 }
+    ]
+  },
+  {
+    "slug": "assent-to-bills",
+    "term": "Assent to Bills",
+    "definition": "The constitutional requirement that no bill may become law until the Governor has assented to it in Her Majesty's name and signed it. The Governor may reserve a bill for Her Majesty's pleasure if it appears repugnant to or inconsistent with any provision of the Constitution. This power represents an important check in the legislative process.",
+    "articleRefs": [
+      { "chapterNumber": 4, "articleNumber": 78 },
+      { "chapterNumber": 2, "articleNumber": 35 }
+    ]
+  },
+  {
+    "slug": "public-service",
+    "term": "Public Service",
+    "definition": "The body of public officers serving the Cayman Islands government. All public officers must act in the best interests of the Cayman Islands, not in their own private interests, and must implement government policy in accordance with directions from the Cabinet or other responsible authority. Appointments, transfers, and discipline are vested in the Governor.",
+    "articleRefs": [
+      { "chapterNumber": 6, "articleNumber": 108 },
+      { "chapterNumber": 6, "articleNumber": 109 }
+    ]
+  },
+  {
+    "slug": "electoral-district",
+    "term": "Electoral District",
+    "definition": "A geographical constituency within the Cayman Islands represented by an elected member of the Legislative Assembly. The boundaries of electoral districts are reviewed by the Electoral Boundary Commission to ensure, so far as practicable, equal representation. The number of elected members representing districts may be increased over time.",
+    "articleRefs": [
+      { "chapterNumber": 4, "articleNumber": 60 },
+      { "chapterNumber": 4, "articleNumber": 88 },
+      { "chapterNumber": 4, "articleNumber": 89 }
+    ]
+  },
+  {
+    "slug": "reserved-powers",
+    "term": "Reserved Powers of the Crown",
+    "definition": "Full legislative power reserved to Her Majesty to make laws for the peace, order, and good government of the Cayman Islands. These reserved powers reflect the constitutional relationship between the Cayman Islands as a British Overseas Territory and the United Kingdom, ensuring ultimate sovereignty remains with the Crown.",
+    "articleRefs": [
+      { "chapterNumber": 9, "articleNumber": 125 },
+      { "chapterNumber": 3, "articleNumber": 55 }
+    ]
+  },
+  {
+    "slug": "advisory-district-councils",
+    "term": "Advisory District Councils",
+    "definition": "Local advisory bodies that the Legislature is required to establish for electoral districts to assist the elected members of the Legislative Assembly for those districts. These councils serve as a mechanism for community-level engagement with representative democracy.",
+    "articleRefs": [
+      { "chapterNumber": 8, "articleNumber": 119 }
+    ]
+  },
+  {
+    "slug": "collective-responsibility",
+    "term": "Collective Responsibility",
+    "definition": "The constitutional principle that the Cabinet is collectively responsible to the Legislative Assembly for any advice given to the Governor, and that all Ministers are collectively responsible for all measures approved by the Cabinet. This ensures unified accountability of the executive to the legislature.",
+    "articleRefs": [
+      { "chapterNumber": 3, "articleNumber": 44 },
+      { "chapterNumber": 3, "articleNumber": 54 }
+    ]
+  },
+  {
+    "slug": "no-confidence-motion",
+    "term": "No Confidence Motion",
+    "definition": "A resolution of the Legislative Assembly, supported by the votes of not less than two-thirds of the elected members, declaring that the Assembly has no confidence in the Premier. If such a resolution passes, the Governor is required to remove the Premier from office. This mechanism provides democratic accountability of the head of government.",
+    "articleRefs": [
+      { "chapterNumber": 3, "articleNumber": 51 }
+    ]
+  },
+  {
+    "slug": "constitutional-amendment",
+    "term": "Constitutional Amendment",
+    "definition": "A formal change to the provisions of the Cayman Islands Constitution, which has historically been enacted by Order in Council of the United Kingdom. Notable amendments include the 2020 Cayman Islands Constitution (Amendment) Order, which increased Cabinet size, renamed the Legislative Assembly to Parliament, and modified the National Security Council provisions.",
+    "articleRefs": [
+      { "chapterNumber": 3, "articleNumber": 44 },
+      { "chapterNumber": 4, "articleNumber": 60 },
+      { "chapterNumber": 3, "articleNumber": 58 }
+    ]
+  }
+]
