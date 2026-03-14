@@ -165,6 +165,7 @@ export default function RootLayout({
                 <Link href="/topics" className="text-gray-500 hover:text-primary-DEFAULT">Topics</Link>
                 <Link href="/glossary" className="text-gray-500 hover:text-primary-DEFAULT">Glossary</Link>
                 <Link href="/search" className="text-gray-500 hover:text-primary-DEFAULT">Search</Link>
+                <Link href="/blog" className="text-gray-500 hover:text-primary-DEFAULT">Blog</Link>
                 <a href="https://github.com/seanellul/constitution.ky" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-primary-DEFAULT">GitHub</a>
               </nav>
             </div>

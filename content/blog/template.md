@@ -1,35 +1,37 @@
 ---
 title: "Article Title Here"
-description: "A concise meta description between 150-160 characters for search engines and social sharing."
-date: "2026-03-14"
-tags: ["cayman islands", "constitution", "civic education"]
-slug: "url-friendly-slug-here"
-author: "Constitution.ky"
+description: "A concise one- or two-sentence description of the article shown in search results and the blog index."
+date: "2026-01-01"
+tags: ["Cayman Islands", "Constitutional Law"]
+slug: "article-slug-here"
+author: "Constitution.ky Team"
 ---
 
-Introduction paragraph goes here. This should hook the reader and explain what the article covers.
+## Introduction
 
-## First Section Heading
+Write your introduction here. Aim for a compelling opening paragraph that explains why this topic matters.
 
-Content for the first section. You can use all standard Markdown formatting:
+## Section Heading
 
-- Bullet points
-- **Bold text**
-- *Italic text*
+Use `##` for top-level headings within the article body. Markdown is fully supported:
+
+- Bullet lists
+- **Bold** and _italic_ text
 - [Links](https://constitution.ky)
+- `inline code`
 
 ### Subsection
 
-More detailed content under a subsection. H3 headings appear indented in the table of contents.
+Use `###` for subsections.
 
-## Second Section Heading
+> Use blockquotes to highlight key constitutional text or important quotations.
 
-More content here. You can reference specific sections of the Constitution:
+## Key Points
 
-> Section 1 of the Constitution states that "This Bill of Rights, Freedoms and Responsibilities is a cornerstone of democracy in the Cayman Islands."
-
-Link to relevant sections on the site: [Read Section 1](/constitution/chapter/1/article/1)
+1. First numbered point
+2. Second numbered point
+3. Third numbered point
 
 ## Conclusion
 
-Wrap up the article with key takeaways.
+Summarise the article and, where appropriate, point readers to relevant sections of the Constitution they can explore on [Constitution.ky](https://constitution.ky/constitution).
