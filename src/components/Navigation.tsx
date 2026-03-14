@@ -24,6 +24,7 @@ const Navigation = () => {
     { href: '/constitution', label: 'Constitution' },
     { href: '/search', label: 'Search' },
     { href: '/analytics', label: 'Analytics' },
+    { href: '/blog', label: 'Blog' },
     { href: '/about', label: 'About' },
   ];
 

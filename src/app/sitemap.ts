@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { getChapters } from '@/lib/constitution';
 import { topics } from '@/data/topics';
 import { glossary } from '@/data/glossary';
+import { getAllPosts } from '@/lib/blog';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const chapters = await getChapters();
@@ -19,6 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/open-data', changeFrequency: 'daily' as const, priority: 0.6 },
     { path: '/topics', changeFrequency: 'monthly' as const, priority: 0.8 },
     { path: '/glossary', changeFrequency: 'monthly' as const, priority: 0.8 },
+    { path: '/blog', changeFrequency: 'weekly' as const, priority: 0.8 },
   ];
 
   for (const page of staticPages) {
@@ -68,6 +70,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: 'yearly',
       priority: 0.6,
+    });
+  }
+
+  // Blog posts
+  const blogPosts = await getAllPosts();
+  for (const post of blogPosts) {
+    entries.push({
+      url: `${domain}/blog/${post.slug}`,
+      lastModified: post.date,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     });
   }
 
