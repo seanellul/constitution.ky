@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ActiveUsersCounter from './ActiveUsersCounter';
-import DarkModeToggle from './DarkModeToggle';
+import ThemeSelector from './ThemeSelector';
 import { useState, useEffect } from 'react';
 
 const Navigation = () => {
@@ -82,7 +82,7 @@ const Navigation = () => {
                 <ActiveUsersCounter />
               </div>
               <div>
-                <DarkModeToggle />
+                <ThemeSelector />
               </div>
             </div>
           </div>
@@ -116,7 +116,7 @@ const Navigation = () => {
                 <ActiveUsersCounter />
               </div>
               <div>
-                <DarkModeToggle />
+                <ThemeSelector />
               </div>
             </div>
           </div>

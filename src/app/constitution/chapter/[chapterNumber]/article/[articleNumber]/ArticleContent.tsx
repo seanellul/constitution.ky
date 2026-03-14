@@ -253,10 +253,9 @@ export default function ArticleContent({ article, chapterNum, articleNum, prevAr
 
       <Breadcrumbs
         items={[
-          { label: 'Home', href: '/' },
           { label: 'Constitution', href: '/constitution' },
-          { label: `Chapter ${toRomanNumeral(chapterNum)}`, href: `/constitution/chapter/${chapterNum}` },
-          { label: `Article ${articleNum}`, href: `/constitution/chapter/${chapterNum}/article/${articleNum}` }
+          { label: `Part ${toRomanNumeral(chapterNum)}`, href: `/constitution/chapter/${chapterNum}` },
+          { label: `Section ${articleNum}`, href: `/constitution/chapter/${chapterNum}/article/${articleNum}` }
         ]}
       />
 

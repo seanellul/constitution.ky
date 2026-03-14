@@ -22,7 +22,7 @@ export default function RelatedTopics({ topics }: RelatedTopicsProps) {
         <Link
           key={topic.slug}
           href={`/topics/${topic.slug}`}
-          className="text-xs px-2.5 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-primary-DEFAULT/10 hover:text-primary-DEFAULT dark:hover:text-primary-400 transition-colors"
+          className="text-xs px-2.5 py-1 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary-DEFAULT/20 hover:text-primary-DEFAULT dark:hover:text-primary-400 transition-colors border border-gray-300 dark:border-gray-600"
         >
           {topic.title}
         </Link>

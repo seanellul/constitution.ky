@@ -23,9 +23,8 @@ export default function DarkModeToggle() {
       // Use saved preference
       setDarkMode(savedMode === 'true');
     } else {
-      // Otherwise check for system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setDarkMode(prefersDark);
+      // Default to dark mode
+      setDarkMode(true);
     }
   }, []);
 

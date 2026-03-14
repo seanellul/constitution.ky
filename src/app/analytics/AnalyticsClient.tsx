@@ -104,7 +104,7 @@ export default function AnalyticsClient() {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               timeframe === tf
                 ? 'bg-primary-DEFAULT text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600'
             }`}
           >
             {timeframeLabels[tf]}
