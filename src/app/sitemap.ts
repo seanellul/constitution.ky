@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getChapters } from '@/lib/constitution';
+import { getAllPosts } from '@/lib/blog';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const chapters = await getChapters();
@@ -7,6 +8,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const domain = 'https://constitution.ky';
 
   const entries: MetadataRoute.Sitemap = [];
+
+  // Blog posts
+  const blogPosts = getAllPosts();
+  entries.push({
+    url: `${domain}/blog`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  });
+  for (const post of blogPosts) {
+    entries.push({
+      url: `${domain}/blog/${post.slug}`,
+      lastModified: post.date ? new Date(post.date).toISOString() : now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    });
+  }
 
   // Static pages
   const staticPages = [
