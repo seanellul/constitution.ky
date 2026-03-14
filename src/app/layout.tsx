@@ -2,8 +2,6 @@ import './globals.css';
 import { Inter, Merriweather } from 'next/font/google';
 import React from 'react';
 import Navigation from '@/components/Navigation';
-import PageViewTracker from '@/components/PageViewTracker';
-import PrivacyNotice from '@/components/PrivacyNotice';
 import LayoutClient from './LayoutClient';
 import { Analytics } from '@vercel/analytics/react';
 import { metadata as siteMetadata } from './metadata';
@@ -172,8 +170,6 @@ export default function RootLayout({
 
         {/* Client-side components */}
         <LayoutClient />
-        <PageViewTracker />
-        <PrivacyNotice />
         <Analytics />
       </body>
     </html>

@@ -11,12 +11,10 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "studio:dev": "cross-env NODE_ENV=development prisma studio",
-    "postinstall": "prisma generate",
     "clean": "rimraf .next"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@prisma/client": "^6.5.0",
     "@vercel/analytics": "^1.5.0",
     "axios": "^1.8.2",
     "framer-motion": "^12.5.0",
@@ -43,7 +41,6 @@
     "eslint-config-next": "^15.2.2",
     "jest": "^29.7.0",
     "postcss": "^8.4.24",
-    "prisma": "^6.5.0",
     "rimraf": "^5.0.10",
     "typescript": "^5.8.2"
   }
