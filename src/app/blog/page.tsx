@@ -58,46 +58,20 @@ export default async function BlogIndexPage({
         </p>
       </header>
 
-      {/* Tag filter bar */}
-      {allTags.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-8">
-          <Link
-            href="/blog"
-            className={`text-xs font-medium px-3 py-1 rounded-full transition-colors ${
-              !tag
-                ? 'bg-primary-DEFAULT text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
-            }`}
-          >
-            All
-          </Link>
-          {allTags.map((t) => (
-            <Link
-              key={t}
-              href={`/blog?tag=${encodeURIComponent(t)}`}
-              className={`text-xs font-medium px-3 py-1 rounded-full transition-colors ${
-                tag?.toLowerCase() === t.toLowerCase()
-                  ? 'bg-primary-DEFAULT text-white'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
-              }`}
-            >
-              {t}
-            </Link>
-          ))}
-        </div>
-      )}
-
-      {/* Active filter indicator */}
+      {/* Active filter indicator — only shown when filtering by tag */}
       {tag && (
         <div className="flex items-center gap-2 mb-6 text-sm text-gray-600 dark:text-gray-400">
           <span>
-            Showing {posts.length} {posts.length === 1 ? 'article' : 'articles'} tagged &ldquo;{tag}&rdquo;
+            Showing {posts.length} {posts.length === 1 ? 'article' : 'articles'} tagged
+          </span>
+          <span className="text-xs font-medium bg-primary-DEFAULT text-white px-2.5 py-0.5 rounded-full">
+            {tag}
           </span>
           <Link
             href="/blog"
             className="text-primary-DEFAULT dark:text-primary-400 hover:underline"
           >
-            Clear filter
+            Clear
           </Link>
         </div>
       )}
