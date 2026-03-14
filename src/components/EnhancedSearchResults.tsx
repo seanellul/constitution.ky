@@ -171,7 +171,7 @@ export default function EnhancedSearchResults({
               </h3>
 
               {/* Chapter Filter */}
-              {facets.chapters.length > 0 && (
+              {facets.chapters && facets.chapters.length > 0 && (
                 <div>
                   <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Chapters
@@ -207,7 +207,7 @@ export default function EnhancedSearchResults({
               )}
 
               {/* Tag Filter */}
-              {facets.tags.length > 0 && (
+              {facets.tags && facets.tags.length > 0 && (
                 <div>
                   <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Topics
