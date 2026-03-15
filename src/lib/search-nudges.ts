@@ -5,10 +5,10 @@ interface SearchEvent {
 
 const searchHistory: SearchEvent[] = [];
 
-const RAPID_FIRE_WINDOW = 30_000; // 30 seconds
-const RAPID_FIRE_THRESHOLD = 5;
+const RAPID_FIRE_WINDOW = 40_000; // 40 seconds
+const RAPID_FIRE_THRESHOLD = 12;
 const REPEAT_WINDOW = 60_000; // 60 seconds
-const REPEAT_THRESHOLD = 3;
+const REPEAT_THRESHOLD = 10;
 
 const nudgeMessages = {
   rapidFire: [
