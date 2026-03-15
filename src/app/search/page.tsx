@@ -1,8 +1,10 @@
 import Breadcrumbs from '@/components/Breadcrumbs';
 import EnhancedSearch from '@/components/EnhancedSearch';
 import EnhancedSearchResults from '@/components/EnhancedSearchResults';
+import SearchEasterEggCard from '@/components/SearchEasterEggCard';
 import { searchArticles } from '@/lib/constitution';
 import { shouldFilterFromAnalytics } from '@/lib/content-filters';
+import { matchEasterEgg } from '@/lib/search-easter-eggs';
 import { Article } from '@/types/constitution';
 
 export const metadata = {
@@ -183,9 +185,19 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
         {/* No results message */}
         {query && searchResults && searchResults.total === 0 && (
-          <div className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-lg p-8 text-center">
-            <p className="text-gray-600 dark:text-gray-400 mb-2">No results found for &ldquo;{query}&rdquo;</p>
-            <p className="text-sm text-gray-500 dark:text-gray-500">Try different keywords or browse the constitution directly.</p>
+          <div className="mt-8 space-y-4">
+            <SearchEasterEggCard query={query} />
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 text-center">
+              <p className="text-gray-600 dark:text-gray-400 mb-2">No results found for &ldquo;{query}&rdquo;</p>
+              <p className="text-sm text-gray-500 dark:text-gray-500">Try different keywords or browse the constitution directly.</p>
+            </div>
+          </div>
+        )}
+
+        {/* No results — query was filtered */}
+        {query && !searchResults && (
+          <div className="mt-8 space-y-4">
+            <SearchEasterEggCard query={query} />
           </div>
         )}
 

@@ -1,9 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { Article } from '@/types/constitution';
+import { trackSearch } from '@/lib/analytics';
+import { matchEasterEgg, type EasterEgg } from '@/lib/search-easter-eggs';
 import {
   ChevronRightIcon,
   TagIcon,
@@ -41,6 +43,18 @@ export default function EnhancedSearchResults({
   const [sortBy, setSortBy] = useState<'relevance' | 'article' | 'chapter'>('relevance');
   const [selectedChapter, setSelectedChapter] = useState<number | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const trackedRef = useRef<string | null>(null);
+
+  // Track search only when there are results
+  useEffect(() => {
+    if (query && results.length > 0 && trackedRef.current !== query) {
+      trackedRef.current = query;
+      trackSearch(query);
+    }
+  }, [query, results.length]);
+
+  // Easter egg detection (client-side for time-based eggs)
+  const easterEgg = query ? matchEasterEgg(query) : null;
 
   // Sort results based on selected criteria
   const sortedResults = [...results].sort((a, b) => {
@@ -159,6 +173,22 @@ export default function EnhancedSearchResults({
           </select>
         </div>
       </div>
+
+      {/* Easter Egg Callout */}
+      {easterEgg && (
+        <div className="rounded-lg border border-primary-DEFAULT/20 bg-primary-50 dark:bg-primary-900/20 px-5 py-4">
+          <p className="text-sm text-gray-800 dark:text-gray-200">{easterEgg.message}</p>
+          {easterEgg.linkTo && easterEgg.linkLabel && (
+            <Link
+              href={easterEgg.linkTo}
+              className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-primary-DEFAULT hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-300"
+            >
+              {easterEgg.linkLabel}
+              <ChevronRightIcon className="w-4 h-4" />
+            </Link>
+          )}
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Sidebar Filters */}

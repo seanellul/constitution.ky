@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import { trackSearch } from '@/lib/analytics';
 import { isInappropriateSearchTerm } from '@/lib/content-filters';
+import { checkForSpam } from '@/lib/search-nudges';
 import { 
   MagnifyingGlassIcon, 
   FunnelIcon, 
@@ -42,6 +42,7 @@ export default function EnhancedSearch({
   const [showFiltersPanel, setShowFiltersPanel] = useState(false);
   const [filters, setFilters] = useState<SearchFilters>({});
   
+  const [spamNudge, setSpamNudge] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const suggestionsRef = useRef<HTMLDivElement>(null);
 
@@ -183,10 +184,11 @@ export default function EnhancedSearch({
     }
 
     setIsLoading(true);
-    
-    // Track the search
-    trackSearch(searchTerm);
-    
+
+    // Check for spam behaviour
+    const nudge = checkForSpam(searchTerm);
+    setSpamNudge(nudge);
+
     if (onSearch) {
       onSearch(searchTerm, filters);
     } else {
@@ -365,6 +367,20 @@ export default function EnhancedSearch({
               </button>
             )}
           </div>
+        </div>
+      )}
+
+      {/* Spam Nudge Banner */}
+      {spamNudge && (
+        <div className="mt-3 flex items-center justify-between gap-3 rounded-lg border border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 px-4 py-3 text-sm text-amber-800 dark:text-amber-200">
+          <p>{spamNudge}</p>
+          <button
+            onClick={() => setSpamNudge(null)}
+            className="shrink-0 text-amber-600 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-200"
+            aria-label="Dismiss"
+          >
+            <XMarkIcon className="w-4 h-4" />
+          </button>
         </div>
       )}
     </div>

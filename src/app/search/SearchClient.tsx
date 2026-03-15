@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { trackSearch } from '@/lib/analytics';
 import ArticleCard from '@/components/ArticleCard';
 import Link from 'next/link';
 import { Article } from '@/types/constitution';
@@ -19,26 +18,8 @@ export default function SearchClient({ query, results }: SearchClientProps) {
   const [showInappropriateNotice, setShowInappropriateNotice] = useState(false);
 
   useEffect(() => {
-    // Track the search query when the component mounts
-    console.log('SearchClient mounted with query:', query);
-    if (query) {
-      // Check if the search term is inappropriate
-      if (isInappropriateSearchTerm(query)) {
-        console.log('Inappropriate search term detected');
-        setShowInappropriateNotice(true);
-        // We don't track inappropriate terms, the trackSearch function 
-        // has its own filter but we avoid calling it unnecessarily
-      } else {
-        console.log('About to track search for term:', query);
-        try {
-          trackSearch(query);
-          console.log('Successfully called trackSearch for:', query);
-        } catch (error) {
-          console.error('Error tracking search:', error);
-        }
-      }
-    } else {
-      console.log('No query to track');
+    if (query && isInappropriateSearchTerm(query)) {
+      setShowInappropriateNotice(true);
     }
   }, [query]);
 

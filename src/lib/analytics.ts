@@ -34,7 +34,23 @@ export function trackChapterView(chapter: number) {
   getPostHog().then((ph) => ph?.capture('chapter_view', { chapter }));
 }
 
+const recentSearches = new Map<string, number>();
+
 export function trackSearch(term: string) {
+  const normalised = term.trim().toLowerCase();
+  if (!normalised) return;
+
+  const now = Date.now();
+  const lastTracked = recentSearches.get(normalised);
+  if (lastTracked && now - lastTracked < 30_000) return; // dedup within 30s
+
+  recentSearches.set(normalised, now);
+
+  // Prune old entries
+  for (const [key, ts] of recentSearches) {
+    if (now - ts > 60_000) recentSearches.delete(key);
+  }
+
   getPostHog().then((ph) => ph?.capture('search', { term }));
 }
 
