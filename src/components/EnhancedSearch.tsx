@@ -228,9 +228,9 @@ export default function EnhancedSearch({
     <div className="relative w-full max-w-2xl mx-auto">
       {/* Main Search Input */}
       <div className="relative">
-        <div className="relative flex items-center">
-          <div className="relative flex-1">
-            <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+        <div className="relative flex items-center group/search">
+          <div className="relative flex-1 transition-transform duration-200 focus-within:scale-[1.01]">
+            <MagnifyingGlassIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input
               ref={inputRef}
               type="text"
@@ -238,11 +238,16 @@ export default function EnhancedSearch({
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
               onFocus={() => query.length >= 2 && setShowSuggestions(true)}
-              placeholder="Search articles, rights, principles...  ⌘K"
-              className="w-full pl-10 pr-10 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-DEFAULT focus:border-transparent transition-all duration-200"
+              placeholder="Search articles, rights, principles..."
+              className="w-full pl-11 pr-16 py-4 text-lg border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-primary-200/50 dark:focus:ring-primary-800/50 focus:border-primary-DEFAULT transition-all duration-200"
               aria-label="Search the Constitution"
               autoComplete="off"
             />
+            {!query && (
+              <kbd className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:inline-flex items-center gap-0.5 px-2 py-0.5 text-xs text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-700 rounded border border-gray-200 dark:border-gray-600 font-mono pointer-events-none peer-focus:hidden group-focus-within/search:hidden">
+                ⌘K
+              </kbd>
+            )}
             {query && (
               <button
                 onClick={clearSearch}

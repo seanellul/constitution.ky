@@ -8,6 +8,8 @@ import { toRomanNumeral } from '@/lib/utils';
 import { Paragraph } from '@/types/constitution';
 import { motion } from 'framer-motion';
 import { isArticleRead, getReadCountForChapter } from '@/lib/readingProgress';
+import { estimateReadingTime } from '@/lib/readingTime';
+import { Article } from '@/types/constitution';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 
 interface ArticlePreview {
@@ -166,7 +168,10 @@ export default function ChapterContent({ chapter, articles, chapterNum }: Chapte
                 <p className="text-gray-600">
                   {getContentPreview(article.content)}
                 </p>
-                <div className="flex justify-end mt-2">
+                <div className="flex items-center justify-between mt-2">
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                    ~{estimateReadingTime({ number: article.number, title: article.title, chapterNumber: chapterNum, chapterTitle: '', content: article.content as any, amendmentHistory: null } as Article)} min read
+                  </span>
                   <span className="text-primary-DEFAULT text-sm group-hover:translate-x-1 transition-transform">
                     Read article →
                   </span>

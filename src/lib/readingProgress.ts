@@ -62,3 +62,23 @@ export function getReadCountForChapter(chapterNumber: number): number {
 export function getTotalReadCount(): number {
   return getReadArticles().length;
 }
+
+export function getRecentlyRead(limit: number): ReadArticle[] {
+  return getReadArticles()
+    .sort((a, b) => b.readAt - a.readAt)
+    .slice(0, limit);
+}
+
+export function getNextUnread(chapters: { number: number; articles: { number: number }[] }[]): { chapterNumber: number; articleNumber: number } | null {
+  const read = getReadArticles();
+  const readSet = new Set(read.map((a) => `${a.chapterNumber}-${a.articleNumber}`));
+
+  for (const chapter of chapters) {
+    for (const article of chapter.articles) {
+      if (!readSet.has(`${chapter.number}-${article.number}`)) {
+        return { chapterNumber: chapter.number, articleNumber: article.number };
+      }
+    }
+  }
+  return null;
+}

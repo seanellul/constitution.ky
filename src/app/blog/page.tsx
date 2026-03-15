@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/blog';
+import PageEntrance from '@/components/PageEntrance';
 
 export const metadata: Metadata = {
   title: 'Blog — Constitution.ky',
@@ -47,6 +48,7 @@ export default async function BlogIndexPage({
   ).sort();
 
   return (
+    <PageEntrance>
     <div className="max-w-4xl mx-auto py-8 px-4">
       <header className="mb-8">
         <h1 className="font-serif text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
@@ -122,5 +124,6 @@ export default async function BlogIndexPage({
         </ul>
       )}
     </div>
+    </PageEntrance>
   );
 }

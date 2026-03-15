@@ -1,99 +1,87 @@
 'use client';
 
 import { memo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import { DocumentTextIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 function HeroSection() {
+  const prefersReducedMotion = useReducedMotion();
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
+        staggerChildren: prefersReducedMotion ? 0 : 0.2,
+        delayChildren: prefersReducedMotion ? 0 : 0.3,
+      },
+    },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut" as const
-      }
-    }
+      transition: { duration: prefersReducedMotion ? 0 : 0.6, ease: 'easeOut' as const },
+    },
   };
 
   const heroTextVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut" as const
-      }
-    }
+      transition: { duration: prefersReducedMotion ? 0 : 0.8, ease: 'easeOut' as const },
+    },
   };
 
   return (
     <section className="min-h-[70vh] flex flex-col justify-center relative overflow-hidden">
-      {/* Background with subtle animation */}
+      {/* Background with gradient and animated accents */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-secondary-light dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 z-0">
-        <motion.div
-          className="absolute w-full h-full"
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 0.2, scale: 1 }}
-          transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
-        >
-          <div className="absolute w-[600px] h-[600px] rounded-full bg-primary-100 dark:bg-primary-900/30 blur-3xl opacity-20 -top-64 -right-64" style={{ willChange: 'transform' }}></div>
-          <div className="absolute w-[500px] h-[500px] rounded-full bg-blue-100 dark:bg-blue-900/30 blur-3xl opacity-20 top-1/2 -left-64" style={{ willChange: 'transform' }}></div>
-          <div className="absolute w-[700px] h-[700px] rounded-full bg-secondary-200 dark:bg-gray-800 blur-3xl opacity-10 -bottom-96 right-1/3" style={{ willChange: 'transform' }}></div>
-        </motion.div>
+        {/* Radial gradient ring behind title */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <motion.div
+            className="w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full"
+            style={{
+              background: 'radial-gradient(circle, transparent 40%, rgba(0,61,165,0.08) 60%, transparent 80%)',
+            }}
+            animate={
+              prefersReducedMotion
+                ? {}
+                : { scale: [1, 1.08, 1], opacity: [0.6, 0.9, 0.6] }
+            }
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </div>
+
+        {/* Subtle animated grid lines */}
+        <div
+          className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(0,61,165,0.5) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0,61,165,0.5) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px',
+          }}
+        />
+
+        {/* Blur circles using primary palette */}
+        {!prefersReducedMotion && (
+          <motion.div
+            className="absolute w-full h-full"
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 0.25, scale: 1 }}
+            transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
+          >
+            <div className="absolute w-[500px] h-[500px] rounded-full bg-primary-100 dark:bg-primary-900/40 blur-3xl opacity-30 -top-48 -right-48" style={{ willChange: 'transform' }} />
+            <div className="absolute w-[400px] h-[400px] rounded-full bg-primary-200 dark:bg-primary-900/30 blur-3xl opacity-20 top-1/2 -left-48" style={{ willChange: 'transform' }} />
+          </motion.div>
+        )}
       </div>
-
-      {/* Flying paper elements — decorative */}
-      <motion.div
-        aria-hidden="true"
-        className="absolute w-40 h-60 bg-white dark:bg-gray-800 rounded shadow-md opacity-10 z-10"
-        initial={{ x: -100, y: -200, rotate: 10 }}
-        animate={{
-          x: [-100, 50, -70, 20],
-          y: [-200, -250, -150, -180],
-          rotate: [10, -5, 8, -3],
-        }}
-        transition={{ duration: 25, repeat: Infinity, repeatType: "mirror" }}
-      />
-
-      <motion.div
-        aria-hidden="true"
-        className="absolute w-32 h-48 bg-white dark:bg-gray-800 rounded shadow-md opacity-10 z-10 right-20 top-40"
-        initial={{ x: 100, y: 0, rotate: -5 }}
-        animate={{
-          x: [100, 20, 70, 30],
-          y: [0, 30, -20, 10],
-          rotate: [-5, 8, -10, 4],
-        }}
-        transition={{ duration: 20, repeat: Infinity, repeatType: "mirror" }}
-      />
-
-      <motion.div
-        aria-hidden="true"
-        className="absolute w-28 h-40 bg-white dark:bg-gray-800 rounded shadow-md opacity-10 z-10 left-20 bottom-40"
-        initial={{ x: -50, y: 50, rotate: 8 }}
-        animate={{
-          x: [-50, 20, -30, 10],
-          y: [50, 20, 60, 30],
-          rotate: [8, -3, 12, 2],
-        }}
-        transition={{ duration: 18, repeat: Infinity, repeatType: "mirror" }}
-      />
 
       {/* Hero content */}
       <div className="container mx-auto px-6 relative z-20 mb-6">
@@ -148,7 +136,7 @@ function HeroSection() {
           className="absolute w-48 sm:w-64 md:w-80 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 p-2 sm:p-3 rotate-3 left-[20%] z-30"
           initial={{ y: 100, opacity: 0, rotate: 3 }}
           animate={{ y: 0, opacity: 0.9, rotate: 3 }}
-          transition={{ delay: 0.8, duration: 0.7 }}
+          transition={{ delay: prefersReducedMotion ? 0 : 0.8, duration: prefersReducedMotion ? 0 : 0.7 }}
         >
           <div className="border-b border-gray-200 dark:border-gray-700 pb-1 sm:pb-2 mb-1 sm:mb-2">
             <h3 className="text-sm sm:text-base font-serif font-bold text-primary-DEFAULT dark:text-primary-400">Part I</h3>
@@ -163,7 +151,7 @@ function HeroSection() {
           className="absolute w-48 sm:w-64 md:w-80 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 p-2 sm:p-3 -rotate-2 right-[20%] z-20"
           initial={{ y: 100, opacity: 0, rotate: -2 }}
           animate={{ y: 0, opacity: 0.85, rotate: -2 }}
-          transition={{ delay: 1, duration: 0.7 }}
+          transition={{ delay: prefersReducedMotion ? 0 : 1, duration: prefersReducedMotion ? 0 : 0.7 }}
         >
           <div className="border-b border-gray-200 dark:border-gray-700 pb-1 sm:pb-2 mb-1 sm:mb-2">
             <h3 className="text-sm sm:text-base font-serif font-bold text-blue-600 dark:text-blue-400">Part III</h3>
@@ -180,8 +168,8 @@ function HeroSection() {
         className="mx-auto mt-0 mb-1"
         aria-hidden="true"
         initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: [0, 1, 0], y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        animate={prefersReducedMotion ? { opacity: 1 } : { opacity: [0, 1, 0], y: [0, 10, 0] }}
+        transition={prefersReducedMotion ? {} : { duration: 2, repeat: Infinity }}
       >
         <div className="flex flex-col items-center">
           <span className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mb-1">Scroll to explore</span>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { topics } from '@/data/topics';
+import PageEntrance from '@/components/PageEntrance';
 
 export const metadata: Metadata = {
   title: 'Constitutional Topics | Cayman Islands Constitution',
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 
 export default function TopicsIndex() {
   return (
+    <PageEntrance>
     <div className="max-w-4xl mx-auto">
       <h1 className="text-3xl sm:text-4xl font-bold font-serif text-gray-900 dark:text-gray-100 mb-4">
         Constitutional Topics
@@ -39,5 +41,6 @@ export default function TopicsIndex() {
         ))}
       </div>
     </div>
+    </PageEntrance>
   );
 }

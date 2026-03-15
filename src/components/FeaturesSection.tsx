@@ -1,7 +1,7 @@
 'use client';
 
 import { memo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import { DocumentTextIcon, MagnifyingGlassIcon, BookOpenIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 
@@ -13,6 +13,7 @@ interface Feature {
 }
 
 function FeaturesSection() {
+  const prefersReducedMotion = useReducedMotion();
   const features: Feature[] = [
     {
       title: "Interactive Navigation",
@@ -69,11 +70,11 @@ function FeaturesSection() {
             <motion.div
               key={feature.title}
               className={`p-6 rounded-lg border ${feature.color} hover:shadow-lg transition-all duration-300 group`}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5 }}
+              whileHover={prefersReducedMotion ? {} : { y: -5 }}
             >
               <div className="flex flex-col items-start">
                 <div className="mb-4 p-3 rounded-lg bg-white dark:bg-gray-900/50 group-hover:scale-110 transition-transform duration-300">

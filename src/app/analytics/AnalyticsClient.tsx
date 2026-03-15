@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useSpring, useTransform } from 'framer-motion';
 import {
   ChartBarIcon,
   MagnifyingGlassIcon,
@@ -12,6 +12,40 @@ import {
   GlobeAltIcon,
 } from '@heroicons/react/24/outline';
 
+// ── Animated counter component ──────────────────────────────
+function AnimatedNumber({ value, className }: { value: number; className?: string }) {
+  const spring = useSpring(0, { stiffness: 50, damping: 20 });
+  const display = useTransform(spring, (v) => Math.round(v).toLocaleString());
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    spring.set(value);
+  }, [value, spring]);
+
+  useEffect(() => {
+    const unsubscribe = display.on('change', (v) => {
+      if (ref.current) ref.current.textContent = v;
+    });
+    return unsubscribe;
+  }, [display]);
+
+  return <span ref={ref} className={className}>0</span>;
+}
+
+// ── Live pulse indicator ────────────────────────────────────
+function LiveIndicator() {
+  return (
+    <span className="inline-flex items-center gap-1.5 text-xs text-green-600 dark:text-green-400 font-medium">
+      <span className="relative flex h-2 w-2">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+      </span>
+      Live
+    </span>
+  );
+}
+
+// ── Types ───────────────────────────────────────────────────
 interface TopArticle {
   chapter: number;
   article: number;
@@ -39,28 +73,45 @@ interface DashboardData {
 
 type Timeframe = '24h' | '7d' | '30d';
 
+const POLL_INTERVAL_MS = 30_000; // 30 seconds
+
 export default function AnalyticsClient() {
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [timeframe, setTimeframe] = useState<Timeframe>('7d');
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(`/api/analytics/insights?mode=dashboard&timeframe=${timeframe}`);
-        if (res.ok) {
-          setData(await res.json());
-        }
-      } catch (error) {
-        console.error('Error fetching open data:', error);
-      } finally {
-        setLoading(false);
+  const fetchData = useCallback(async (tf: Timeframe, isBackground = false) => {
+    if (!isBackground) setLoading(true);
+    try {
+      const res = await fetch(`/api/analytics/insights?mode=dashboard&timeframe=${tf}`);
+      if (res.ok) {
+        setData(await res.json());
       }
-    };
+    } catch (error) {
+      console.error('Error fetching analytics:', error);
+    } finally {
+      if (!isBackground) setLoading(false);
+    }
+  }, []);
 
-    fetchData();
-  }, [timeframe]);
+  // Initial fetch + polling
+  useEffect(() => {
+    // If we already have data for a different timeframe, show skeleton
+    // Otherwise do a background refresh (stale-while-revalidate feel)
+    const isFirstLoad = data === null;
+    fetchData(timeframe, !isFirstLoad);
+
+    // Set up polling
+    if (pollRef.current) clearInterval(pollRef.current);
+    pollRef.current = setInterval(() => {
+      fetchData(timeframe, true); // always background for polls
+    }, POLL_INTERVAL_MS);
+
+    return () => {
+      if (pollRef.current) clearInterval(pollRef.current);
+    };
+  }, [timeframe, fetchData]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const timeframeLabels: Record<Timeframe, string> = {
     '24h': 'Last 24 Hours',
@@ -95,21 +146,24 @@ export default function AnalyticsClient() {
         </p>
       </motion.div>
 
-      {/* Timeframe Selector */}
-      <div className="flex justify-center gap-2 mb-8">
-        {(['24h', '7d', '30d'] as Timeframe[]).map((tf) => (
-          <button
-            key={tf}
-            onClick={() => setTimeframe(tf)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              timeframe === tf
-                ? 'bg-primary-DEFAULT text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600'
-            }`}
-          >
-            {timeframeLabels[tf]}
-          </button>
-        ))}
+      {/* Timeframe Selector + Live indicator */}
+      <div className="flex items-center justify-center gap-4 mb-8">
+        <div className="flex gap-2">
+          {(['24h', '7d', '30d'] as Timeframe[]).map((tf) => (
+            <button
+              key={tf}
+              onClick={() => setTimeframe(tf)}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                timeframe === tf
+                  ? 'bg-primary-DEFAULT text-white'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600'
+              }`}
+            >
+              {timeframeLabels[tf]}
+            </button>
+          ))}
+        </div>
+        {data && <LiveIndicator />}
       </div>
 
       {loading && !data ? (
@@ -133,7 +187,7 @@ export default function AnalyticsClient() {
                 <span className="text-sm text-gray-500 dark:text-gray-400">Page Views</span>
               </div>
               <div className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
-                {(data?.totalPageViews ?? 0).toLocaleString()}
+                <AnimatedNumber value={data?.totalPageViews ?? 0} />
               </div>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
@@ -142,7 +196,7 @@ export default function AnalyticsClient() {
                 <span className="text-sm text-gray-500 dark:text-gray-400">Unique Visitors</span>
               </div>
               <div className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
-                {(data?.uniqueVisitors ?? 0).toLocaleString()}
+                <AnimatedNumber value={data?.uniqueVisitors ?? 0} />
               </div>
             </div>
           </motion.div>
@@ -172,9 +226,11 @@ export default function AnalyticsClient() {
                       <div className="hidden group-hover:block text-xs text-gray-600 dark:text-gray-400 mb-1">
                         {d.views}
                       </div>
-                      <div
+                      <motion.div
                         className="w-full bg-primary-DEFAULT/70 dark:bg-primary-400/70 rounded-t hover:bg-primary-DEFAULT dark:hover:bg-primary-400 transition-colors"
-                        style={{ height: `${height}%` }}
+                        initial={{ height: 0 }}
+                        animate={{ height: `${height}%` }}
+                        transition={{ duration: 0.5, delay: i * 0.02 }}
                         title={`${label}: ${d.views} views`}
                       />
                       {data.dailyViews.length <= 14 && (

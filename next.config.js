@@ -19,6 +19,7 @@ const nextConfig = {
   // Optimizations
   experimental: {
     optimizePackageImports: ['@heroicons/react'],
+    viewTransition: true,
   },
   
   // Improved build ID generation

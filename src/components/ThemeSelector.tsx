@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { SwatchIcon } from '@heroicons/react/24/outline';
+import { AnimatePresence, motion } from 'framer-motion';
+import { CheckIcon } from '@heroicons/react/24/solid';
 import { isBrowser } from '@/lib/utils';
 
 export interface Theme {
   id: string;
   name: string;
-  icon: string;
+  swatch: string; // tailwind bg color for the circle swatch
   isDark: boolean;
   vars: Record<string, string>;
 }
@@ -16,21 +17,21 @@ const themes: Theme[] = [
   {
     id: 'dark',
     name: 'Dark',
-    icon: '🌙',
+    swatch: 'bg-gray-800',
     isDark: true,
     vars: {},
   },
   {
     id: 'light',
     name: 'Light',
-    icon: '☀️',
+    swatch: 'bg-white border border-gray-300',
     isDark: false,
     vars: {},
   },
   {
     id: 'sepia',
     name: 'Sepia',
-    icon: '📜',
+    swatch: 'bg-[#f4ecd8]',
     isDark: false,
     vars: {
       '--theme-bg': '#f4ecd8',
@@ -43,7 +44,7 @@ const themes: Theme[] = [
   {
     id: 'night',
     name: 'Night',
-    icon: '🌑',
+    swatch: 'bg-[#0d1117]',
     isDark: true,
     vars: {
       '--theme-bg': '#0d1117',
@@ -135,30 +136,41 @@ export default function ThemeSelector() {
         title={`Theme: ${currentTheme.name}`}
         aria-label="Change theme"
       >
-        <span className="text-sm leading-none">{currentTheme.icon}</span>
+        <span className={`block w-4 h-4 rounded-full ${currentTheme.swatch}`} />
       </button>
 
-      {open && (
-        <div className="absolute right-0 top-full mt-2 z-50 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-1.5 min-w-[140px]">
-          {themes.map((theme) => (
-            <button
-              key={theme.id}
-              onClick={() => {
-                setThemeId(theme.id);
-                setOpen(false);
-              }}
-              className={`w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors ${
-                themeId === theme.id
-                  ? 'bg-primary-DEFAULT/10 text-primary-DEFAULT dark:text-primary-400 font-medium'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-              }`}
-            >
-              <span>{theme.icon}</span>
-              <span>{theme.name}</span>
-            </button>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -4 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -4 }}
+            transition={{ duration: 0.15 }}
+            className="absolute right-0 top-full mt-2 z-50 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-1.5 min-w-[140px]"
+          >
+            {themes.map((theme) => (
+              <button
+                key={theme.id}
+                onClick={() => {
+                  setThemeId(theme.id);
+                  setOpen(false);
+                }}
+                className={`w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors ${
+                  themeId === theme.id
+                    ? 'bg-primary-DEFAULT/10 text-primary-DEFAULT dark:text-primary-400 font-medium'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
+              >
+                <span className={`block w-4 h-4 rounded-full flex-shrink-0 ${theme.swatch}`} />
+                <span className="flex-1 text-left">{theme.name}</span>
+                {themeId === theme.id && (
+                  <CheckIcon className="w-4 h-4 text-primary-DEFAULT dark:text-primary-400" />
+                )}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

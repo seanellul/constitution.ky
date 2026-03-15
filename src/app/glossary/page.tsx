@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { glossary } from '@/data/glossary';
+import PageEntrance from '@/components/PageEntrance';
 
 export const metadata: Metadata = {
   title: 'Constitutional Glossary | Cayman Islands Constitution Terms & Definitions',
@@ -20,6 +21,7 @@ export default function GlossaryIndex() {
   const letters = Object.keys(grouped).sort();
 
   return (
+    <PageEntrance>
     <div className="max-w-4xl mx-auto">
       <h1 className="text-3xl sm:text-4xl font-bold font-serif text-gray-900 dark:text-gray-100 mb-4">
         Constitutional Glossary
@@ -67,5 +69,6 @@ export default function GlossaryIndex() {
         ))}
       </div>
     </div>
+    </PageEntrance>
   );
 }

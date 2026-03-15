@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import AnalyticsClient from './AnalyticsClient';
+import PageEntrance from '@/components/PageEntrance';
 
 export const metadata: Metadata = {
   title: 'Analytics | Constitution.ky',
@@ -7,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function AnalyticsPage() {
-  return <AnalyticsClient />;
+  return <PageEntrance><AnalyticsClient /></PageEntrance>;
 }

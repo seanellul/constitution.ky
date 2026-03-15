@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import PageEntrance from '@/components/PageEntrance';
 import {
   UsersIcon,
   AcademicCapIcon,
@@ -86,6 +87,7 @@ export default function About() {
   ];
 
   return (
+    <PageEntrance>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
       <script
         type="application/ld+json"
@@ -342,5 +344,6 @@ export default function About() {
 
       </div>
     </div>
+    </PageEntrance>
   );
 }

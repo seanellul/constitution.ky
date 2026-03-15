@@ -1,18 +1,26 @@
 import './globals.css';
-import { Inter, Merriweather } from 'next/font/google';
+import { DM_Sans, Literata, Merriweather } from 'next/font/google';
 import React from 'react';
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
+import MobileBottomNav from '@/components/MobileBottomNav';
+import Toast from '@/components/Toast';
 import LayoutClient from './LayoutClient';
 import { Analytics } from '@vercel/analytics/react';
 import { metadata as siteMetadata } from './metadata';
 
 export { siteMetadata as metadata };
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-dm-sans',
+});
+
+const literata = Literata({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-literata',
 });
 
 const merriweather = Merriweather({
@@ -95,7 +103,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${merriweather.variable}`}>
+    <html lang="en" className={`dark ${dmSans.variable} ${literata.variable} ${merriweather.variable}`}>
       <head>
         {/* Structured Data JSON-LD */}
         <script
@@ -126,7 +134,7 @@ export default function RootLayout({
       </head>
       <body className="bg-secondary-light dark:bg-gray-900 min-h-screen flex flex-col text-gray-900 dark:text-gray-100">
         {/* Skip to main content for accessibility */}
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-primary-DEFAULT text-white p-2 z-50">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:p-4 focus:bg-primary-DEFAULT focus:text-white focus:rounded-md focus:shadow-lg focus:top-4 focus:left-4">
           Skip to main content
         </a>
 
@@ -134,7 +142,7 @@ export default function RootLayout({
           <Navigation />
         </header>
 
-        <main id="main-content" role="main" className="container mx-auto px-4 sm:px-6 py-4 sm:py-8 flex-grow max-w-full overflow-x-hidden">
+        <main id="main-content" role="main" className="container mx-auto px-4 sm:px-6 py-4 sm:py-8 flex-grow max-w-full overflow-x-hidden pb-16 md:pb-0">
           {children}
         </main>
 
@@ -144,7 +152,7 @@ export default function RootLayout({
               <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
                 &copy; {currentYear} Constitution.ky | An interactive reader for the Constitution of the Cayman Islands
               </p>
-              <p className="text-xs text-gray-500 dark:text-gray-500">
+              <p className="text-xs text-gray-600 dark:text-gray-400">
                 Educational use only. For official legal reference, consult the{' '}
                 <a
                   href="https://www.legislation.gov.uk/uksi/2009/1379/schedule/2/made"
@@ -156,17 +164,20 @@ export default function RootLayout({
                 </a>
               </p>
               <nav className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs">
-                <Link href="/about" className="text-gray-500 hover:text-primary-DEFAULT">About</Link>
-                <Link href="/constitution" className="text-gray-500 hover:text-primary-DEFAULT">Constitution</Link>
-                <Link href="/topics" className="text-gray-500 hover:text-primary-DEFAULT">Topics</Link>
-                <Link href="/glossary" className="text-gray-500 hover:text-primary-DEFAULT">Glossary</Link>
-                <Link href="/search" className="text-gray-500 hover:text-primary-DEFAULT">Search</Link>
-                <Link href="/blog" className="text-gray-500 hover:text-primary-DEFAULT">Blog</Link>
-                <a href="https://github.com/seanellul/constitution.ky" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-primary-DEFAULT">GitHub</a>
+                <Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-primary-DEFAULT">About</Link>
+                <Link href="/constitution" className="text-gray-600 dark:text-gray-400 hover:text-primary-DEFAULT">Constitution</Link>
+                <Link href="/topics" className="text-gray-600 dark:text-gray-400 hover:text-primary-DEFAULT">Topics</Link>
+                <Link href="/glossary" className="text-gray-600 dark:text-gray-400 hover:text-primary-DEFAULT">Glossary</Link>
+                <Link href="/search" className="text-gray-600 dark:text-gray-400 hover:text-primary-DEFAULT">Search</Link>
+                <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-primary-DEFAULT">Blog</Link>
+                <a href="https://github.com/seanellul/constitution.ky" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-primary-DEFAULT">GitHub</a>
               </nav>
             </div>
           </div>
         </footer>
+
+        <MobileBottomNav />
+        <Toast />
 
         {/* Client-side components */}
         <LayoutClient />

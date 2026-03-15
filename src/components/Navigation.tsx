@@ -69,9 +69,9 @@ const Navigation = () => {
                   href={link.href}
                   className={`${
                     (link.href === '/' ? pathname === '/' : pathname?.startsWith(link.href))
-                      ? 'text-primary-DEFAULT dark:text-primary-400 border-b-2 border-primary-DEFAULT dark:border-primary-400 font-semibold'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-primary-DEFAULT dark:hover:text-primary-400 hover:border-b-2 hover:border-primary-200 dark:hover:border-primary-600'
-                  } pb-1 font-medium transition-all duration-200`}
+                      ? 'text-primary-DEFAULT dark:text-primary-400 font-semibold after:!w-full'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-primary-DEFAULT dark:hover:text-primary-400'
+                  } pb-1 font-medium nav-link-animated`}
                 >
                   {link.label}
                 </Link>

@@ -37,8 +37,9 @@ module.exports = {
         'secondary-dark': '#E5E5E5',
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'sans-serif'],
+        sans: ['var(--font-dm-sans)', 'sans-serif'],
         serif: ['var(--font-merriweather)', 'serif'],
+        body: ['var(--font-literata)', 'serif'],
       },
       typography: theme => ({
         DEFAULT: {
@@ -71,7 +72,7 @@ module.exports = {
               fontWeight: '600',
             },
             h4: {
-              fontFamily: 'var(--font-inter), sans-serif',
+              fontFamily: 'var(--font-dm-sans), sans-serif',
               color: '#374151', // text-gray-700
               fontWeight: '600',
             },

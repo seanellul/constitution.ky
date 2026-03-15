@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import { useState, useCallback, useRef } from 'react';
 import LiveInsightsWidget from '@/components/LiveInsightsWidget';
@@ -74,6 +74,7 @@ const cards: ConstitutionCard[] = [
 ];
 
 export default function ConstitutionVisualization() {
+  const prefersReducedMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
@@ -111,23 +112,29 @@ export default function ConstitutionVisualization() {
     if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
   }, [prev, next]);
 
-  const slideVariants = {
-    enter: (dir: number) => ({
-      x: dir > 0 ? 300 : -300,
-      opacity: 0,
-      scale: 0.92,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-    },
-    exit: (dir: number) => ({
-      x: dir < 0 ? 300 : -300,
-      opacity: 0,
-      scale: 0.92,
-    }),
-  };
+  const slideVariants = prefersReducedMotion
+    ? {
+        enter: () => ({ opacity: 0 }),
+        center: { opacity: 1, x: 0, scale: 1 },
+        exit: () => ({ opacity: 0 }),
+      }
+    : {
+        enter: (dir: number) => ({
+          x: dir > 0 ? 300 : -300,
+          opacity: 0,
+          scale: 0.92,
+        }),
+        center: {
+          x: 0,
+          opacity: 1,
+          scale: 1,
+        },
+        exit: (dir: number) => ({
+          x: dir < 0 ? 300 : -300,
+          opacity: 0,
+          scale: 0.92,
+        }),
+      };
 
   const activeCard = cards[activeIndex];
 

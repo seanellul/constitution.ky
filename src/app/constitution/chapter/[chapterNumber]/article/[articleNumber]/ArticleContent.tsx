@@ -14,6 +14,10 @@ import ShareCiteButton from '@/components/ShareCiteButton';
 import TextSizeControls, { useTextSize } from '@/components/TextSizeControls';
 import ChapterSidebar from '@/components/ChapterSidebar';
 import RelatedTopics from '@/components/RelatedTopics';
+import ReadingProgressBar from '@/components/ReadingProgressBar';
+import { estimateReadingTime } from '@/lib/readingTime';
+import { highlightGlossaryTerms } from '@/lib/glossaryMatcher';
+import { useSwipeNavigation } from '@/hooks/useSwipeNavigation';
 
 interface ChapterArticleInfo {
   number: number;
@@ -41,6 +45,10 @@ export default function ArticleContent({ article, chapterNum, articleNum, prevAr
   const [readStatuses, setReadStatuses] = useState<Record<number, boolean>>({});
   const router = useRouter();
   const { sizeIndex, setSize, sizeClass } = useTextSize();
+  const readingTime = estimateReadingTime(article);
+
+  // Swipe navigation on mobile
+  useSwipeNavigation(prevArticle, nextArticle);
 
   // Mark article as read and load read statuses for sidebar
   useEffect(() => {
@@ -244,6 +252,8 @@ export default function ArticleContent({ article, chapterNum, articleNum, prevAr
 
   return (
     <>
+      <ReadingProgressBar />
+
       <ChapterSidebar
         chapterNumber={chapterNum}
         chapterTitle={chapterTitle}
@@ -291,10 +301,12 @@ export default function ArticleContent({ article, chapterNum, articleNum, prevAr
         </motion.h1>
 
         <motion.div
-          className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-4 sm:mb-8"
+          className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-4 sm:mb-8 flex items-center gap-3"
           variants={itemVariants}
         >
-          Chapter {toRomanNumeral(article.chapterNumber)} - {article.chapterTitle}
+          <span>Chapter {toRomanNumeral(article.chapterNumber)} - {article.chapterTitle}</span>
+          <span className="text-gray-400 dark:text-gray-500">·</span>
+          <span>~{readingTime} min read</span>
         </motion.div>
         
         {article.content && Array.isArray(article.content) && (
@@ -378,7 +390,7 @@ export default function ArticleContent({ article, chapterNum, articleNum, prevAr
                       </motion.div>
                     )}
                     <div className="content flex-1 break-words">
-                      <span className={`${sizeClass} leading-relaxed`}>{content}</span>
+                      <span className={`${sizeClass} leading-relaxed`}>{highlightGlossaryTerms(content)}</span>
                     </div>
                   </div>
                 </motion.div>

@@ -2,6 +2,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import EnhancedSearch from '@/components/EnhancedSearch';
 import EnhancedSearchResults from '@/components/EnhancedSearchResults';
 import SearchEasterEggCard from '@/components/SearchEasterEggCard';
+import PageEntrance from '@/components/PageEntrance';
 import { searchArticles } from '@/lib/constitution';
 import { shouldFilterFromAnalytics } from '@/lib/content-filters';
 import { matchEasterEgg } from '@/lib/search-easter-eggs';
@@ -146,7 +147,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   }
 
   return (
-    <>
+    <PageEntrance>
       <Breadcrumbs
         items={[
           {
@@ -236,6 +237,6 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           </div>
         )}
       </div>
-    </>
+    </PageEntrance>
   );
 }
