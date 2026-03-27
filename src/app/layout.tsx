@@ -172,6 +172,16 @@ export default function RootLayout({
                 <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-primary-DEFAULT">Blog</Link>
                 <a href="https://github.com/seanellul/constitution.ky" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-primary-DEFAULT">GitHub</a>
               </nav>
+              <p className="text-xs text-gray-500 mt-4 pt-4 border-t border-gray-800 text-center">
+                Built by{" "}
+                <a href="https://seanellul.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
+                  Sean Ellul
+                </a>
+                {" · "}
+                <a href="https://seanellul.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
+                  seanellul.com
+                </a>
+              </p>
             </div>
           </div>
         </footer>
