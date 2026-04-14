@@ -172,14 +172,26 @@ export default function RootLayout({
                 <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-primary-DEFAULT">Blog</Link>
                 <a href="https://github.com/seanellul/constitution.ky" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-primary-DEFAULT">GitHub</a>
               </nav>
-              <p className="text-xs text-gray-500 mt-4 pt-4 border-t border-gray-800 text-center">
+              <p className="text-xs text-gray-400 dark:text-gray-500 mt-4 pt-3 border-t border-gray-200 dark:border-gray-700 text-center">
                 Built by{" "}
-                <a href="https://seanellul.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
+                <a href="https://seanellul.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-primary-DEFAULT transition-colors">
                   Sean Ellul
                 </a>
                 {" · "}
-                <a href="https://seanellul.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
-                  seanellul.com
+                <a href="https://careers.ky" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-primary-DEFAULT transition-colors">
+                  Careers.ky
+                </a>
+                {" | "}
+                <a href="https://legislation.ky" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-primary-DEFAULT transition-colors">
+                  Legislation.ky
+                </a>
+                {" | "}
+                <a href="https://cheap.ky" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-primary-DEFAULT transition-colors">
+                  Cheap.ky
+                </a>
+                {" | "}
+                <a href="https://caybooks.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-primary-DEFAULT transition-colors">
+                  CayBooks
                 </a>
               </p>
             </div>
